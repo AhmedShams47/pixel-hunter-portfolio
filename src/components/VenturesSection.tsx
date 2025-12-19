@@ -11,7 +11,7 @@ const VenturesSection = () => {
         'Premium dining destination where culinary art meets fast-casual convenience. From menu engineering to digital ordering systems, every touchpoint is optimized for maximum satisfaction.',
       vibe: 'Warm • Premium • Fast',
       icon: <Utensils className="w-6 h-6" />,
-      gradient: 'bg-gradient-to-br from-orange-500/30 to-red-500/30',
+      gradient: 'bg-gradient-to-br from-orange-500/30 to-amber-500/30',
     },
     {
       title: 'Phone Depot',
@@ -20,7 +20,7 @@ const VenturesSection = () => {
         'Clinical precision meets hardware expertise. We diagnose, repair, and resurrect devices with surgical accuracy. Every component analyzed, every connection optimized.',
       vibe: 'Clean • Clinical • Hardware',
       icon: <Smartphone className="w-6 h-6" />,
-      gradient: 'bg-gradient-to-br from-blue-500/30 to-cyan-500/30',
+      gradient: 'bg-gradient-to-br from-cyan-500/30 to-blue-500/30',
     },
     {
       title: 'CoreA / SaltSync',
@@ -29,7 +29,7 @@ const VenturesSection = () => {
         'Where abstract data transforms into tangible results. Full-spectrum digital solutions from infrastructure deployment to campaign orchestration. The future is automated.',
       vibe: 'Abstract • Data-Driven • Futuristic',
       icon: <Globe className="w-6 h-6" />,
-      gradient: 'bg-gradient-to-br from-purple-500/30 to-pink-500/30',
+      gradient: 'bg-gradient-to-br from-violet-500/30 to-purple-500/30',
     },
   ];
 
@@ -40,7 +40,7 @@ const VenturesSection = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.3 }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
           className="text-center mb-16"
         >
           <span className="text-primary text-sm font-display tracking-widest mb-4 block">
@@ -60,7 +60,7 @@ const VenturesSection = () => {
             <VentureCard
               key={venture.title}
               {...venture}
-              delay={0.1 + index * 0.1}
+              delay={0.12 + index * 0.12}
             />
           ))}
         </div>

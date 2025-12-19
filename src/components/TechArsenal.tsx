@@ -26,7 +26,7 @@ const TechArsenal = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.3 }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
           className="text-center mb-16"
         >
           <span className="text-primary text-sm font-display tracking-widest mb-4 block">
@@ -55,7 +55,7 @@ const TechArsenal = () => {
               animate={{ x: [0, -50 * tools.length] }}
               transition={{
                 x: {
-                  duration: 30,
+                  duration: 40,
                   repeat: Infinity,
                   ease: "linear",
                 },
@@ -64,10 +64,11 @@ const TechArsenal = () => {
               {duplicatedTools.map((tool, index) => (
                 <motion.div
                   key={`${tool.name}-${index}`}
-                  whileHover={{ scale: 1.05, y: -5 }}
-                  className="glass-card px-8 py-6 min-w-[180px] text-center group hover:border-primary/50 transition-all duration-200 cursor-pointer"
+                  whileHover={{ scale: 1.04, y: -4 }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                  className="glass-card px-8 py-6 min-w-[180px] text-center group hover:border-primary/40 transition-all duration-300 ease-in-out cursor-pointer rounded-2xl"
                 >
-                  <div className="font-display text-lg font-bold text-foreground group-hover:text-primary transition-colors duration-200 mb-1">
+                  <div className="font-display text-lg font-bold text-foreground group-hover:text-primary transition-colors duration-300 ease-in-out mb-1">
                     {tool.name}
                   </div>
                   <div className="text-xs text-muted-foreground uppercase tracking-wider">
@@ -85,25 +86,25 @@ const TechArsenal = () => {
             {/* Central sphere */}
             <motion.div
               animate={{ rotate: 360 }}
-              transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+              transition={{ duration: 80, repeat: Infinity, ease: "linear" }}
               className="relative w-64 h-64"
             >
               {/* Orbital rings */}
-              <div className="absolute inset-0 rounded-full border border-primary/20" />
+              <div className="absolute inset-0 rounded-full border border-primary/15" />
               <motion.div
-                className="absolute inset-4 rounded-full border border-primary/30"
+                className="absolute inset-4 rounded-full border border-primary/25"
                 animate={{ rotate: -360 }}
-                transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+                transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
               />
               <motion.div
-                className="absolute inset-8 rounded-full border border-primary/40"
+                className="absolute inset-8 rounded-full border border-primary/35"
                 animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
               />
 
               {/* Center glow */}
-              <div className="absolute inset-16 rounded-full bg-primary/20 blur-xl" />
-              <div className="absolute inset-20 rounded-full bg-primary/40 blur-md" />
+              <div className="absolute inset-16 rounded-full bg-primary/15 blur-xl" />
+              <div className="absolute inset-20 rounded-full bg-primary/30 blur-md" />
               <div className="absolute inset-24 rounded-full bg-primary glow-box flex items-center justify-center">
                 <span className="font-display text-xs font-bold text-primary-foreground tracking-widest">
                   CORE
@@ -119,15 +120,16 @@ const TechArsenal = () => {
                     top: '50%',
                     left: '50%',
                     transform: `rotate(${angle}deg) translateX(120px) translateY(-50%)`,
-                    boxShadow: '0 0 10px hsl(var(--primary))',
+                    boxShadow: '0 0 12px hsl(var(--primary) / 0.8)',
                   }}
                   animate={{
-                    opacity: [0.5, 1, 0.5],
+                    opacity: [0.4, 1, 0.4],
                   }}
                   transition={{
-                    duration: 2,
+                    duration: 3,
                     repeat: Infinity,
-                    delay: i * 0.3,
+                    delay: i * 0.4,
+                    ease: "easeInOut",
                   }}
                 />
               ))}

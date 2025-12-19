@@ -1,43 +1,50 @@
 import { useEffect, useState, useCallback } from 'react';
-import { motion, useMotionValue, useSpring } from 'framer-motion';
+import { motion, useMotionValue, useSpring, useScroll, useTransform } from 'framer-motion';
 
-interface Particle {
+interface Star {
   id: number;
   x: number;
   y: number;
   size: number;
   opacity: number;
-  speed: number;
+  twinkleDuration: number;
+  twinkleDelay: number;
 }
 
 const ParticleBackground = () => {
-  const [particles, setParticles] = useState<Particle[]>([]);
+  const [stars, setStars] = useState<Star[]>([]);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   
-  const smoothMouseX = useSpring(mouseX, { stiffness: 50, damping: 20 });
-  const smoothMouseY = useSpring(mouseY, { stiffness: 50, damping: 20 });
+  const smoothMouseX = useSpring(mouseX, { stiffness: 30, damping: 25 });
+  const smoothMouseY = useSpring(mouseY, { stiffness: 30, damping: 25 });
+
+  const { scrollY } = useScroll();
+  const parallaxY1 = useTransform(scrollY, [0, 3000], [0, -400]);
+  const parallaxY2 = useTransform(scrollY, [0, 3000], [0, -250]);
+  const parallaxY3 = useTransform(scrollY, [0, 3000], [0, -150]);
 
   useEffect(() => {
-    const newParticles: Particle[] = [];
-    for (let i = 0; i < 50; i++) {
-      newParticles.push({
+    const newStars: Star[] = [];
+    for (let i = 0; i < 120; i++) {
+      newStars.push({
         id: i,
         x: Math.random() * 100,
         y: Math.random() * 100,
-        size: Math.random() * 4 + 1,
-        opacity: Math.random() * 0.5 + 0.1,
-        speed: Math.random() * 2 + 1,
+        size: Math.random() * 2.5 + 0.5,
+        opacity: Math.random() * 0.7 + 0.3,
+        twinkleDuration: Math.random() * 3 + 2,
+        twinkleDelay: Math.random() * 5,
       });
     }
-    setParticles(newParticles);
+    setStars(newStars);
   }, []);
 
   const handleMouseMove = useCallback((e: MouseEvent) => {
     const { clientX, clientY } = e;
     const { innerWidth, innerHeight } = window;
-    mouseX.set((clientX / innerWidth - 0.5) * 50);
-    mouseY.set((clientY / innerHeight - 0.5) * 50);
+    mouseX.set((clientX / innerWidth - 0.5) * 30);
+    mouseY.set((clientY / innerHeight - 0.5) * 30);
   }, [mouseX, mouseY]);
 
   useEffect(() => {
@@ -47,70 +54,117 @@ const ParticleBackground = () => {
 
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-secondary/20" />
-      
-      {/* Grid pattern */}
-      <motion.div 
-        className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage: `
-            linear-gradient(hsl(var(--primary) / 0.3) 1px, transparent 1px),
-            linear-gradient(90deg, hsl(var(--primary) / 0.3) 1px, transparent 1px)
-          `,
-          backgroundSize: '100px 100px',
-          x: smoothMouseX,
-          y: smoothMouseY,
-        }}
-      />
+      {/* Deep space gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-[hsl(230,45%,6%)] to-[hsl(260,40%,5%)]" />
 
-      {/* Floating particles */}
-      {particles.map((particle) => (
+      {/* Nebula clouds - Layer 1 (furthest) */}
+      <motion.div 
+        className="absolute inset-0 opacity-20"
+        style={{ y: parallaxY1 }}
+      >
         <motion.div
-          key={particle.id}
-          className="absolute rounded-full bg-primary"
+          className="absolute top-[10%] left-[5%] w-[600px] h-[600px] rounded-full animate-nebula"
           style={{
-            left: `${particle.x}%`,
-            top: `${particle.y}%`,
-            width: particle.size,
-            height: particle.size,
-            opacity: particle.opacity,
+            background: 'radial-gradient(ellipse, hsl(var(--glow-purple) / 0.4) 0%, transparent 70%)',
+            filter: 'blur(60px)',
             x: smoothMouseX,
             y: smoothMouseY,
           }}
-          animate={{
-            y: [0, -30 * particle.speed, 0],
-            opacity: [particle.opacity, particle.opacity * 1.5, particle.opacity],
-          }}
-          transition={{
-            duration: 5 + particle.speed * 2,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: particle.id * 0.1,
+        />
+        <motion.div
+          className="absolute top-[60%] right-[10%] w-[500px] h-[500px] rounded-full animate-nebula"
+          style={{
+            background: 'radial-gradient(ellipse, hsl(var(--nebula-pink) / 0.3) 0%, transparent 70%)',
+            filter: 'blur(80px)',
+            animationDelay: '7s',
+            x: smoothMouseX,
+            y: smoothMouseY,
           }}
         />
-      ))}
+      </motion.div>
 
-      {/* Floating orbs */}
+      {/* Nebula clouds - Layer 2 */}
+      <motion.div 
+        className="absolute inset-0 opacity-15"
+        style={{ y: parallaxY2 }}
+      >
+        <motion.div
+          className="absolute top-[30%] right-[20%] w-[450px] h-[450px] rounded-full animate-nebula"
+          style={{
+            background: 'radial-gradient(ellipse, hsl(var(--glow-cyan) / 0.35) 0%, transparent 70%)',
+            filter: 'blur(50px)',
+            animationDelay: '3s',
+            x: smoothMouseX,
+            y: smoothMouseY,
+          }}
+        />
+        <motion.div
+          className="absolute bottom-[20%] left-[15%] w-[400px] h-[400px] rounded-full animate-nebula"
+          style={{
+            background: 'radial-gradient(ellipse, hsl(var(--glow-blue) / 0.3) 0%, transparent 70%)',
+            filter: 'blur(70px)',
+            animationDelay: '10s',
+            x: smoothMouseX,
+            y: smoothMouseY,
+          }}
+        />
+      </motion.div>
+
+      {/* Stars - Layer 3 (closest) */}
+      <motion.div 
+        className="absolute inset-0"
+        style={{ y: parallaxY3 }}
+      >
+        {stars.map((star) => (
+          <motion.div
+            key={star.id}
+            className="absolute rounded-full bg-star-white animate-twinkle"
+            style={{
+              left: `${star.x}%`,
+              top: `${star.y}%`,
+              width: star.size,
+              height: star.size,
+              '--twinkle-duration': `${star.twinkleDuration}s`,
+              '--twinkle-delay': `${star.twinkleDelay}s`,
+              x: smoothMouseX,
+              y: smoothMouseY,
+            } as React.CSSProperties}
+          />
+        ))}
+      </motion.div>
+
+      {/* Bright stars with glow */}
+      <motion.div 
+        className="absolute inset-0"
+        style={{ y: parallaxY3 }}
+      >
+        {stars.slice(0, 15).map((star) => (
+          <motion.div
+            key={`glow-${star.id}`}
+            className="absolute rounded-full animate-twinkle"
+            style={{
+              left: `${star.x}%`,
+              top: `${star.y}%`,
+              width: star.size * 3,
+              height: star.size * 3,
+              background: `radial-gradient(circle, hsl(var(--primary) / 0.8) 0%, transparent 70%)`,
+              '--twinkle-duration': `${star.twinkleDuration}s`,
+              '--twinkle-delay': `${star.twinkleDelay}s`,
+              x: smoothMouseX,
+              y: smoothMouseY,
+            } as React.CSSProperties}
+          />
+        ))}
+      </motion.div>
+
+      {/* Central glow accent */}
       <motion.div
-        className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full opacity-10"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full opacity-5"
         style={{
-          background: 'radial-gradient(circle, hsl(var(--primary)) 0%, transparent 70%)',
-          x: smoothMouseX,
-          y: smoothMouseY,
+          background: 'radial-gradient(circle, hsl(var(--primary)) 0%, transparent 60%)',
         }}
-        animate={{ scale: [1, 1.2, 1] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full opacity-10"
-        style={{
-          background: 'radial-gradient(circle, hsl(var(--glow-blue)) 0%, transparent 70%)',
-          x: smoothMouseX,
-          y: smoothMouseY,
-        }}
-        animate={{ scale: [1.2, 1, 1.2] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        animate={{ scale: [1, 1.1, 1] }}
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
       />
     </div>
   );
