@@ -19,7 +19,7 @@ Every pixel tells a story. Every line of code is a weapon. I am the bridge betwe
       const timeout = setTimeout(() => {
         setDisplayedText(prev => prev + fullText[currentIndex]);
         setCurrentIndex(prev => prev + 1);
-      }, 20);
+      }, 18);
       return () => clearTimeout(timeout);
     }
   }, [isInView, currentIndex, fullText]);
@@ -27,7 +27,7 @@ Every pixel tells a story. Every line of code is a weapon. I am the bridge betwe
   useEffect(() => {
     const cursorInterval = setInterval(() => {
       setShowCursor(prev => !prev);
-    }, 500);
+    }, 530);
     return () => clearInterval(cursorInterval);
   }, []);
 
@@ -38,7 +38,7 @@ Every pixel tells a story. Every line of code is a weapon. I am the bridge betwe
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.3 }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
           className="text-center mb-12"
         >
           <span className="text-primary text-sm font-display tracking-widest mb-4 block">
@@ -52,19 +52,19 @@ Every pixel tells a story. Every line of code is a weapon. I am the bridge betwe
 
         {/* Terminal window */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
+          initial={{ opacity: 0, scale: 0.96 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.3, delay: 0.1 }}
-          className="glass-card overflow-hidden"
+          transition={{ duration: 0.5, delay: 0.15, ease: "easeInOut" }}
+          className="glass-card overflow-hidden rounded-3xl"
         >
           {/* Terminal header */}
-          <div className="flex items-center gap-2 px-4 py-3 border-b border-border bg-secondary/30">
+          <div className="flex items-center gap-2 px-5 py-3.5 border-b border-border bg-secondary/30 rounded-t-3xl">
             <div className="w-3 h-3 rounded-full bg-destructive/60" />
             <div className="w-3 h-3 rounded-full bg-yellow-500/60" />
             <div className="w-3 h-3 rounded-full bg-green-500/60" />
             <span className="ml-4 text-xs text-muted-foreground font-mono">
-              pixel_hunter@empire:~$ cat about.md
+              ahmed@galaxy:~$ cat about.md
             </span>
           </div>
 
@@ -82,9 +82,10 @@ Every pixel tells a story. Every line of code is a weapon. I am the bridge betwe
                 <span className="text-muted-foreground whitespace-pre-wrap">
                   {displayedText}
                   <span
-                    className={`inline-block w-2 h-5 bg-primary ml-1 align-middle ${
+                    className={`inline-block w-2 h-5 bg-primary ml-1 align-middle rounded-sm ${
                       showCursor ? 'opacity-100' : 'opacity-0'
                     }`}
+                    style={{ transition: 'opacity 0.1s ease-in-out' }}
                   />
                 </span>
               </div>
@@ -92,7 +93,7 @@ Every pixel tells a story. Every line of code is a weapon. I am the bridge betwe
           </div>
 
           {/* Terminal footer */}
-          <div className="px-4 py-2 border-t border-border bg-secondary/20">
+          <div className="px-5 py-3 border-t border-border bg-secondary/20 rounded-b-3xl">
             <div className="flex items-center justify-between text-xs text-muted-foreground">
               <span className="font-mono">UTF-8</span>
               <span className="font-mono flex items-center gap-2">
@@ -116,8 +117,8 @@ Every pixel tells a story. Every line of code is a weapon. I am the bridge betwe
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.2, delay: 0.1 + index * 0.05 }}
-              className="glass-card p-6 text-center group hover:border-primary/50 transition-colors duration-200"
+              transition={{ duration: 0.4, delay: 0.15 + index * 0.08, ease: "easeInOut" }}
+              className="glass-card p-6 text-center group hover:border-primary/40 transition-all duration-300 ease-in-out rounded-3xl"
             >
               <div className="font-display text-3xl md:text-4xl font-bold text-primary glow-text mb-2">
                 {stat.value}

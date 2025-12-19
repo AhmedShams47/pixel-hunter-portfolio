@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['Orbitron', 'sans-serif'],
-        sans: ['Inter', 'sans-serif'],
+        display: ['Space Grotesk', 'sans-serif'],
+        sans: ['Sora', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -53,7 +53,14 @@ export default {
         },
         glow: {
           cyan: "hsl(var(--glow-cyan))",
+          purple: "hsl(var(--glow-purple))",
           blue: "hsl(var(--glow-blue))",
+        },
+        nebula: {
+          pink: "hsl(var(--nebula-pink))",
+        },
+        star: {
+          white: "hsl(var(--star-white))",
         },
         glass: {
           bg: "hsl(var(--glass-bg))",
@@ -72,8 +79,10 @@ export default {
       },
       borderRadius: {
         lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        md: "calc(var(--radius) - 4px)",
+        sm: "calc(var(--radius) - 8px)",
+        "4xl": "2rem",
+        "5xl": "2.5rem",
       },
       keyframes: {
         "accordion-down": {
@@ -86,18 +95,26 @@ export default {
         },
         float: {
           "0%, 100%": { transform: "translateY(0px)" },
-          "50%": { transform: "translateY(-20px)" },
+          "50%": { transform: "translateY(-15px)" },
         },
         "pulse-glow": {
-          "0%, 100%": { opacity: "0.5" },
+          "0%, 100%": { opacity: "0.4" },
           "50%": { opacity: "1" },
+        },
+        "orbit": {
+          "0%": { transform: "rotate(0deg) translateX(120px) rotate(0deg)" },
+          "100%": { transform: "rotate(360deg) translateX(120px) rotate(-360deg)" },
         },
       },
       animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
-        float: "float 6s ease-in-out infinite",
-        "pulse-glow": "pulse-glow 2s ease-in-out infinite",
+        "accordion-down": "accordion-down 0.3s ease-in-out",
+        "accordion-up": "accordion-up 0.3s ease-in-out",
+        float: "float 8s ease-in-out infinite",
+        "pulse-glow": "pulse-glow 3s ease-in-out infinite",
+        orbit: "orbit 20s linear infinite",
+      },
+      transitionTimingFunction: {
+        "liquid": "cubic-bezier(0.4, 0, 0.2, 1)",
       },
     },
   },
