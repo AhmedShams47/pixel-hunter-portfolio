@@ -1,8 +1,8 @@
-import { useState, Suspense } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import profilePhoto from '@/assets/profile-photo.jpg';
 import ConnectModal from './ConnectModal';
-import GoldCrown3D from './GoldCrown3D';
+import DragonFrame from './DragonFrame';
 
 const HeroSection = () => {
   const [isConnectOpen, setIsConnectOpen] = useState(false);
@@ -77,67 +77,20 @@ const HeroSection = () => {
               </motion.div>
             </motion.div>
 
-            {/* Right side - 3D Crown + Profile image */}
+            {/* Right side - Dragon Frame with Profile */}
             <motion.div
               initial={{ opacity: 0, scale: 0.85 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.9, ease: "easeInOut", delay: 0.3 }}
-              className="order-1 lg:order-2 flex flex-col items-center"
+              className="order-1 lg:order-2 flex items-center justify-center"
             >
-              {/* 3D Crown */}
-              <Suspense fallback={
-                <div className="w-full h-[300px] flex items-center justify-center">
-                  <div className="w-16 h-16 rounded-full border-2 border-primary border-t-transparent animate-spin" />
-                </div>
-              }>
-                <GoldCrown3D />
-              </Suspense>
-
-              {/* Profile image below crown */}
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.5, ease: "easeInOut" }}
-                className="relative -mt-8"
-              >
-                {/* Gold glow effect */}
-                <motion.div
-                  className="absolute inset-0 rounded-3xl gold-box-glow"
-                  animate={{
-                    scale: [1, 1.02, 1],
-                  }}
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
+              <DragonFrame>
+                <img
+                  src={profilePhoto}
+                  alt="Ahmed Shams - Profile"
+                  className="w-full h-full object-cover"
                 />
-
-                {/* Main image container */}
-                <div className="relative w-48 h-64 md:w-56 md:h-72 rounded-3xl overflow-hidden border border-primary/30">
-                  <img
-                    src={profilePhoto}
-                    alt="Ahmed Shams - Profile"
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
-                  
-                  {/* Gold overlay shimmer */}
-                  <motion.div
-                    className="absolute inset-0 opacity-20"
-                    style={{
-                      background: 'linear-gradient(45deg, transparent 30%, hsl(var(--gold) / 0.3) 50%, transparent 70%)',
-                    }}
-                    animate={{
-                      backgroundPosition: ['-200% 0', '200% 0'],
-                    }}
-                    transition={{
-                      duration: 4,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    }}
-                  />
-                </div>
-              </motion.div>
+              </DragonFrame>
             </motion.div>
           </div>
         </div>
