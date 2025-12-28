@@ -8,7 +8,6 @@ interface VideoIntroProps {
 const VideoIntro = ({ onComplete }: VideoIntroProps) => {
   const [isPlaying, setIsPlaying] = useState(true);
   const [showPortal, setShowPortal] = useState(false);
-  const [fadeOut, setFadeOut] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -17,11 +16,8 @@ const VideoIntro = ({ onComplete }: VideoIntroProps) => {
 
     // Show portal effect near the end
     const handleTimeUpdate = () => {
-      if (video.currentTime >= video.duration - 2.5) {
+      if (video.currentTime >= video.duration - 2) {
         setShowPortal(true);
-      }
-      if (video.currentTime >= video.duration - 1) {
-        setFadeOut(true);
       }
     };
 
@@ -29,7 +25,7 @@ const VideoIntro = ({ onComplete }: VideoIntroProps) => {
       setTimeout(() => {
         setIsPlaying(false);
         onComplete();
-      }, 800);
+      }, 500);
     };
 
     video.addEventListener('timeupdate', handleTimeUpdate);
@@ -41,139 +37,97 @@ const VideoIntro = ({ onComplete }: VideoIntroProps) => {
     };
   }, [onComplete]);
 
-  const handleSkip = () => {
-    setFadeOut(true);
-    setTimeout(() => {
-      setIsPlaying(false);
-      onComplete();
-    }, 600);
-  };
-
   return (
     <AnimatePresence>
       {isPlaying && (
         <motion.div
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
+          transition={{ duration: 0.3 }}
           className="video-intro-overlay"
         >
           {/* Video */}
-          <motion.video
+          <video
             ref={videoRef}
             autoPlay
             muted
             playsInline
             className="w-full h-full object-cover"
-            animate={{ 
-              scale: fadeOut ? 1.1 : 1,
-              filter: fadeOut ? 'brightness(1.3)' : 'brightness(1)'
-            }}
-            transition={{ duration: 1.5, ease: "easeInOut" }}
           >
             <source src="/videos/dragon-intro.mp4" type="video/mp4" />
-          </motion.video>
+          </video>
 
-          {/* Portal overlay effect */}
+          {/* Portal hole that opens from center - like entering dragon's belly */}
           <AnimatePresence>
             {showPortal && (
               <motion.div
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 1.5, ease: "easeInOut" }}
                 className="absolute inset-0 flex items-center justify-center pointer-events-none"
+                style={{ zIndex: 50 }}
               >
-                {/* Outer glow ring */}
+                {/* Black mask with expanding hole */}
                 <motion.div
-                  className="absolute w-[600px] h-[600px] rounded-full"
-                  style={{
-                    background: 'radial-gradient(circle, transparent 30%, hsl(var(--gold) / 0.1) 50%, hsl(var(--gold) / 0.3) 70%, transparent 100%)',
+                  className="absolute inset-0"
+                  initial={{ 
+                    clipPath: 'circle(0% at 50% 50%)',
+                    background: 'hsl(var(--background))'
                   }}
-                  animate={{
-                    scale: [1, 1.5, 2],
-                    opacity: [0.8, 0.5, 0],
+                  animate={{ 
+                    clipPath: 'circle(150% at 50% 50%)',
                   }}
-                  transition={{ duration: 2, ease: "easeOut" }}
+                  transition={{ duration: 2, ease: [0.22, 1, 0.36, 1] }}
                 />
 
-                {/* Inner portal circle */}
+                {/* Golden rim around the portal */}
                 <motion.div
                   className="absolute rounded-full"
                   style={{
-                    width: 200,
-                    height: 200,
-                    background: 'radial-gradient(circle, hsl(var(--gold) / 0.9) 0%, hsl(var(--gold) / 0.5) 40%, transparent 70%)',
-                    boxShadow: '0 0 60px hsl(var(--gold) / 0.6), 0 0 120px hsl(var(--gold) / 0.4), inset 0 0 60px hsl(var(--gold) / 0.3)',
+                    border: '4px solid hsl(var(--gold))',
+                    boxShadow: '0 0 60px hsl(var(--gold) / 0.8), 0 0 120px hsl(var(--gold) / 0.5), inset 0 0 40px hsl(var(--gold) / 0.3)',
                   }}
-                  animate={{
-                    scale: [0, 1, 15],
-                    opacity: [1, 1, 0],
+                  initial={{ width: 0, height: 0, opacity: 1 }}
+                  animate={{ 
+                    width: '300vmax', 
+                    height: '300vmax',
+                    opacity: 0,
                   }}
-                  transition={{ duration: 2, ease: "easeInOut" }}
+                  transition={{ duration: 2, ease: [0.22, 1, 0.36, 1] }}
                 />
 
-                {/* Particle burst */}
-                {[...Array(12)].map((_, i) => (
-                  <motion.div
-                    key={i}
-                    className="absolute w-2 h-2 rounded-full bg-primary"
-                    style={{
-                      boxShadow: '0 0 10px hsl(var(--gold))',
-                    }}
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={{
-                      opacity: [0, 1, 0],
-                      scale: [0, 1.5, 0],
-                      x: [0, Math.cos((i * 30 * Math.PI) / 180) * 300],
-                      y: [0, Math.sin((i * 30 * Math.PI) / 180) * 300],
-                    }}
-                    transition={{
-                      duration: 1.5,
-                      delay: 0.3,
-                      ease: "easeOut",
-                    }}
-                  />
-                ))}
+                {/* Spiral golden particles being sucked into center */}
+                {[...Array(20)].map((_, i) => {
+                  const angle = (i * 18) * Math.PI / 180;
+                  const delay = i * 0.05;
+                  return (
+                    <motion.div
+                      key={i}
+                      className="absolute w-1 h-1 rounded-full"
+                      style={{
+                        background: 'hsl(var(--gold))',
+                        boxShadow: '0 0 10px hsl(var(--gold))',
+                      }}
+                      initial={{ 
+                        x: Math.cos(angle) * 400,
+                        y: Math.sin(angle) * 400,
+                        opacity: 1,
+                        scale: 2,
+                      }}
+                      animate={{ 
+                        x: 0,
+                        y: 0,
+                        opacity: 0,
+                        scale: 0,
+                      }}
+                      transition={{ 
+                        duration: 1.5, 
+                        delay,
+                        ease: "easeIn" 
+                      }}
+                    />
+                  );
+                })}
               </motion.div>
             )}
           </AnimatePresence>
-
-          {/* Fade to white/gold overlay */}
-          <motion.div
-            className="absolute inset-0 pointer-events-none"
-            style={{
-              background: 'radial-gradient(circle at center, hsl(var(--gold) / 0.3) 0%, hsl(var(--background)) 100%)',
-            }}
-            animate={{
-              opacity: fadeOut ? 1 : 0,
-            }}
-            transition={{ duration: 1, ease: "easeInOut" }}
-          />
-
-          {/* Skip button */}
-          <motion.button
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1, duration: 0.5 }}
-            onClick={handleSkip}
-            className="absolute bottom-8 right-8 px-6 py-3 glass-card text-sm font-display tracking-wider text-foreground/70 hover:text-primary hover:border-primary/50 transition-all duration-300 z-10 rounded-2xl"
-          >
-            Skip Intro
-          </motion.button>
-
-          {/* Loading indicator */}
-          <motion.div
-            initial={{ opacity: 1 }}
-            animate={{ opacity: 0 }}
-            transition={{ delay: 0.5, duration: 0.3 }}
-            className="absolute bottom-8 left-8 flex items-center gap-3"
-          >
-            <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-            <span className="text-xs text-muted-foreground font-display tracking-widest">
-              LOADING EXPERIENCE
-            </span>
-          </motion.div>
         </motion.div>
       )}
     </AnimatePresence>
