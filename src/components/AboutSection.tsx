@@ -19,7 +19,7 @@ Every pixel tells a story. Every line of code is a weapon. I am the bridge betwe
       const timeout = setTimeout(() => {
         setDisplayedText(prev => prev + fullText[currentIndex]);
         setCurrentIndex(prev => prev + 1);
-      }, 18);
+      }, 20);
       return () => clearTimeout(timeout);
     }
   }, [isInView, currentIndex, fullText]);
@@ -38,15 +38,15 @@ Every pixel tells a story. Every line of code is a weapon. I am the bridge betwe
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
+          transition={{ duration: 0.7, ease: "easeInOut" }}
           className="text-center mb-12"
         >
-          <span className="text-primary text-sm font-display tracking-widest mb-4 block">
+          <span className="text-primary text-sm font-display tracking-[0.3em] mb-4 block">
             // THE STORY
           </span>
           <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground">
             Professional Portfolio{' '}
-            <span className="metallic-text glow-text">Stalker</span>
+            <span className="gold-text gold-glow">Stalker</span>
           </h2>
         </motion.div>
 
@@ -55,16 +55,16 @@ Every pixel tells a story. Every line of code is a weapon. I am the bridge betwe
           initial={{ opacity: 0, scale: 0.96 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.15, ease: "easeInOut" }}
+          transition={{ duration: 0.7, delay: 0.15, ease: "easeInOut" }}
           className="glass-card overflow-hidden rounded-3xl"
         >
           {/* Terminal header */}
           <div className="flex items-center gap-2 px-5 py-3.5 border-b border-border bg-secondary/30 rounded-t-3xl">
             <div className="w-3 h-3 rounded-full bg-destructive/60" />
-            <div className="w-3 h-3 rounded-full bg-yellow-500/60" />
+            <div className="w-3 h-3 rounded-full bg-primary/60" />
             <div className="w-3 h-3 rounded-full bg-green-500/60" />
             <span className="ml-4 text-xs text-muted-foreground font-mono">
-              ahmed@galaxy:~$ cat about.md
+              ahmed@prime:~$ cat about.md
             </span>
           </div>
 
@@ -97,7 +97,7 @@ Every pixel tells a story. Every line of code is a weapon. I am the bridge betwe
             <div className="flex items-center justify-between text-xs text-muted-foreground">
               <span className="font-mono">UTF-8</span>
               <span className="font-mono flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
                 Connected
               </span>
             </div>
@@ -117,13 +117,13 @@ Every pixel tells a story. Every line of code is a weapon. I am the bridge betwe
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: 0.15 + index * 0.08, ease: "easeInOut" }}
-              className="glass-card p-6 text-center group hover:border-primary/40 transition-all duration-300 ease-in-out rounded-3xl"
+              transition={{ duration: 0.6, delay: 0.2 + index * 0.1, ease: "easeInOut" }}
+              className="glass-card p-6 text-center group hover:border-primary/50 transition-all duration-500 ease-in-out rounded-3xl"
             >
-              <div className="font-display text-3xl md:text-4xl font-bold text-primary glow-text mb-2">
+              <div className="font-display text-3xl md:text-4xl font-bold gold-text gold-glow mb-2">
                 {stat.value}
               </div>
-              <div className="text-xs text-muted-foreground font-display tracking-wider uppercase">
+              <div className="text-xs text-muted-foreground font-display tracking-[0.15em] uppercase">
                 {stat.label}
               </div>
             </motion.div>

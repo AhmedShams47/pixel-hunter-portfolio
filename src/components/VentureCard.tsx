@@ -35,8 +35,8 @@ const VentureCard = ({
     const mouseX = e.clientX - centerX;
     const mouseY = e.clientY - centerY;
     
-    const rotateXValue = (mouseY / (rect.height / 2)) * -8;
-    const rotateYValue = (mouseX / (rect.width / 2)) * 8;
+    const rotateXValue = (mouseY / (rect.height / 2)) * -6;
+    const rotateYValue = (mouseX / (rect.width / 2)) * 6;
     
     setRotateX(rotateXValue);
     setRotateY(rotateYValue);
@@ -53,46 +53,46 @@ const VentureCard = ({
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.5, delay, ease: "easeInOut" }}
+      transition={{ duration: 0.7, delay, ease: "easeInOut" }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{
         transformStyle: 'preserve-3d',
         transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
-        transition: 'transform 0.25s ease-out',
+        transition: 'transform 0.4s ease-out',
       }}
       className="group relative"
     >
-      <div className="glass-card p-8 h-full hover:border-primary/40 transition-all duration-300 ease-in-out overflow-hidden rounded-3xl">
+      <div className="glass-card p-8 h-full hover:border-primary/50 transition-all duration-500 ease-in-out overflow-hidden rounded-3xl">
         {/* Background gradient */}
         <div
-          className={`absolute inset-0 opacity-10 transition-opacity duration-400 ease-in-out group-hover:opacity-20 rounded-3xl ${gradient}`}
+          className={`absolute inset-0 opacity-10 transition-opacity duration-500 ease-in-out group-hover:opacity-20 rounded-3xl ${gradient}`}
         />
 
         {/* Shine effect on hover */}
         <motion.div
-          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-400 ease-in-out rounded-3xl"
+          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out rounded-3xl"
           style={{
-            background: `linear-gradient(105deg, transparent 40%, hsl(var(--primary) / 0.08) 45%, hsl(var(--primary) / 0.12) 50%, hsl(var(--primary) / 0.08) 55%, transparent 60%)`,
+            background: `linear-gradient(105deg, transparent 40%, hsl(var(--gold) / 0.08) 45%, hsl(var(--gold) / 0.15) 50%, hsl(var(--gold) / 0.08) 55%, transparent 60%)`,
             transform: 'translateZ(10px)',
           }}
         />
 
         <div className="relative z-10" style={{ transform: 'translateZ(20px)' }}>
           {/* Icon */}
-          <div className="mb-6 inline-flex p-4 rounded-2xl bg-primary/10 border border-primary/20 text-primary group-hover:shadow-[0_0_25px_hsl(var(--primary)/0.25)] transition-all duration-300 ease-in-out">
+          <div className="mb-6 inline-flex p-4 rounded-2xl bg-primary/15 border border-primary/25 text-primary group-hover:shadow-[0_0_30px_hsl(var(--gold)/0.3)] transition-all duration-500 ease-in-out">
             {icon}
           </div>
 
           {/* Vibe tag */}
           <div className="mb-4">
-            <span className="text-xs font-display tracking-widest text-muted-foreground uppercase">
+            <span className="text-xs font-display tracking-[0.2em] text-muted-foreground uppercase">
               {vibe}
             </span>
           </div>
 
           {/* Title */}
-          <h3 className="font-display text-2xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-300 ease-in-out">
+          <h3 className="font-display text-2xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-500 ease-in-out">
             {title}
           </h3>
 
@@ -100,7 +100,7 @@ const VentureCard = ({
           <p className="text-sm text-primary mb-4">{subtitle}</p>
 
           {/* Description */}
-          <p className="text-muted-foreground text-sm leading-relaxed mb-6">
+          <p className="text-muted-foreground text-sm leading-relaxed mb-6 tracking-wide">
             {description}
           </p>
 
@@ -108,8 +108,8 @@ const VentureCard = ({
           <motion.a
             href="#"
             whileHover={{ x: 5 }}
-            transition={{ duration: 0.25, ease: "easeInOut" }}
-            className="inline-flex items-center gap-2 text-sm font-display text-primary hover:text-foreground transition-colors duration-300 ease-in-out"
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="inline-flex items-center gap-2 text-sm font-display text-primary hover:text-foreground transition-colors duration-500 ease-in-out"
           >
             Explore
             <ExternalLink className="w-4 h-4" />
