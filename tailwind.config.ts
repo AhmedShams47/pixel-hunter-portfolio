@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['Space Grotesk', 'sans-serif'],
-        sans: ['Sora', 'sans-serif'],
+        display: ['Cinzel', 'serif'],
+        sans: ['Cormorant Garamond', 'serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -51,16 +51,15 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        glow: {
-          cyan: "hsl(var(--glow-cyan))",
-          purple: "hsl(var(--glow-purple))",
-          blue: "hsl(var(--glow-blue))",
+        gold: {
+          DEFAULT: "hsl(var(--gold))",
+          light: "hsl(var(--gold-light))",
+          dark: "hsl(var(--gold-dark))",
+          shine: "hsl(var(--gold-shine))",
         },
-        nebula: {
-          pink: "hsl(var(--nebula-pink))",
-        },
-        star: {
-          white: "hsl(var(--star-white))",
+        luxury: {
+          dark: "hsl(var(--luxury-dark))",
+          charcoal: "hsl(var(--luxury-charcoal))",
         },
         glass: {
           bg: "hsl(var(--glass-bg))",
@@ -95,7 +94,7 @@ export default {
         },
         float: {
           "0%, 100%": { transform: "translateY(0px)" },
-          "50%": { transform: "translateY(-15px)" },
+          "50%": { transform: "translateY(-20px)" },
         },
         "pulse-glow": {
           "0%, 100%": { opacity: "0.4" },
@@ -105,16 +104,30 @@ export default {
           "0%": { transform: "rotate(0deg) translateX(120px) rotate(0deg)" },
           "100%": { transform: "rotate(360deg) translateX(120px) rotate(-360deg)" },
         },
+        "shimmer": {
+          "0%": { backgroundPosition: "-200% 0" },
+          "100%": { backgroundPosition: "200% 0" },
+        },
+        "glow-pulse": {
+          "0%, 100%": { 
+            boxShadow: "0 0 20px hsl(var(--gold) / 0.3), 0 0 40px hsl(var(--gold) / 0.2)" 
+          },
+          "50%": { 
+            boxShadow: "0 0 40px hsl(var(--gold) / 0.5), 0 0 80px hsl(var(--gold) / 0.3)" 
+          },
+        },
       },
       animation: {
-        "accordion-down": "accordion-down 0.3s ease-in-out",
-        "accordion-up": "accordion-up 0.3s ease-in-out",
+        "accordion-down": "accordion-down 0.4s ease-in-out",
+        "accordion-up": "accordion-up 0.4s ease-in-out",
         float: "float 8s ease-in-out infinite",
-        "pulse-glow": "pulse-glow 3s ease-in-out infinite",
-        orbit: "orbit 20s linear infinite",
+        "pulse-glow": "pulse-glow 4s ease-in-out infinite",
+        orbit: "orbit 25s linear infinite",
+        shimmer: "shimmer 3s ease-in-out infinite",
+        "glow-pulse": "glow-pulse 3s ease-in-out infinite",
       },
       transitionTimingFunction: {
-        "liquid": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "luxury": "cubic-bezier(0.4, 0, 0.2, 1)",
       },
     },
   },

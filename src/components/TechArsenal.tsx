@@ -26,17 +26,17 @@ const TechArsenal = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
+          transition={{ duration: 0.7, ease: "easeInOut" }}
           className="text-center mb-16"
         >
-          <span className="text-primary text-sm font-display tracking-widest mb-4 block">
+          <span className="text-primary text-sm font-display tracking-[0.3em] mb-4 block">
             // WEAPONS OF CHOICE
           </span>
           <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
             Tech{' '}
-            <span className="metallic-text glow-text">Arsenal</span>
+            <span className="gold-text gold-glow">Arsenal</span>
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-muted-foreground max-w-2xl mx-auto tracking-wide">
             The tools that power the empire. Every weapon chosen for maximum impact.
           </p>
         </motion.div>
@@ -55,7 +55,7 @@ const TechArsenal = () => {
               animate={{ x: [0, -50 * tools.length] }}
               transition={{
                 x: {
-                  duration: 40,
+                  duration: 50,
                   repeat: Infinity,
                   ease: "linear",
                 },
@@ -65,13 +65,13 @@ const TechArsenal = () => {
                 <motion.div
                   key={`${tool.name}-${index}`}
                   whileHover={{ scale: 1.04, y: -4 }}
-                  transition={{ duration: 0.3, ease: "easeInOut" }}
-                  className="glass-card px-8 py-6 min-w-[180px] text-center group hover:border-primary/40 transition-all duration-300 ease-in-out cursor-pointer rounded-2xl"
+                  transition={{ duration: 0.4, ease: "easeInOut" }}
+                  className="glass-card px-8 py-6 min-w-[180px] text-center group hover:border-primary/50 transition-all duration-500 ease-in-out cursor-pointer rounded-2xl"
                 >
-                  <div className="font-display text-lg font-bold text-foreground group-hover:text-primary transition-colors duration-300 ease-in-out mb-1">
+                  <div className="font-display text-lg font-bold text-foreground group-hover:text-primary transition-colors duration-500 ease-in-out mb-1">
                     {tool.name}
                   </div>
-                  <div className="text-xs text-muted-foreground uppercase tracking-wider">
+                  <div className="text-xs text-muted-foreground uppercase tracking-[0.15em]">
                     {tool.category}
                   </div>
                 </motion.div>
@@ -80,33 +80,33 @@ const TechArsenal = () => {
           </div>
         </div>
 
-        {/* Floating spheres */}
+        {/* Floating golden orbs */}
         <div className="relative mt-20 flex justify-center">
           <div className="relative">
             {/* Central sphere */}
             <motion.div
               animate={{ rotate: 360 }}
-              transition={{ duration: 80, repeat: Infinity, ease: "linear" }}
+              transition={{ duration: 100, repeat: Infinity, ease: "linear" }}
               className="relative w-64 h-64"
             >
               {/* Orbital rings */}
-              <div className="absolute inset-0 rounded-full border border-primary/15" />
+              <div className="absolute inset-0 rounded-full border border-primary/20" />
               <motion.div
-                className="absolute inset-4 rounded-full border border-primary/25"
+                className="absolute inset-4 rounded-full border border-primary/30"
                 animate={{ rotate: -360 }}
-                transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
+                transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
               />
               <motion.div
-                className="absolute inset-8 rounded-full border border-primary/35"
+                className="absolute inset-8 rounded-full border border-primary/40"
                 animate={{ rotate: 360 }}
-                transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
               />
 
               {/* Center glow */}
-              <div className="absolute inset-16 rounded-full bg-primary/15 blur-xl" />
-              <div className="absolute inset-20 rounded-full bg-primary/30 blur-md" />
-              <div className="absolute inset-24 rounded-full bg-primary glow-box flex items-center justify-center">
-                <span className="font-display text-xs font-bold text-primary-foreground tracking-widest">
+              <div className="absolute inset-16 rounded-full bg-primary/10 blur-xl" />
+              <div className="absolute inset-20 rounded-full bg-primary/25 blur-md" />
+              <div className="absolute inset-24 rounded-full metallic-gold gold-box-glow flex items-center justify-center">
+                <span className="font-display text-xs font-bold text-primary-foreground tracking-[0.2em]">
                   CORE
                 </span>
               </div>
@@ -115,20 +115,20 @@ const TechArsenal = () => {
               {[0, 60, 120, 180, 240, 300].map((angle, i) => (
                 <motion.div
                   key={angle}
-                  className="absolute w-3 h-3 rounded-full bg-primary"
+                  className="absolute w-3 h-3 rounded-full metallic-gold"
                   style={{
                     top: '50%',
                     left: '50%',
                     transform: `rotate(${angle}deg) translateX(120px) translateY(-50%)`,
-                    boxShadow: '0 0 12px hsl(var(--primary) / 0.8)',
+                    boxShadow: '0 0 15px hsl(var(--gold) / 0.7)',
                   }}
                   animate={{
-                    opacity: [0.4, 1, 0.4],
+                    opacity: [0.5, 1, 0.5],
                   }}
                   transition={{
-                    duration: 3,
+                    duration: 4,
                     repeat: Infinity,
-                    delay: i * 0.4,
+                    delay: i * 0.5,
                     ease: "easeInOut",
                   }}
                 />

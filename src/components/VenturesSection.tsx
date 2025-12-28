@@ -20,7 +20,7 @@ const VenturesSection = () => {
         'Clinical precision meets hardware expertise. We diagnose, repair, and resurrect devices with surgical accuracy. Every component analyzed, every connection optimized.',
       vibe: 'Clean • Clinical • Hardware',
       icon: <Smartphone className="w-6 h-6" />,
-      gradient: 'bg-gradient-to-br from-cyan-500/30 to-blue-500/30',
+      gradient: 'bg-gradient-to-br from-primary/30 to-accent/30',
     },
     {
       title: 'CoreA / SaltSync',
@@ -29,7 +29,7 @@ const VenturesSection = () => {
         'Where abstract data transforms into tangible results. Full-spectrum digital solutions from infrastructure deployment to campaign orchestration. The future is automated.',
       vibe: 'Abstract • Data-Driven • Futuristic',
       icon: <Globe className="w-6 h-6" />,
-      gradient: 'bg-gradient-to-br from-violet-500/30 to-purple-500/30',
+      gradient: 'bg-gradient-to-br from-gold-dark/30 to-gold-light/30',
     },
   ];
 
@@ -40,17 +40,17 @@ const VenturesSection = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
+          transition={{ duration: 0.7, ease: "easeInOut" }}
           className="text-center mb-16"
         >
-          <span className="text-primary text-sm font-display tracking-widest mb-4 block">
+          <span className="text-primary text-sm font-display tracking-[0.3em] mb-4 block">
             // THE EMPIRE
           </span>
           <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
             Venture{' '}
-            <span className="metallic-text glow-text">Portfolio</span>
+            <span className="gold-text gold-glow">Portfolio</span>
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-muted-foreground max-w-2xl mx-auto tracking-wide">
             Three pillars of innovation. Each business is a different dimension of the same vision—perfection through obsession.
           </p>
         </motion.div>
@@ -60,7 +60,7 @@ const VenturesSection = () => {
             <VentureCard
               key={venture.title}
               {...venture}
-              delay={0.12 + index * 0.12}
+              delay={0.15 + index * 0.15}
             />
           ))}
         </div>
