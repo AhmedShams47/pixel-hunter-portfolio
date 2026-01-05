@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['Montserrat', 'sans-serif'],
-        sans: ['Poppins', 'sans-serif'],
+        display: ['Cinzel', 'serif'],
+        sans: ['Cormorant Garamond', 'serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -51,21 +51,15 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        purple: {
-          deep: "hsl(var(--purple-deep))",
-          mid: "hsl(var(--purple-mid))",
-          bright: "hsl(var(--purple-bright))",
-          neon: "hsl(var(--purple-neon))",
-        },
-        pink: {
-          accent: "hsl(var(--pink-accent))",
-          glow: "hsl(var(--pink-glow))",
-        },
         gold: {
           DEFAULT: "hsl(var(--gold))",
           light: "hsl(var(--gold-light))",
           dark: "hsl(var(--gold-dark))",
           shine: "hsl(var(--gold-shine))",
+        },
+        luxury: {
+          dark: "hsl(var(--luxury-dark))",
+          charcoal: "hsl(var(--luxury-charcoal))",
         },
         glass: {
           bg: "hsl(var(--glass-bg))",
@@ -116,10 +110,10 @@ export default {
         },
         "glow-pulse": {
           "0%, 100%": { 
-            boxShadow: "0 0 20px hsl(var(--purple-neon) / 0.3), 0 0 40px hsl(var(--purple-bright) / 0.2)" 
+            boxShadow: "0 0 20px hsl(var(--gold) / 0.3), 0 0 40px hsl(var(--gold) / 0.2)" 
           },
           "50%": { 
-            boxShadow: "0 0 40px hsl(var(--purple-neon) / 0.5), 0 0 80px hsl(var(--purple-bright) / 0.3)" 
+            boxShadow: "0 0 40px hsl(var(--gold) / 0.5), 0 0 80px hsl(var(--gold) / 0.3)" 
           },
         },
       },

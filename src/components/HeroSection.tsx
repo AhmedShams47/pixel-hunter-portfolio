@@ -9,7 +9,7 @@ const HeroSection = () => {
 
   return (
     <>
-      <section className="relative min-h-[80vh] flex items-center justify-center px-6 py-16">
+      <section className="relative min-h-screen flex items-center justify-center px-6 pt-24">
         <div className="max-w-7xl mx-auto w-full">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left side - Text content */}
@@ -23,11 +23,10 @@ const HeroSection = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.6, ease: "easeInOut" }}
-                className="inline-flex items-center gap-3 glass-card px-5 py-2.5 mb-6"
+                className="inline-block glass-card px-5 py-2.5 mb-6"
               >
-                <span className="accent-dot" />
-                <span className="text-primary text-sm font-display tracking-[0.2em] uppercase">
-                  Ahmed Shams Visuals
+                <span className="text-primary text-sm font-display tracking-[0.3em]">
+                  GOLDEN PRIME
                 </span>
               </motion.div>
 
@@ -37,9 +36,9 @@ const HeroSection = () => {
                 transition={{ delay: 0.5, duration: 0.7, ease: "easeInOut" }}
                 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-none"
               >
-                <span className="text-foreground glow-text">Ahmed</span>
+                <span className="gold-text gold-glow">Ahmed</span>
                 <br />
-                <span className="text-foreground glow-text">Shams</span>
+                <span className="text-foreground">Shams</span>
               </motion.h1>
 
               <motion.p
@@ -48,9 +47,9 @@ const HeroSection = () => {
                 transition={{ delay: 0.6, duration: 0.6, ease: "easeInOut" }}
                 className="text-xl md:text-2xl text-muted-foreground mb-10 font-light tracking-wide"
               >
-                <span className="text-primary purple-glow-text">Branding & Graphic Design</span>{' '}
-                <span className="text-muted-foreground">•</span>{' '}
-                <span className="text-foreground">Web Development</span>
+                <span className="text-primary">Multi-Disciplinary Technomancer</span>{' '}
+                <span className="text-muted-foreground">&</span>{' '}
+                <span className="text-foreground">Entrepreneur</span>
               </motion.p>
 
               <motion.div
@@ -61,9 +60,9 @@ const HeroSection = () => {
               >
                 <motion.button
                   onClick={() => setIsConnectOpen(true)}
-                  whileHover={{ scale: 1.03 }}
+                  whileHover={{ scale: 1.03, boxShadow: '0 0 50px hsl(var(--gold) / 0.4)' }}
                   whileTap={{ scale: 0.97 }}
-                  className="px-10 py-4 purple-gradient-btn text-primary-foreground font-display font-bold rounded-2xl transition-all duration-500 ease-in-out"
+                  className="px-10 py-4 metallic-gold text-primary-foreground font-display font-bold rounded-2xl transition-all duration-500 ease-in-out animate-glow-pulse"
                 >
                   Connect
                 </motion.button>
@@ -73,7 +72,7 @@ const HeroSection = () => {
                   whileTap={{ scale: 0.97 }}
                   className="glass-card px-10 py-4 font-display font-bold text-foreground border border-primary/30 hover:border-primary/60 transition-all duration-500 ease-in-out text-center"
                 >
-                  View Work
+                  View Ventures
                 </motion.a>
               </motion.div>
             </motion.div>
