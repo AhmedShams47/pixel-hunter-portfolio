@@ -9,8 +9,25 @@ const HeroSection = () => {
 
   return (
     <>
-      <section className="relative min-h-screen flex items-center justify-center px-6 pt-24">
-        <div className="max-w-7xl mx-auto w-full">
+      <section className="relative min-h-screen flex items-center justify-center px-6 pt-24 overflow-hidden">
+        {/* Dragon Eye Background Video */}
+        <div className="absolute inset-0 z-0">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+            style={{ filter: 'brightness(0.4)' }}
+          >
+            <source src="/videos/dragon-eye-bg.mp4" type="video/mp4" />
+          </video>
+          {/* Gradient overlay for better text readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/30 to-background/80" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background/50 via-transparent to-background/50" />
+        </div>
+        
+        <div className="relative z-10 max-w-7xl mx-auto w-full">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left side - Text content */}
             <motion.div
