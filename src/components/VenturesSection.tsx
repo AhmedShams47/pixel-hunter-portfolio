@@ -37,10 +37,10 @@ const VenturesSection = () => {
     <section id="projects" className="relative py-32 px-6">
       <div className="max-w-6xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, ease: "easeInOut" }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
           className="text-center mb-16"
         >
           <span className="text-primary text-sm font-display tracking-[0.3em] mb-4 block">
@@ -56,21 +56,17 @@ const VenturesSection = () => {
         </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-          {projects.map((project, index) => (
-            <VentureCard
-              key={project.title}
-              {...project}
-              delay={0.15 + index * 0.15}
-            />
+          {projects.map((project) => (
+            <VentureCard key={project.title} {...project} />
           ))}
         </div>
 
-        {/* Client Feedback Example */}
+        {/* Client Feedback */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.3, ease: "easeInOut" }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
           className="glass-card p-8 md:p-12 rounded-3xl text-center"
         >
           <div className="inline-flex p-4 rounded-2xl bg-primary/15 border border-primary/25 text-primary mb-6">
@@ -85,25 +81,17 @@ const VenturesSection = () => {
         </motion.div>
 
         {/* Closing CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.4, ease: "easeInOut" }}
-          className="text-center mt-12"
-        >
+        <div className="text-center mt-12">
           <p className="text-muted-foreground mb-6 tracking-wide">
             If you like what you see and want something similar for your brand, send me a message and let's start planning your project.
           </p>
-          <motion.a
+          <a
             href="#contact"
-            whileHover={{ scale: 1.03, boxShadow: '0 0 50px hsl(var(--gold) / 0.4)' }}
-            whileTap={{ scale: 0.97 }}
-            className="inline-block px-10 py-4 metallic-gold text-primary-foreground font-display font-bold rounded-2xl transition-all duration-500 ease-in-out"
+            className="inline-block px-10 py-4 metallic-gold text-primary-foreground font-display font-bold rounded-2xl transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_40px_hsl(var(--gold)/0.4)]"
           >
             Start Your Project
-          </motion.a>
-        </motion.div>
+          </a>
+        </div>
       </div>
     </section>
   );

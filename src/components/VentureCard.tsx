@@ -1,5 +1,4 @@
-import { useState, useRef } from 'react';
-import { motion } from 'framer-motion';
+import { useRef, useCallback, useState } from 'react';
 import { ExternalLink } from 'lucide-react';
 
 interface VentureCardProps {
@@ -19,68 +18,63 @@ const VentureCard = ({
   vibe,
   icon,
   gradient,
-  delay = 0,
 }: VentureCardProps) => {
-  const [rotateX, setRotateX] = useState(0);
-  const [rotateY, setRotateY] = useState(0);
+  const [transform, setTransform] = useState('');
   const cardRef = useRef<HTMLDivElement>(null);
+  const rafRef = useRef<number>();
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return;
     
-    const rect = cardRef.current.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-    
-    const mouseX = e.clientX - centerX;
-    const mouseY = e.clientY - centerY;
-    
-    const rotateXValue = (mouseY / (rect.height / 2)) * -6;
-    const rotateYValue = (mouseX / (rect.width / 2)) * 6;
-    
-    setRotateX(rotateXValue);
-    setRotateY(rotateYValue);
-  };
+    // Cancel any pending animation frame
+    if (rafRef.current) {
+      cancelAnimationFrame(rafRef.current);
+    }
 
-  const handleMouseLeave = () => {
-    setRotateX(0);
-    setRotateY(0);
-  };
+    rafRef.current = requestAnimationFrame(() => {
+      if (!cardRef.current) return;
+      const rect = cardRef.current.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+      
+      const mouseX = e.clientX - centerX;
+      const mouseY = e.clientY - centerY;
+      
+      const rotateX = (mouseY / (rect.height / 2)) * -4;
+      const rotateY = (mouseX / (rect.width / 2)) * 4;
+      
+      setTransform(`perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`);
+    });
+  }, []);
+
+  const handleMouseLeave = useCallback(() => {
+    if (rafRef.current) {
+      cancelAnimationFrame(rafRef.current);
+    }
+    setTransform('');
+  }, []);
 
   return (
-    <motion.div
+    <div
       ref={cardRef}
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.7, delay, ease: "easeInOut" }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{
-        transformStyle: 'preserve-3d',
-        transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
-        transition: 'transform 0.4s ease-out',
+        transform: transform || 'perspective(1000px) rotateX(0deg) rotateY(0deg)',
+        transition: 'transform 0.3s ease-out',
+        willChange: 'transform',
       }}
       className="group relative"
     >
-      <div className="glass-card p-8 h-full hover:border-primary/50 transition-all duration-500 ease-in-out overflow-hidden rounded-3xl">
+      <div className="glass-card p-8 h-full hover:border-primary/50 transition-all duration-300 overflow-hidden rounded-3xl">
         {/* Background gradient */}
         <div
-          className={`absolute inset-0 opacity-10 transition-opacity duration-500 ease-in-out group-hover:opacity-20 rounded-3xl ${gradient}`}
+          className={`absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity duration-300 rounded-3xl ${gradient}`}
         />
 
-        {/* Shine effect on hover */}
-        <motion.div
-          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out rounded-3xl"
-          style={{
-            background: `linear-gradient(105deg, transparent 40%, hsl(var(--gold) / 0.08) 45%, hsl(var(--gold) / 0.15) 50%, hsl(var(--gold) / 0.08) 55%, transparent 60%)`,
-            transform: 'translateZ(10px)',
-          }}
-        />
-
-        <div className="relative z-10" style={{ transform: 'translateZ(20px)' }}>
+        <div className="relative z-10">
           {/* Icon */}
-          <div className="mb-6 inline-flex p-4 rounded-2xl bg-primary/15 border border-primary/25 text-primary group-hover:shadow-[0_0_30px_hsl(var(--gold)/0.3)] transition-all duration-500 ease-in-out">
+          <div className="mb-6 inline-flex p-4 rounded-2xl bg-primary/15 border border-primary/25 text-primary group-hover:shadow-[0_0_20px_hsl(var(--gold)/0.2)] transition-shadow duration-300">
             {icon}
           </div>
 
@@ -92,7 +86,7 @@ const VentureCard = ({
           </div>
 
           {/* Title */}
-          <h3 className="font-display text-2xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-500 ease-in-out">
+          <h3 className="font-display text-2xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
             {title}
           </h3>
 
@@ -105,18 +99,16 @@ const VentureCard = ({
           </p>
 
           {/* CTA */}
-          <motion.a
-            href="#"
-            whileHover={{ x: 5 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="inline-flex items-center gap-2 text-sm font-display text-primary hover:text-foreground transition-colors duration-500 ease-in-out"
+          <a
+            href="#contact"
+            className="inline-flex items-center gap-2 text-sm font-display text-primary hover:text-foreground transition-colors duration-300 hover:translate-x-1"
           >
             Explore
             <ExternalLink className="w-4 h-4" />
-          </motion.a>
+          </a>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
