@@ -10,6 +10,7 @@ interface VentureCardProps {
   icon: React.ReactNode;
   gradient: string;
   delay?: number;
+  href?: string;
 }
 
 const VentureCard = ({
@@ -20,6 +21,7 @@ const VentureCard = ({
   icon,
   gradient,
   delay = 0,
+  href = '#',
 }: VentureCardProps) => {
   const [rotateX, setRotateX] = useState(0);
   const [rotateY, setRotateY] = useState(0);
@@ -106,7 +108,9 @@ const VentureCard = ({
 
           {/* CTA */}
           <motion.a
-            href="#"
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
             whileHover={{ x: 5 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className="inline-flex items-center gap-2 text-sm font-display text-primary hover:text-foreground transition-colors duration-500 ease-in-out"
