@@ -5,34 +5,31 @@ import VentureCard from './VentureCard';
 const VenturesSection = () => {
   const ventures = [
     {
-      title: 'Pizza House',
-      subtitle: 'Restaurant Website',
+      title: 'Crave Haus',
+      subtitle: 'Restaurant & Dining Experience',
       description:
-        'A delicious digital experience for a premium pizza restaurant. Custom-built ordering system, menu showcase, and seamless user experience that makes customers crave more.',
-      vibe: 'Warm • Appetizing • Modern',
+        'Premium dining destination where culinary art meets fast-casual convenience. From menu engineering to digital ordering systems, every touchpoint is optimized for maximum satisfaction.',
+      vibe: 'Warm • Premium • Fast',
       icon: <Utensils className="w-6 h-6" />,
       gradient: 'bg-gradient-to-br from-orange-500/30 to-amber-500/30',
-      href: 'https://pizzahouse.pizza/',
     },
     {
       title: 'Phone Depot',
       subtitle: 'Tech Repair & Diagnostics',
       description:
-        'Professional repair service website with clinical precision. Device diagnostics, service booking, and transparent pricing—all designed for trust and efficiency.',
+        'Clinical precision meets hardware expertise. We diagnose, repair, and resurrect devices with surgical accuracy. Every component analyzed, every connection optimized.',
       vibe: 'Clean • Clinical • Hardware',
       icon: <Smartphone className="w-6 h-6" />,
       gradient: 'bg-gradient-to-br from-primary/30 to-accent/30',
-      href: 'https://www.phonedepotrepair.net/',
     },
     {
-      title: 'CoreA',
+      title: 'CoreA / SaltSync',
       subtitle: 'IT & Digital Marketing',
       description:
         'Where abstract data transforms into tangible results. Full-spectrum digital solutions from infrastructure deployment to campaign orchestration. The future is automated.',
       vibe: 'Abstract • Data-Driven • Futuristic',
       icon: <Globe className="w-6 h-6" />,
       gradient: 'bg-gradient-to-br from-gold-dark/30 to-gold-light/30',
-      href: '#',
     },
   ];
 
