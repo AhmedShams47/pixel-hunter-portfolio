@@ -109,9 +109,9 @@ const HomePage = () => {
             </div>
           </div>
 
-          {/* Scroll Indicator */}
+          {/* Scroll Indicator - simplified */}
           <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
-            <div className="flex flex-col items-center gap-2 animate-bounce" style={{ animationDuration: '2s' }}>
+            <div className="flex flex-col items-center gap-2 opacity-60">
               <span className="text-xs text-muted-foreground font-display tracking-[0.2em]">SCROLL</span>
               <div className="w-px h-8 bg-gradient-to-b from-primary to-transparent" />
             </div>
