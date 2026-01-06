@@ -19,8 +19,8 @@ const ContactSection = () => {
             Design Something{' '}
             <span className="gold-text gold-glow">Unforgettable</span>
           </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto tracking-wide">
-            If you want visuals that feel premium, personal, and deeply intentional—Shams Visuals is ready to build with you. Send a message today.
+          <p className="text-muted-foreground max-w-xl mx-auto tracking-wide text-lg">
+            Explore my work, discover my process, and let's build something you'll be proud to show the world.
           </p>
         </motion.div>
 

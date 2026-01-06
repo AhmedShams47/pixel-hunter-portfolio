@@ -1,37 +1,75 @@
 import { motion } from 'framer-motion';
-import { Sparkles, Rocket, Crown, MessageCircle } from 'lucide-react';
+import { Sparkles, Rocket, Crown, MessageCircle, Palette, Share2, Globe } from 'lucide-react';
 
 const PackagesSection = () => {
-  const packages = [
+  const serviceCategories = [
     {
-      name: 'Basic',
-      icon: <Sparkles className="w-6 h-6" />,
-      tagline: 'Start Fresh',
-      description: 'Perfect for starting your brand or refreshing your look. Essential deliverables to get you going.',
-      features: ['Logo Design', 'Brand Colors', 'Basic Social Kit', 'Single Page Website'],
-      gradient: 'from-slate-500/20 to-slate-600/20',
-      borderColor: 'border-slate-500/30',
+      service: 'Graphic Design',
+      icon: <Palette className="w-5 h-5" />,
+      packages: [
+        {
+          name: 'Basic',
+          description: 'Perfect for getting started with a clean, professional look. Ideal for one-time designs like a logo refresh, a poster, or a small bundle of social media posts.',
+        },
+        {
+          name: 'Pro',
+          description: 'For growing brands that need consistent design support. This covers multiple deliverables such as brand assets, post templates, highlight covers, and more polished visual systems.',
+        },
+        {
+          name: 'Unlimited',
+          description: 'For brands that want me as their ongoing design partner. Continuous updates, new creatives every month, and priority support for your campaigns and ideas.',
+        },
+      ],
     },
     {
-      name: 'Pro',
-      icon: <Rocket className="w-6 h-6" />,
-      tagline: 'Grow Strong',
-      description: 'For growing brands that want consistent, higher-impact visuals and systems.',
-      features: ['Full Brand Identity', 'Social Media Strategy', 'Multi-page Website', 'Content Calendar'],
-      gradient: 'from-primary/20 to-accent/20',
-      borderColor: 'border-primary/50',
-      popular: true,
+      service: 'Social Media Management',
+      icon: <Share2 className="w-5 h-5" />,
+      packages: [
+        {
+          name: 'Basic',
+          description: 'Start with a simple but strong presence: a limited number of posts per month, basic captions, and a clean visual style to introduce your brand.',
+        },
+        {
+          name: 'Pro',
+          description: 'Content strategy, consistent posting, story/post designs, and feed planning focused on engagement and growth.',
+        },
+        {
+          name: 'Unlimited',
+          description: 'Full creative support: content ideas, visuals, scheduling, optimization, and regular adjustments based on performance to keep your pages active and alive.',
+        },
+      ],
     },
     {
-      name: 'Unlimited',
-      icon: <Crown className="w-6 h-6" />,
-      tagline: 'Partner Up',
-      description: 'For brands that want me as their long-term creative partner with ongoing support.',
-      features: ['Everything in Pro', 'Priority Support', 'Unlimited Revisions', 'Monthly Updates'],
-      gradient: 'from-gold-dark/20 to-gold-light/20',
-      borderColor: 'border-gold/50',
+      service: 'Web Development',
+      icon: <Globe className="w-5 h-5" />,
+      packages: [
+        {
+          name: 'Basic',
+          description: 'A clean, responsive single-page or simple multi-section website that introduces who you are and what you do.',
+        },
+        {
+          name: 'Pro',
+          description: 'A more advanced, multi-page website with custom sections, better structure, and strong visual design that matches your brand.',
+        },
+        {
+          name: 'Unlimited',
+          description: 'Long-term web partner: continuous improvements, new sections, redesigns, and technical support as your brand grows.',
+        },
+      ],
     },
   ];
+
+  const packageIcons = {
+    Basic: <Sparkles className="w-5 h-5" />,
+    Pro: <Rocket className="w-5 h-5" />,
+    Unlimited: <Crown className="w-5 h-5" />,
+  };
+
+  const packageColors = {
+    Basic: 'border-slate-500/30',
+    Pro: 'border-primary/50',
+    Unlimited: 'border-gold/50',
+  };
 
   return (
     <section id="packages" className="relative py-32 px-6">
@@ -50,70 +88,60 @@ const PackagesSection = () => {
             Flexible{' '}
             <span className="gold-text gold-glow">Packages</span>
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto tracking-wide">
-            Three flexible packages for Graphic Design, Social Media Management, and Web Development. Every brand is different—DM me to customize a package that fits your goals.
+          <p className="text-muted-foreground max-w-2xl mx-auto tracking-wide text-lg">
+            Different brands have different needs, so I offer flexible packages for Graphic Design, Social Media Management, and Web Development. No fixed prices shown—just clear structures. DM me and we'll match the right package to your goals.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-6 mb-12">
-          {packages.map((pkg, index) => (
+        {/* Service Categories */}
+        <div className="space-y-12 mb-16">
+          {serviceCategories.map((category, catIndex) => (
             <motion.div
-              key={pkg.name}
+              key={category.service}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.15 + index * 0.1, ease: "easeInOut" }}
-              className={`relative glass-card p-8 rounded-3xl hover:border-primary/50 transition-all duration-500 ease-in-out group ${pkg.popular ? 'ring-2 ring-primary/50' : ''}`}
+              transition={{ duration: 0.7, delay: catIndex * 0.1, ease: "easeInOut" }}
             >
-              {pkg.popular && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                  <span className="px-4 py-1 text-xs font-display tracking-wider bg-primary text-primary-foreground rounded-full">
-                    MOST POPULAR
-                  </span>
+              {/* Category Header */}
+              <div className="flex items-center gap-3 mb-6">
+                <div className="p-3 rounded-2xl bg-primary/15 border border-primary/25 text-primary">
+                  {category.icon}
                 </div>
-              )}
-
-              {/* Background gradient */}
-              <div className={`absolute inset-0 opacity-10 rounded-3xl bg-gradient-to-br ${pkg.gradient}`} />
-
-              <div className="relative z-10">
-                {/* Icon */}
-                <div className="mb-6 inline-flex p-4 rounded-2xl bg-primary/15 border border-primary/25 text-primary group-hover:shadow-[0_0_30px_hsl(var(--gold)/0.3)] transition-all duration-500 ease-in-out">
-                  {pkg.icon}
-                </div>
-
-                {/* Name & Tagline */}
-                <h3 className="font-display text-2xl font-bold text-foreground mb-1 group-hover:text-primary transition-colors duration-500">
-                  {pkg.name}
+                <h3 className="font-display text-xl font-bold text-foreground">
+                  {category.service}
                 </h3>
-                <p className="text-sm text-primary mb-4">{pkg.tagline}</p>
+              </div>
 
-                {/* Description */}
-                <p className="text-muted-foreground text-sm leading-relaxed mb-6 tracking-wide">
-                  {pkg.description}
-                </p>
-
-                {/* Features */}
-                <ul className="space-y-3 mb-8">
-                  {pkg.features.map((feature) => (
-                    <li key={feature} className="flex items-center gap-3 text-sm text-muted-foreground">
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-
-                {/* CTA */}
-                <motion.a
-                  href="https://wa.me/8801707887676"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="block w-full py-3 text-center font-display font-semibold text-primary border border-primary/30 hover:border-primary/60 hover:bg-primary/10 transition-all duration-500 ease-in-out rounded-xl"
-                >
-                  Get Started
-                </motion.a>
+              {/* Packages Grid */}
+              <div className="grid md:grid-cols-3 gap-4">
+                {category.packages.map((pkg, pkgIndex) => (
+                  <motion.div
+                    key={pkg.name}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.1 + pkgIndex * 0.1, ease: "easeInOut" }}
+                    className={`glass-card p-6 rounded-2xl hover:border-primary/50 transition-all duration-500 ease-in-out group ${packageColors[pkg.name as keyof typeof packageColors]}`}
+                  >
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="text-primary">
+                        {packageIcons[pkg.name as keyof typeof packageIcons]}
+                      </div>
+                      <h4 className="font-display text-lg font-bold text-foreground group-hover:text-primary transition-colors duration-500">
+                        {pkg.name}
+                      </h4>
+                      {pkg.name === 'Pro' && (
+                        <span className="px-2 py-0.5 text-[10px] font-display tracking-wider bg-primary/20 text-primary rounded-full">
+                          POPULAR
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-sm text-muted-foreground leading-relaxed tracking-wide">
+                      {pkg.description}
+                    </p>
+                  </motion.div>
+                ))}
               </div>
             </motion.div>
           ))}
@@ -125,33 +153,34 @@ const PackagesSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.4, ease: "easeInOut" }}
-          className="glass-card p-8 rounded-3xl text-center"
+          className="glass-card p-8 md:p-12 rounded-3xl text-center"
         >
           <div className="inline-flex p-4 rounded-2xl bg-primary/15 border border-primary/25 text-primary mb-4">
             <MessageCircle className="w-6 h-6" />
           </div>
           <h3 className="font-display text-xl font-bold text-foreground mb-3">
-            Not sure which package fits?
+            Ready to get started?
           </h3>
           <p className="text-muted-foreground max-w-xl mx-auto mb-6 tracking-wide">
-            DM me anytime on Instagram, WhatsApp, or Facebook. I'll help you choose or customize a package that fits your goals and your stage.
+            For package details, availability, and custom offers, please DM me directly. No need to fill long forms—just send a message, tell me what you need, and we'll build the right package together.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             <motion.a
               href="https://instagram.com/k_0_p_a"
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ y: -2 }}
-              className="px-6 py-2.5 text-sm font-display font-semibold text-primary border border-primary/30 hover:border-primary/60 hover:bg-primary/10 transition-all duration-500 ease-in-out rounded-xl"
+              whileHover={{ y: -2, scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="px-8 py-3 text-sm font-display font-semibold metallic-prime text-primary-foreground transition-all duration-500 ease-in-out rounded-xl"
             >
-              Instagram
+              Instagram DM
             </motion.a>
             <motion.a
               href="https://wa.me/8801707887676"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ y: -2 }}
-              className="px-6 py-2.5 text-sm font-display font-semibold text-primary border border-primary/30 hover:border-primary/60 hover:bg-primary/10 transition-all duration-500 ease-in-out rounded-xl"
+              className="px-8 py-3 text-sm font-display font-semibold text-primary border border-primary/30 hover:border-primary/60 hover:bg-primary/10 transition-all duration-500 ease-in-out rounded-xl"
             >
               WhatsApp
             </motion.a>
@@ -160,7 +189,7 @@ const PackagesSection = () => {
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ y: -2 }}
-              className="px-6 py-2.5 text-sm font-display font-semibold text-primary border border-primary/30 hover:border-primary/60 hover:bg-primary/10 transition-all duration-500 ease-in-out rounded-xl"
+              className="px-8 py-3 text-sm font-display font-semibold text-primary border border-primary/30 hover:border-primary/60 hover:bg-primary/10 transition-all duration-500 ease-in-out rounded-xl"
             >
               Facebook
             </motion.a>

@@ -1,117 +1,131 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Headphones, Target, Sparkles, MessageCircle } from 'lucide-react';
+import { MessageSquare, Calendar, Sparkles, Zap } from 'lucide-react';
 
 const AboutSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  const workProcess = [
-    {
-      icon: <Headphones className="w-6 h-6" />,
-      title: "I listen first",
-      description: "Understanding your vision before any design begins"
-    },
-    {
-      icon: <Target className="w-6 h-6" />,
-      title: "I plan every step",
-      description: "From concept to final delivery, nothing is left to chance"
-    },
-    {
-      icon: <Sparkles className="w-6 h-6" />,
-      title: "I refine until perfect",
-      description: "Your brand feels like 'you,' but upgraded"
-    },
-    {
-      icon: <MessageCircle className="w-6 h-6" />,
-      title: "I stay connected",
-      description: "Fast replies, honest feedback, long-term relationships"
-    }
-  ];
-
   return (
     <section id="about" className="relative py-32 px-6" ref={ref}>
       <div className="max-w-6xl mx-auto">
+        {/* Who I Am */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, ease: "easeInOut" }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
           <span className="text-primary text-sm font-display tracking-[0.3em] mb-4 block">
             // WHO I AM
           </span>
           <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Ahmed{' '}
-            <span className="gold-text gold-glow">Shams</span>
+            Shams{' '}
+            <span className="gold-text gold-glow">Visuals</span>
           </h2>
           <p className="text-muted-foreground max-w-3xl mx-auto tracking-wide text-lg leading-relaxed">
-            A disciplined, detail-driven designer and developer who lives for clean visuals, smooth motion, and scroll-stopping content. I bring together branding, graphic design, social media management, and web development to build a full experience around your brand—not just a logo or a post.
+            Shams Visuals is my creative studio where design, discipline, and storytelling meet. Over the last few years I've helped brands, small businesses, and personal projects look more professional, consistent, and visually powerful.
           </p>
         </motion.div>
 
-        {/* How I Work Section */}
+        {/* How I Work */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.1, ease: "easeInOut" }}
+          className="glass-card p-8 md:p-12 rounded-3xl mb-12"
+        >
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-3 rounded-2xl bg-primary/15 border border-primary/25 text-primary">
+                  <Calendar className="w-5 h-5" />
+                </div>
+                <h3 className="font-display text-2xl font-bold text-foreground">
+                  How I <span className="text-primary">Work</span>
+                </h3>
+              </div>
+              <p className="text-muted-foreground leading-relaxed tracking-wide">
+                I treat every project with structure and discipline: clear communication, fixed milestones, and clean delivery. From the first message to the final file, you always know what is happening, what comes next, and when you will receive it. I don't rush work—I refine it until it feels right for your brand.
+              </p>
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              {[
+                { icon: <MessageSquare className="w-5 h-5" />, label: 'Clear Communication' },
+                { icon: <Calendar className="w-5 h-5" />, label: 'Fixed Milestones' },
+                { icon: <Sparkles className="w-5 h-5" />, label: 'Clean Delivery' },
+                { icon: <Zap className="w-5 h-5" />, label: 'Refined Results' },
+              ].map((item, index) => (
+                <motion.div
+                  key={item.label}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.2 + index * 0.1, ease: "easeInOut" }}
+                  className="flex flex-col items-center gap-2 p-4 rounded-2xl bg-secondary/30 border border-border/50 text-center"
+                >
+                  <div className="text-primary">{item.icon}</div>
+                  <span className="text-xs text-muted-foreground font-display tracking-wider uppercase">{item.label}</span>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+
+        {/* 3D & Animation */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.15, ease: "easeInOut" }}
-          className="mb-16"
+          className="glass-card p-8 md:p-12 rounded-3xl mb-12"
         >
-          <h3 className="font-display text-2xl font-bold text-foreground text-center mb-10">
-            How I <span className="text-primary">Work</span>
-          </h3>
-          
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {workProcess.map((step, index) => (
-              <motion.div
-                key={step.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2 + index * 0.1, ease: "easeInOut" }}
-                className="glass-card p-6 text-center group hover:border-primary/50 transition-all duration-500 ease-in-out rounded-3xl"
+          <div className="flex items-center gap-3 mb-4">
+            <div className="p-3 rounded-2xl bg-primary/15 border border-primary/25 text-primary">
+              <Sparkles className="w-5 h-5" />
+            </div>
+            <h3 className="font-display text-2xl font-bold text-foreground">
+              3D & <span className="text-primary">Animation</span>
+            </h3>
+          </div>
+          <p className="text-muted-foreground leading-relaxed tracking-wide max-w-3xl">
+            I love bringing designs to life with smooth 3D animations and motion elements. Whether it is a logo reveal, a social media reel, or a website section, movement is used carefully to guide the eye and keep your audience engaged without overwhelming them.
+          </p>
+        </motion.div>
+
+        {/* Contact CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.2, ease: "easeInOut" }}
+          className="text-center"
+        >
+          <p className="text-muted-foreground max-w-2xl mx-auto tracking-wide mb-6">
+            You can discover my past projects in branding, social media management, and web development throughout this site. For quick communication, reach out anytime via Instagram, Facebook, WhatsApp, email, or my website contact form—I try to reply as fast as possible and keep things friendly and simple.
+          </p>
+          <div className="flex flex-wrap justify-center gap-3">
+            {[
+              { name: 'Instagram', href: 'https://instagram.com/k_0_p_a' },
+              { name: 'WhatsApp', href: 'https://wa.me/8801707887676' },
+              { name: 'Facebook', href: 'https://facebook.com/ahmed.shams' },
+              { name: 'Email', href: 'mailto:shamsvisuals@gmail.com' },
+            ].map((social) => (
+              <motion.a
+                key={social.name}
+                href={social.href}
+                target={social.name !== 'Email' ? '_blank' : undefined}
+                rel={social.name !== 'Email' ? 'noopener noreferrer' : undefined}
+                whileHover={{ y: -2 }}
+                className="px-5 py-2.5 text-sm font-display text-primary border border-primary/30 hover:border-primary/60 hover:bg-primary/10 transition-all duration-500 ease-in-out rounded-xl"
               >
-                <div className="mb-4 inline-flex p-4 rounded-2xl bg-primary/15 border border-primary/25 text-primary group-hover:shadow-[0_0_30px_hsl(var(--gold)/0.3)] transition-all duration-500 ease-in-out">
-                  {step.icon}
-                </div>
-                <h4 className="font-display text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-500">
-                  {step.title}
-                </h4>
-                <p className="text-sm text-muted-foreground tracking-wide">
-                  {step.description}
-                </p>
-              </motion.div>
+                {social.name}
+              </motion.a>
             ))}
           </div>
         </motion.div>
-
-        {/* Stats grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {[
-            { label: 'Years Experience', value: '5+' },
-            { label: 'Projects Completed', value: '100+' },
-            { label: 'Happy Clients', value: '50+' },
-            { label: 'Brands Built', value: '30+' },
-          ].map((stat, index) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3 + index * 0.1, ease: "easeInOut" }}
-              className="glass-card p-6 text-center group hover:border-primary/50 transition-all duration-500 ease-in-out rounded-3xl"
-            >
-              <div className="font-display text-3xl md:text-4xl font-bold gold-text gold-glow mb-2">
-                {stat.value}
-              </div>
-              <div className="text-xs text-muted-foreground font-display tracking-[0.15em] uppercase">
-                {stat.label}
-              </div>
-            </motion.div>
-          ))}
-        </div>
       </div>
     </section>
   );
