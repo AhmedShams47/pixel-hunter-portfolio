@@ -7,6 +7,7 @@ import VenturesSection from '@/components/VenturesSection';
 import TechArsenal from '@/components/TechArsenal';
 import ContactSection from '@/components/ContactSection';
 import VideoIntro from '@/components/VideoIntro';
+import FloatingSocialBar from '@/components/FloatingSocialBar';
 
 const Index = () => {
   const [introComplete, setIntroComplete] = useState(false);
@@ -21,6 +22,7 @@ const Index = () => {
       {/* Main Content */}
       <main className="relative min-h-screen bg-background overflow-x-hidden">
         <ParticleBackground />
+        <FloatingSocialBar />
         <div className="relative z-10">
           <Navbar />
           <HeroSection />
