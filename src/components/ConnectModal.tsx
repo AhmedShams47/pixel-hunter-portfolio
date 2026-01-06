@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Mail, MessageCircle } from 'lucide-react';
+import { X, Mail, MessageCircle, Instagram, Facebook } from 'lucide-react';
 
 interface ConnectModalProps {
   isOpen: boolean;
@@ -9,18 +9,32 @@ interface ConnectModalProps {
 const ConnectModal = ({ isOpen, onClose }: ConnectModalProps) => {
   const contactOptions = [
     {
-      icon: <Mail className="w-6 h-6" />,
-      label: 'Email',
-      description: 'Send me an email',
-      href: 'mailto:shamsvisuals@gmail.com',
-      gradient: 'from-primary/20 to-accent/20',
+      icon: <Instagram className="w-6 h-6" />,
+      label: 'Instagram',
+      description: 'Best for quick ideas and references',
+      href: 'https://www.instagram.com/k_0_p_a/',
+      gradient: 'from-pink-500/20 to-purple-500/20',
+    },
+    {
+      icon: <Facebook className="w-6 h-6" />,
+      label: 'Facebook',
+      description: 'Perfect if you found me on Facebook',
+      href: 'https://www.facebook.com/AhmedShams164',
+      gradient: 'from-blue-500/20 to-blue-600/20',
     },
     {
       icon: <MessageCircle className="w-6 h-6" />,
       label: 'WhatsApp',
-      description: 'Chat on WhatsApp',
-      href: 'https://wa.me/8801707887676',
+      description: 'Great for serious inquiries',
+      href: 'https://wa.me/8801707887676?text=Hi%20Ahmed!%20I%27m%20on%20your%20website%20and%20I%27d%20like%20to%20know%20more%20about%20your%20services.',
       gradient: 'from-green-500/20 to-emerald-500/20',
+    },
+    {
+      icon: <Mail className="w-6 h-6" />,
+      label: 'Email',
+      description: 'Send a detailed brief',
+      href: 'mailto:shamsvisuals@gmail.com',
+      gradient: 'from-primary/20 to-accent/20',
     },
   ];
 
@@ -97,7 +111,7 @@ const ConnectModal = ({ isOpen, onClose }: ConnectModalProps) => {
 
               {/* Footer note */}
               <p className="text-center text-xs text-muted-foreground mt-6 tracking-wide">
-                I typically respond within 24 hours
+                Your message comes directly to me, Ahmed—I read everything and reply as soon as possible.
               </p>
             </div>
           </motion.div>

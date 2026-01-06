@@ -49,12 +49,14 @@ const Navbar = () => {
         </div>
 
         {/* CTA button */}
-        <Link
-          to="/packages"
+        <a
+          href="https://www.instagram.com/k_0_p_a/"
+          target="_blank"
+          rel="noopener noreferrer"
           className="glass-card px-5 md:px-7 py-2.5 text-sm font-display font-semibold text-primary border border-primary/30 hover:border-primary/60 hover:shadow-[0_0_20px_hsl(var(--gold)/0.2)] transition-all duration-300 rounded-2xl hidden sm:block"
         >
-          Hire Me
-        </Link>
+          Let's Connect
+        </a>
       </div>
     </motion.nav>
   );
