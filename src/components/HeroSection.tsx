@@ -1,8 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import profilePhoto from '@/assets/profile-photo.jpg';
+import shamsLogo from '@/assets/shams-logo.jpg';
 import ConnectModal from './ConnectModal';
-import DragonFrame from './DragonFrame';
 
 const HeroSection = () => {
   const [isConnectOpen, setIsConnectOpen] = useState(false);
@@ -112,9 +111,9 @@ const HeroSection = () => {
                 transition={{ delay: 0.6, duration: 0.6, ease: "easeInOut" }}
                 className="text-xl md:text-2xl text-muted-foreground mb-10 font-light tracking-wide"
               >
-                <span className="text-primary">Multi-Disciplinary Technomancer</span>{' '}
-                <span className="text-muted-foreground">&</span>{' '}
-                <span className="text-foreground">Entrepreneur</span>
+                <span className="text-primary">Branding & Graphic Design</span>{' '}
+                <span className="text-muted-foreground">•</span>{' '}
+                <span className="text-foreground">Web Development</span>
               </motion.p>
 
               <motion.div
@@ -142,20 +141,25 @@ const HeroSection = () => {
               </motion.div>
             </motion.div>
 
-            {/* Right side - Dragon Frame with Profile */}
+            {/* Right side - Logo */}
             <motion.div
               initial={{ opacity: 0, scale: 0.85 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.9, ease: "easeInOut", delay: 0.3 }}
               className="order-1 lg:order-2 flex items-center justify-center"
             >
-              <DragonFrame>
+              <motion.div
+                whileHover={{ scale: 1.03 }}
+                transition={{ duration: 0.5, ease: "easeInOut" }}
+                className="relative"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/40 via-accent/20 to-primary/40 rounded-full blur-3xl animate-glow-pulse" />
                 <img
-                  src={profilePhoto}
-                  alt="Ahmed Shams - Profile"
-                  className="w-full h-full object-cover"
+                  src={shamsLogo}
+                  alt="Shams Visuals - Logo"
+                  className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 object-cover rounded-full shadow-2xl shadow-primary/30 border-2 border-primary/30"
                 />
-              </DragonFrame>
+              </motion.div>
             </motion.div>
           </div>
         </div>
