@@ -10,7 +10,6 @@ const HeroSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const [activeVideo, setActiveVideo] = useState<1 | 2>(1);
 
-  // Parallax scroll effect
   const { scrollY } = useScroll();
   const backgroundY = useTransform(scrollY, [0, 1000], [0, 400]);
   const contentY = useTransform(scrollY, [0, 1000], [0, 150]);
@@ -44,10 +43,15 @@ const HeroSection = () => {
     };
   }, [activeVideo]);
 
+  const highlights = [
+    "Branding & graphic design that makes you memorable.",
+    "Social media visuals that your audience actually wants to share.",
+    "Web design & development that feels smooth, clean, and modern."
+  ];
+
   return (
     <>
       <section ref={sectionRef} className="relative min-h-screen flex items-center justify-center px-6 pt-24 overflow-hidden">
-        {/* Dragon Eye Background Video with Crossfade and Parallax */}
         <motion.div 
           className="absolute inset-0 z-0"
           style={{ 
@@ -91,7 +95,6 @@ const HeroSection = () => {
           style={{ y: contentY }}
         >
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left side - Text content */}
             <motion.div
               initial={{ opacity: 0, x: -40 }}
               animate={{ opacity: 1, x: 0 }}
@@ -115,46 +118,66 @@ const HeroSection = () => {
                 transition={{ delay: 0.5, duration: 0.7, ease: "easeInOut" }}
                 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
               >
-                <span className="text-foreground">Transform your brand into a</span>
+                <span className="text-foreground">Designs that speak</span>
                 <br />
-                <span className="prime-text prime-glow">Visual Experience</span>
+                <span className="prime-text prime-glow">before you do.</span>
               </motion.h1>
 
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6, duration: 0.6, ease: "easeInOut" }}
-                className="text-lg md:text-xl text-muted-foreground mb-10 font-light tracking-wide max-w-xl"
+                className="text-lg md:text-xl text-muted-foreground mb-8 font-light tracking-wide max-w-xl"
               >
-                Every pixel has a purpose. Every design tells a story. From bold branding to smooth 3D animations—ideas become visuals your audience will remember.
+                I am Ahmed Shams, the face behind Shams Visuals—a multidisciplinary creative who turns ideas into visual stories through branding, social media, and web experiences.
               </motion.p>
 
+              {/* Highlight lines */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.7, duration: 0.6, ease: "easeInOut" }}
+                className="space-y-3 mb-10"
+              >
+                {highlights.map((line, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.8 + index * 0.1, duration: 0.5, ease: "easeInOut" }}
+                    className="flex items-center gap-3 text-sm md:text-base text-muted-foreground"
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
+                    <span>{line}</span>
+                  </motion.div>
+                ))}
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.1, duration: 0.6, ease: "easeInOut" }}
                 className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
               >
-                <motion.button
-                  onClick={() => setIsConnectOpen(true)}
-                  whileHover={{ scale: 1.03, boxShadow: '0 0 50px hsl(var(--prime) / 0.4)' }}
-                  whileTap={{ scale: 0.97 }}
-                  className="px-10 py-4 metallic-prime text-primary-foreground font-display font-bold rounded-2xl transition-all duration-500 ease-in-out animate-glow-pulse"
-                >
-                  Start a Project
-                </motion.button>
                 <motion.a
                   href="#projects"
+                  whileHover={{ scale: 1.03, boxShadow: '0 0 50px hsl(var(--prime) / 0.4)' }}
+                  whileTap={{ scale: 0.97 }}
+                  className="px-10 py-4 metallic-prime text-primary-foreground font-display font-bold rounded-2xl transition-all duration-500 ease-in-out animate-glow-pulse text-center"
+                >
+                  Explore My Work
+                </motion.a>
+                <motion.button
+                  onClick={() => setIsConnectOpen(true)}
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.97 }}
                   className="glass-card px-10 py-4 font-display font-bold text-foreground border border-primary/30 hover:border-primary/60 transition-all duration-500 ease-in-out text-center"
                 >
-                  View Projects
-                </motion.a>
+                  Let's Build Together
+                </motion.button>
               </motion.div>
             </motion.div>
 
-            {/* Right side - Logo with enhanced animation */}
             <motion.div
               initial={{ opacity: 0, scale: 0.85 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -216,7 +239,6 @@ const HeroSection = () => {
           </div>
         </motion.div>
 
-        {/* Scroll indicator */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
