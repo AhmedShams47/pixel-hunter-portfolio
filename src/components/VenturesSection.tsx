@@ -1,26 +1,28 @@
 import { motion } from 'framer-motion';
-import { Utensils, Smartphone, Globe } from 'lucide-react';
+import { Utensils, Smartphone, Globe, Pizza } from 'lucide-react';
 import VentureCard from './VentureCard';
 
 const VenturesSection = () => {
   const ventures = [
     {
-      title: 'Crave Haus',
-      subtitle: 'Restaurant & Dining Experience',
+      title: 'Pizza House',
+      subtitle: 'Restaurant & Dining',
       description:
-        'Premium dining destination where culinary art meets fast-casual convenience. From menu engineering to digital ordering systems, every touchpoint is optimized for maximum satisfaction.',
-      vibe: 'Warm • Premium • Fast',
-      icon: <Utensils className="w-6 h-6" />,
-      gradient: 'bg-gradient-to-br from-orange-500/30 to-amber-500/30',
+        'Authentic pizzeria experience with modern web presence. From online ordering to menu showcase, crafted for maximum appetite appeal and seamless customer journey.',
+      vibe: 'Warm • Delicious • Inviting',
+      icon: <Pizza className="w-6 h-6" />,
+      gradient: 'bg-gradient-to-br from-red-500/30 to-orange-500/30',
+      link: 'https://pizzahouse.pizza/',
     },
     {
-      title: 'Phone Depot',
+      title: 'Phone Depot & Repair',
       subtitle: 'Tech Repair & Diagnostics',
       description:
-        'Clinical precision meets hardware expertise. We diagnose, repair, and resurrect devices with surgical accuracy. Every component analyzed, every connection optimized.',
-      vibe: 'Clean • Clinical • Hardware',
+        'Clinical precision meets hardware expertise. Professional device repair services with a polished digital storefront. Every component analyzed, every connection optimized.',
+      vibe: 'Clean • Clinical • Professional',
       icon: <Smartphone className="w-6 h-6" />,
       gradient: 'bg-gradient-to-br from-primary/30 to-accent/30',
+      link: 'https://www.phonedepotrepair.net/',
     },
     {
       title: 'CoreA / SaltSync',
@@ -44,14 +46,14 @@ const VenturesSection = () => {
           className="text-center mb-16"
         >
           <span className="text-primary text-sm font-display tracking-[0.3em] mb-4 block">
-            // THE EMPIRE
+            // THE PORTFOLIO
           </span>
           <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Venture{' '}
-            <span className="gold-text gold-glow">Portfolio</span>
+            Recent{' '}
+            <span className="gold-text gold-glow">Projects</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto tracking-wide">
-            Three pillars of innovation. Each business is a different dimension of the same vision—perfection through obsession.
+            Crafted with precision and passion. Each project represents a unique vision brought to life through design and development.
           </p>
         </motion.div>
 
