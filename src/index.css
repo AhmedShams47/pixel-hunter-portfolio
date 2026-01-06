@@ -74,11 +74,21 @@
     font-family: 'Cinzel', serif;
   }
 
-  /* GPU acceleration hints */
-  .glass-card,
-  [class*="animate-"] {
+  /* GPU acceleration and performance hints */
+  .glass-card {
     transform: translateZ(0);
     backface-visibility: hidden;
+  }
+}
+
+/* Performance optimizations */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
 
@@ -150,18 +160,12 @@
     background: linear-gradient(
       145deg,
       hsl(var(--prime-dark)) 0%,
-      hsl(var(--prime)) 25%,
+      hsl(var(--prime)) 35%,
       hsl(var(--prime-shine)) 50%,
-      hsl(var(--prime)) 75%,
+      hsl(var(--prime)) 65%,
       hsl(var(--prime-dark)) 100%
     );
-    background-size: 200% 200%;
-    animation: metallic-shimmer 6s ease-in-out infinite;
-  }
-
-  @keyframes metallic-shimmer {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
+    /* Removed animation for better performance */
   }
 
   .terminal-cursor {
@@ -197,45 +201,14 @@
     }
   }
 
-  @keyframes twinkle {
-    0%, 100% { opacity: 0.2; }
-    50% { opacity: 1; }
-  }
-
+  /* Simplified animations for better performance */
   @keyframes float-gentle {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
-  }
-
-  @keyframes nebula-drift {
-    0% { transform: translate(0, 0) scale(1); }
-    33% { transform: translate(40px, -25px) scale(1.08); }
-    66% { transform: translate(-30px, 20px) scale(0.92); }
-    100% { transform: translate(0, 0) scale(1); }
-  }
-
-  @keyframes crown-float {
-    0%, 100% { transform: translateY(0) rotateY(0deg); }
-    25% { transform: translateY(-10px) rotateY(5deg); }
-    50% { transform: translateY(-20px) rotateY(0deg); }
-    75% { transform: translateY(-10px) rotateY(-5deg); }
-  }
-
-  .animate-twinkle {
-    animation: twinkle var(--twinkle-duration, 4s) ease-in-out infinite;
-    animation-delay: var(--twinkle-delay, 0s);
+    50% { transform: translateY(-10px); }
   }
 
   .animate-float-gentle {
-    animation: float-gentle 8s ease-in-out infinite;
-  }
-
-  .animate-nebula {
-    animation: nebula-drift 25s ease-in-out infinite;
-  }
-
-  .animate-crown-float {
-    animation: crown-float 6s ease-in-out infinite;
+    animation: float-gentle 6s ease-in-out infinite;
   }
 
   /* Video intro styles */

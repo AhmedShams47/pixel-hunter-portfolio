@@ -95,37 +95,18 @@ export default {
         },
         float: {
           "0%, 100%": { transform: "translateY(0px)" },
-          "50%": { transform: "translateY(-20px)" },
+          "50%": { transform: "translateY(-10px)" },
         },
-        "pulse-glow": {
-          "0%, 100%": { opacity: "0.4" },
-          "50%": { opacity: "1" },
-        },
-        "orbit": {
-          "0%": { transform: "rotate(0deg) translateX(120px) rotate(0deg)" },
-          "100%": { transform: "rotate(360deg) translateX(120px) rotate(-360deg)" },
-        },
-        "shimmer": {
-          "0%": { backgroundPosition: "-200% 0" },
-          "100%": { backgroundPosition: "200% 0" },
-        },
-        "glow-pulse": {
-          "0%, 100%": { 
-            boxShadow: "0 0 20px hsl(var(--prime) / 0.3), 0 0 40px hsl(var(--prime) / 0.2)" 
-          },
-          "50%": { 
-            boxShadow: "0 0 40px hsl(var(--prime) / 0.5), 0 0 80px hsl(var(--prime) / 0.3)" 
-          },
+        "fade-up": {
+          "0%": { opacity: "0", transform: "translateY(10px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
         },
       },
       animation: {
-        "accordion-down": "accordion-down 0.4s ease-in-out",
-        "accordion-up": "accordion-up 0.4s ease-in-out",
-        float: "float 8s ease-in-out infinite",
-        "pulse-glow": "pulse-glow 4s ease-in-out infinite",
-        orbit: "orbit 25s linear infinite",
-        shimmer: "shimmer 3s ease-in-out infinite",
-        "glow-pulse": "glow-pulse 3s ease-in-out infinite",
+        "accordion-down": "accordion-down 0.3s ease-out",
+        "accordion-up": "accordion-up 0.3s ease-out",
+        float: "float 6s ease-in-out infinite",
+        "fade-up": "fade-up 0.4s ease-out",
       },
       transitionTimingFunction: {
         "luxury": "cubic-bezier(0.4, 0, 0.2, 1)",
