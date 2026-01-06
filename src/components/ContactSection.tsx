@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Mail, MapPin, ArrowRight } from 'lucide-react';
+import { Mail, MapPin, ArrowRight, Globe } from 'lucide-react';
 
 const ContactSection = () => {
   return (
@@ -13,14 +13,14 @@ const ContactSection = () => {
           className="text-center mb-12"
         >
           <span className="text-primary text-sm font-display tracking-[0.3em] mb-4 block">
-            // INITIATE CONTACT
+            // LET'S CONNECT
           </span>
           <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Let's Build{' '}
-            <span className="gold-text gold-glow">Something</span>
+            Design Something{' '}
+            <span className="gold-text gold-glow">Unforgettable</span>
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto tracking-wide">
-            Ready to collaborate? Whether you need a design reverse-engineered or a business transformed, I'm listening.
+            If you want visuals that feel premium, personal, and deeply intentional—Shams Visuals is ready to build with you. Send a message today.
           </p>
         </motion.div>
 
@@ -53,6 +53,25 @@ const ContactSection = () => {
 
               <div className="flex items-start gap-4">
                 <div className="p-3 rounded-2xl bg-primary/15 border border-primary/25 text-primary">
+                  <Globe className="w-5 h-5" />
+                </div>
+                <div>
+                  <div className="text-sm text-muted-foreground uppercase tracking-[0.15em] mb-1">
+                    Website
+                  </div>
+                  <a 
+                    href="https://shamsvisual.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-foreground font-medium hover:text-primary transition-colors duration-500"
+                  >
+                    shamsvisual.com
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="p-3 rounded-2xl bg-primary/15 border border-primary/25 text-primary">
                   <MapPin className="w-5 h-5" />
                 </div>
                 <div>
@@ -60,7 +79,7 @@ const ContactSection = () => {
                     Location
                   </div>
                   <div className="text-foreground font-medium">
-                    Diluroad, Moghbazar, Dhaka-1217
+                    Dhaka, Bangladesh
                   </div>
                 </div>
               </div>
@@ -146,12 +165,12 @@ const ContactSection = () => {
         className="mt-20 text-center"
       >
         <div className="text-muted-foreground text-sm tracking-wide">
-          <span className="font-display tracking-[0.2em]">AHMED SHAMS</span>
+          <span className="font-display tracking-[0.2em]">SHAMS VISUALS</span>
           <span className="mx-2">•</span>
           <span>© 2025 All rights reserved</span>
         </div>
         <div className="text-xs text-muted-foreground/50 mt-2 font-mono">
-          Built with obsession • Deployed with precision
+          Designed with passion • Built with precision
         </div>
       </motion.div>
     </section>

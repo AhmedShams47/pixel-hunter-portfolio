@@ -1,7 +1,12 @@
 import { motion } from 'framer-motion';
 
 const Navbar = () => {
-  const navItems = ['About', 'Ventures', 'Arsenal', 'Contact'];
+  const navItems = [
+    { name: 'About', href: '#about' },
+    { name: 'Projects', href: '#projects' },
+    { name: 'Packages', href: '#packages' },
+    { name: 'Contact', href: '#contact' },
+  ];
 
   return (
     <motion.nav
@@ -14,10 +19,10 @@ const Navbar = () => {
         {/* Logo placeholder */}
         <div className="glass-card px-5 py-2.5 flex items-center gap-3 rounded-2xl">
           <div className="w-9 h-9 rounded-xl metallic-gold flex items-center justify-center">
-            <span className="text-primary-foreground font-display font-bold text-sm">AS</span>
+            <span className="text-primary-foreground font-display font-bold text-sm">SV</span>
           </div>
           <span className="font-display text-sm font-semibold tracking-[0.2em] text-foreground hidden sm:block">
-            AHMED SHAMS
+            SHAMS VISUALS
           </span>
         </div>
 
@@ -25,26 +30,29 @@ const Navbar = () => {
         <div className="glass-card px-3 py-2.5 flex items-center gap-1 rounded-2xl">
           {navItems.map((item, index) => (
             <motion.a
-              key={item}
-              href={`#${item.toLowerCase()}`}
+              key={item.name}
+              href={item.href}
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 + index * 0.1, duration: 0.5, ease: "easeInOut" }}
               className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-primary transition-all duration-500 ease-in-out rounded-xl hover:bg-primary/10"
             >
-              {item}
+              {item.name}
             </motion.a>
           ))}
         </div>
 
         {/* CTA button */}
-        <motion.button
+        <motion.a
+          href="https://wa.me/8801707887676"
+          target="_blank"
+          rel="noopener noreferrer"
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.97 }}
           className="glass-card px-7 py-2.5 text-sm font-display font-semibold text-primary border border-primary/30 hover:border-primary/60 hover:shadow-[0_0_30px_hsl(var(--gold)/0.25)] transition-all duration-500 ease-in-out rounded-2xl"
         >
           Hire Me
-        </motion.button>
+        </motion.a>
       </div>
     </motion.nav>
   );

@@ -22,14 +22,13 @@ const HeroSection = () => {
     const video2 = video2Ref.current;
     if (!video1 || !video2) return;
 
-    const crossfadeDuration = 1.5; // seconds before end to start crossfade
+    const crossfadeDuration = 1.5;
 
     const handleTimeUpdate = () => {
       const activeVid = activeVideo === 1 ? video1 : video2;
       const inactiveVid = activeVideo === 1 ? video2 : video1;
       
       if (activeVid.duration - activeVid.currentTime <= crossfadeDuration) {
-        // Start the inactive video and crossfade
         inactiveVid.currentTime = 0;
         inactiveVid.play();
         setActiveVideo(activeVideo === 1 ? 2 : 1);
@@ -82,10 +81,8 @@ const HeroSection = () => {
           >
             <source src="/videos/dragon-eye-bg.mp4" type="video/mp4" />
           </video>
-          {/* Gradient overlay for better text readability */}
           <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/30 to-background/80" />
           <div className="absolute inset-0 bg-gradient-to-r from-background/50 via-transparent to-background/50" />
-          {/* Purple ambient glow */}
           <div className="absolute inset-0 bg-gradient-radial from-primary/10 via-transparent to-transparent" />
         </motion.div>
         
@@ -108,7 +105,7 @@ const HeroSection = () => {
                 className="inline-block glass-card px-5 py-2.5 mb-6"
               >
                 <span className="text-primary text-sm font-display tracking-[0.3em]">
-                  PRIME PURPLE
+                  SHAMS VISUALS
                 </span>
               </motion.div>
 
@@ -116,22 +113,20 @@ const HeroSection = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, duration: 0.7, ease: "easeInOut" }}
-                className="font-display text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-none"
+                className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
               >
-                <span className="prime-text prime-glow">Ahmed</span>
+                <span className="text-foreground">Transform your brand into a</span>
                 <br />
-                <span className="text-foreground">Shams</span>
+                <span className="prime-text prime-glow">Visual Experience</span>
               </motion.h1>
 
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6, duration: 0.6, ease: "easeInOut" }}
-                className="text-xl md:text-2xl text-muted-foreground mb-10 font-light tracking-wide"
+                className="text-lg md:text-xl text-muted-foreground mb-10 font-light tracking-wide max-w-xl"
               >
-                <span className="text-primary">Branding & Graphic Design</span>{' '}
-                <span className="text-muted-foreground">•</span>{' '}
-                <span className="text-foreground">Web Development</span>
+                Every pixel has a purpose. Every design tells a story. From bold branding to smooth 3D animations—ideas become visuals your audience will remember.
               </motion.p>
 
               <motion.div
@@ -146,15 +141,15 @@ const HeroSection = () => {
                   whileTap={{ scale: 0.97 }}
                   className="px-10 py-4 metallic-prime text-primary-foreground font-display font-bold rounded-2xl transition-all duration-500 ease-in-out animate-glow-pulse"
                 >
-                  Connect
+                  Start a Project
                 </motion.button>
                 <motion.a
-                  href="#ventures"
+                  href="#projects"
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.97 }}
                   className="glass-card px-10 py-4 font-display font-bold text-foreground border border-primary/30 hover:border-primary/60 transition-all duration-500 ease-in-out text-center"
                 >
-                  View Ventures
+                  View Projects
                 </motion.a>
               </motion.div>
             </motion.div>
@@ -178,7 +173,6 @@ const HeroSection = () => {
                 className="relative"
                 style={{ perspective: 1000 }}
               >
-                {/* Outer pulsing ring */}
                 <motion.div 
                   animate={{ 
                     scale: [1, 1.15, 1],
@@ -188,7 +182,6 @@ const HeroSection = () => {
                   className="absolute inset-[-20px] rounded-full border-2 border-primary/40"
                 />
                 
-                {/* Inner glow ring */}
                 <motion.div 
                   animate={{ 
                     scale: [1, 1.08, 1],
@@ -198,7 +191,6 @@ const HeroSection = () => {
                   className="absolute inset-[-10px] rounded-full border border-primary/60"
                 />
                 
-                {/* Main glow background */}
                 <motion.div 
                   animate={{ 
                     scale: [1, 1.1, 1],
@@ -208,7 +200,6 @@ const HeroSection = () => {
                   className="absolute inset-0 bg-gradient-to-br from-primary/50 via-accent/30 to-primary/50 rounded-full blur-3xl" 
                 />
                 
-                {/* Rotating gradient overlay */}
                 <motion.div
                   animate={{ rotate: 360 }}
                   transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
