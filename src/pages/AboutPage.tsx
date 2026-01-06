@@ -12,10 +12,10 @@ const AboutPage = () => {
   ];
 
   const socials = [
-    { icon: <Instagram className="w-5 h-5" />, label: 'Instagram', href: 'https://instagram.com/k_0_p_a', color: 'hover:text-pink-400' },
-    { icon: <Facebook className="w-5 h-5" />, label: 'Facebook', href: 'https://facebook.com/ahmed.shams', color: 'hover:text-blue-400' },
-    { icon: <Phone className="w-5 h-5" />, label: 'WhatsApp', href: 'https://wa.me/8801707887676', color: 'hover:text-green-500' },
-    { icon: <Mail className="w-5 h-5" />, label: 'Email', href: 'mailto:shamsvisuals@gmail.com', color: 'hover:text-primary' },
+    { icon: <Instagram className="w-5 h-5" />, label: 'Instagram', href: 'https://www.instagram.com/k_0_p_a/', helper: 'Best for quick ideas and sharing references', color: 'hover:text-pink-400' },
+    { icon: <Facebook className="w-5 h-5" />, label: 'Facebook', href: 'https://www.facebook.com/AhmedShams164', helper: 'Perfect if you found me through Facebook', color: 'hover:text-blue-400' },
+    { icon: <Phone className="w-5 h-5" />, label: 'WhatsApp', href: 'https://wa.me/8801707887676', helper: 'Great for serious inquiries and fast replies', color: 'hover:text-green-500' },
+    { icon: <Mail className="w-5 h-5" />, label: 'Email', href: 'mailto:shamsvisuals@gmail.com', helper: 'Send a detailed brief here', color: 'hover:text-primary' },
   ];
 
   return (
@@ -130,32 +130,39 @@ const AboutPage = () => {
             className="glass-card p-8 md:p-12 rounded-3xl text-center"
           >
             <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4">
-              Connect <span className="text-primary">With Me</span>
+              Let's build something <span className="text-primary">beautiful</span> together
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed mb-8 max-w-2xl mx-auto">
-              You can reach me anytime through social media or email—just send a message, share your idea, and we'll start building together.
+              Tell me about your brand, your idea, or the project you have in mind. The fastest way to reach me is to send me a message on social media or email—no long forms, just a simple chat.
             </p>
             
-            <div className="flex flex-wrap justify-center gap-4 mb-8">
+            <div className="grid sm:grid-cols-2 gap-4 max-w-xl mx-auto mb-8">
               {socials.map((social) => (
                 <a
                   key={social.label}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`flex items-center gap-3 px-6 py-3 glass-card rounded-xl text-muted-foreground ${social.color} transition-all duration-300 hover:border-primary/50 hover:-translate-y-0.5`}
+                  className={`flex flex-col items-center gap-2 p-5 glass-card rounded-xl text-muted-foreground ${social.color} transition-all duration-300 hover:border-primary/50 hover:-translate-y-0.5`}
                 >
-                  {social.icon}
-                  <span className="font-display text-sm">{social.label}</span>
+                  <div className="flex items-center gap-2">
+                    {social.icon}
+                    <span className="font-display font-semibold">{social.label}</span>
+                  </div>
+                  <span className="text-xs text-muted-foreground/70">{social.helper}</span>
                 </a>
               ))}
             </div>
+
+            <p className="text-sm text-muted-foreground mb-8">
+              Whichever button you choose, your message comes directly to me, Ahmed—not a bot, not a team. I read everything and reply as soon as possible.
+            </p>
 
             <Link
               to="/packages"
               className="inline-block px-8 py-4 metallic-gold text-primary-foreground font-display font-bold rounded-2xl transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_30px_hsl(var(--gold)/0.4)]"
             >
-              Let's Work Together
+              View Packages
             </Link>
           </motion.div>
         </div>
