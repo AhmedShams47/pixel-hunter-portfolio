@@ -4,7 +4,7 @@ import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
 import AboutSection from '@/components/AboutSection';
 import VenturesSection from '@/components/VenturesSection';
-import TechArsenal from '@/components/TechArsenal';
+import PackagesSection from '@/components/PackagesSection';
 import ContactSection from '@/components/ContactSection';
 import VideoIntro from '@/components/VideoIntro';
 import FloatingSocialBar from '@/components/FloatingSocialBar';
@@ -28,7 +28,7 @@ const Index = () => {
           <HeroSection />
           <AboutSection />
           <VenturesSection />
-          <TechArsenal />
+          <PackagesSection />
           <ContactSection />
         </div>
       </main>
