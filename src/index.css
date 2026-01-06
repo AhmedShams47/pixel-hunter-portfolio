@@ -244,12 +244,18 @@
     inset: 0;
     z-index: 9999;
     background: hsl(var(--background));
+    will-change: opacity;
+    transform: translateZ(0);
+    backface-visibility: hidden;
   }
 
   .video-intro-overlay video {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
   }
 }
 
