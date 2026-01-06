@@ -141,7 +141,7 @@ const HeroSection = () => {
               </motion.div>
             </motion.div>
 
-            {/* Right side - Logo */}
+            {/* Right side - Logo with enhanced animation */}
             <motion.div
               initial={{ opacity: 0, scale: 0.85 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -149,15 +149,58 @@ const HeroSection = () => {
               className="order-1 lg:order-2 flex items-center justify-center"
             >
               <motion.div
-                whileHover={{ scale: 1.03 }}
-                transition={{ duration: 0.5, ease: "easeInOut" }}
+                whileHover={{ scale: 1.05 }}
+                animate={{ 
+                  rotateY: [0, 5, 0, -5, 0],
+                }}
+                transition={{ 
+                  rotateY: { duration: 8, repeat: Infinity, ease: "easeInOut" },
+                  scale: { duration: 0.5, ease: "easeInOut" }
+                }}
                 className="relative"
+                style={{ perspective: 1000 }}
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/40 via-accent/20 to-primary/40 rounded-full blur-3xl animate-glow-pulse" />
+                {/* Outer pulsing ring */}
+                <motion.div 
+                  animate={{ 
+                    scale: [1, 1.15, 1],
+                    opacity: [0.3, 0.6, 0.3]
+                  }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute inset-[-20px] rounded-full border-2 border-primary/40"
+                />
+                
+                {/* Inner glow ring */}
+                <motion.div 
+                  animate={{ 
+                    scale: [1, 1.08, 1],
+                    opacity: [0.5, 0.8, 0.5]
+                  }}
+                  transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                  className="absolute inset-[-10px] rounded-full border border-primary/60"
+                />
+                
+                {/* Main glow background */}
+                <motion.div 
+                  animate={{ 
+                    scale: [1, 1.1, 1],
+                    opacity: [0.4, 0.7, 0.4]
+                  }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute inset-0 bg-gradient-to-br from-primary/50 via-accent/30 to-primary/50 rounded-full blur-3xl" 
+                />
+                
+                {/* Rotating gradient overlay */}
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                  className="absolute inset-[-5px] rounded-full bg-gradient-conic from-primary/40 via-transparent via-50% to-primary/40 blur-sm"
+                />
+                
                 <img
                   src={shamsLogo}
                   alt="Shams Visuals - Logo"
-                  className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 object-cover rounded-full shadow-2xl shadow-primary/30 border-2 border-primary/30"
+                  className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 object-cover rounded-full shadow-2xl shadow-primary/40 border-2 border-primary/40 z-10"
                 />
               </motion.div>
             </motion.div>
