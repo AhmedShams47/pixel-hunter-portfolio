@@ -59,13 +59,13 @@ const PackagesSection = () => {
     },
   ];
 
-  const packageIcons = {
+  const packageIcons: Record<string, React.ReactNode> = {
     Basic: <Sparkles className="w-5 h-5" />,
     Pro: <Rocket className="w-5 h-5" />,
     Unlimited: <Crown className="w-5 h-5" />,
   };
 
-  const packageColors = {
+  const packageColors: Record<string, string> = {
     Basic: 'border-slate-500/30',
     Pro: 'border-primary/50',
     Unlimited: 'border-gold/50',
@@ -75,10 +75,10 @@ const PackagesSection = () => {
     <section id="packages" className="relative py-32 px-6">
       <div className="max-w-6xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, ease: "easeInOut" }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
           className="text-center mb-16"
         >
           <span className="text-primary text-sm font-display tracking-[0.3em] mb-4 block">
@@ -95,13 +95,13 @@ const PackagesSection = () => {
 
         {/* Service Categories */}
         <div className="space-y-12 mb-16">
-          {serviceCategories.map((category, catIndex) => (
+          {serviceCategories.map((category) => (
             <motion.div
               key={category.service}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: catIndex * 0.1, ease: "easeInOut" }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
             >
               {/* Category Header */}
               <div className="flex items-center gap-3 mb-6">
@@ -115,20 +115,16 @@ const PackagesSection = () => {
 
               {/* Packages Grid */}
               <div className="grid md:grid-cols-3 gap-4">
-                {category.packages.map((pkg, pkgIndex) => (
-                  <motion.div
+                {category.packages.map((pkg) => (
+                  <div
                     key={pkg.name}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.1 + pkgIndex * 0.1, ease: "easeInOut" }}
-                    className={`glass-card p-6 rounded-2xl hover:border-primary/50 transition-all duration-500 ease-in-out group ${packageColors[pkg.name as keyof typeof packageColors]}`}
+                    className={`glass-card p-6 rounded-2xl hover:border-primary/50 transition-all duration-300 group ${packageColors[pkg.name]}`}
                   >
                     <div className="flex items-center gap-3 mb-3">
                       <div className="text-primary">
-                        {packageIcons[pkg.name as keyof typeof packageIcons]}
+                        {packageIcons[pkg.name]}
                       </div>
-                      <h4 className="font-display text-lg font-bold text-foreground group-hover:text-primary transition-colors duration-500">
+                      <h4 className="font-display text-lg font-bold text-foreground group-hover:text-primary transition-colors duration-300">
                         {pkg.name}
                       </h4>
                       {pkg.name === 'Pro' && (
@@ -140,7 +136,7 @@ const PackagesSection = () => {
                     <p className="text-sm text-muted-foreground leading-relaxed tracking-wide">
                       {pkg.description}
                     </p>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
             </motion.div>
@@ -151,8 +147,8 @@ const PackagesSection = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.4, ease: "easeInOut" }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
           className="glass-card p-8 md:p-12 rounded-3xl text-center"
         >
           <div className="inline-flex p-4 rounded-2xl bg-primary/15 border border-primary/25 text-primary mb-4">
@@ -165,34 +161,30 @@ const PackagesSection = () => {
             For package details, availability, and custom offers, please DM me directly. No need to fill long forms—just send a message, tell me what you need, and we'll build the right package together.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
-            <motion.a
+            <a
               href="https://instagram.com/k_0_p_a"
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ y: -2, scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="px-8 py-3 text-sm font-display font-semibold metallic-prime text-primary-foreground transition-all duration-500 ease-in-out rounded-xl"
+              className="px-8 py-3 text-sm font-display font-semibold metallic-prime text-primary-foreground transition-all duration-300 rounded-xl hover:scale-[1.02] hover:-translate-y-0.5"
             >
               Instagram DM
-            </motion.a>
-            <motion.a
+            </a>
+            <a
               href="https://wa.me/8801707887676"
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ y: -2 }}
-              className="px-8 py-3 text-sm font-display font-semibold text-primary border border-primary/30 hover:border-primary/60 hover:bg-primary/10 transition-all duration-500 ease-in-out rounded-xl"
+              className="px-8 py-3 text-sm font-display font-semibold text-primary border border-primary/30 hover:border-primary/60 hover:bg-primary/10 transition-all duration-300 rounded-xl hover:-translate-y-0.5"
             >
               WhatsApp
-            </motion.a>
-            <motion.a
+            </a>
+            <a
               href="https://facebook.com/ahmed.shams"
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ y: -2 }}
-              className="px-8 py-3 text-sm font-display font-semibold text-primary border border-primary/30 hover:border-primary/60 hover:bg-primary/10 transition-all duration-500 ease-in-out rounded-xl"
+              className="px-8 py-3 text-sm font-display font-semibold text-primary border border-primary/30 hover:border-primary/60 hover:bg-primary/10 transition-all duration-300 rounded-xl hover:-translate-y-0.5"
             >
               Facebook
-            </motion.a>
+            </a>
           </div>
         </motion.div>
       </div>

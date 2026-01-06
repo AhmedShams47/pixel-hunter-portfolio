@@ -66,10 +66,19 @@
   body {
     @apply bg-background text-foreground font-sans antialiased;
     font-family: 'Cormorant Garamond', serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Cinzel', serif;
+  }
+
+  /* GPU acceleration hints */
+  .glass-card,
+  [class*="animate-"] {
+    transform: translateZ(0);
+    backface-visibility: hidden;
   }
 }
 

@@ -1,5 +1,5 @@
-import { useEffect, useState, useCallback } from 'react';
-import { motion, useMotionValue, useSpring, useScroll, useTransform } from 'framer-motion';
+import { useEffect, useState, useCallback, useMemo } from 'react';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
 
 interface Star {
   id: number;
@@ -7,8 +7,7 @@ interface Star {
   y: number;
   size: number;
   opacity: number;
-  twinkleDuration: number;
-  twinkleDelay: number;
+  delay: number;
 }
 
 const ParticleBackground = () => {
@@ -16,155 +15,133 @@ const ParticleBackground = () => {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   
-  const smoothMouseX = useSpring(mouseX, { stiffness: 30, damping: 25 });
-  const smoothMouseY = useSpring(mouseY, { stiffness: 30, damping: 25 });
+  // Lighter spring config for better performance
+  const smoothMouseX = useSpring(mouseX, { stiffness: 20, damping: 30, mass: 1 });
+  const smoothMouseY = useSpring(mouseY, { stiffness: 20, damping: 30, mass: 1 });
 
-  const { scrollY } = useScroll();
-  const parallaxY1 = useTransform(scrollY, [0, 3000], [0, -400]);
-  const parallaxY2 = useTransform(scrollY, [0, 3000], [0, -250]);
-  const parallaxY3 = useTransform(scrollY, [0, 3000], [0, -150]);
-
+  // Generate fewer stars for better performance
   useEffect(() => {
     const newStars: Star[] = [];
-    for (let i = 0; i < 120; i++) {
+    const starCount = window.innerWidth < 768 ? 30 : 50; // Fewer on mobile
+    
+    for (let i = 0; i < starCount; i++) {
       newStars.push({
         id: i,
         x: Math.random() * 100,
         y: Math.random() * 100,
-        size: Math.random() * 2.5 + 0.5,
-        opacity: Math.random() * 0.7 + 0.3,
-        twinkleDuration: Math.random() * 3 + 2,
-        twinkleDelay: Math.random() * 5,
+        size: Math.random() * 2 + 0.5,
+        opacity: Math.random() * 0.5 + 0.3,
+        delay: Math.random() * 5,
       });
     }
     setStars(newStars);
   }, []);
 
+  // Throttled mouse handler
   const handleMouseMove = useCallback((e: MouseEvent) => {
     const { clientX, clientY } = e;
     const { innerWidth, innerHeight } = window;
-    mouseX.set((clientX / innerWidth - 0.5) * 30);
-    mouseY.set((clientY / innerHeight - 0.5) * 30);
+    mouseX.set((clientX / innerWidth - 0.5) * 15);
+    mouseY.set((clientY / innerHeight - 0.5) * 15);
   }, [mouseX, mouseY]);
 
   useEffect(() => {
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    let ticking = false;
+    const throttledHandler = (e: MouseEvent) => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          handleMouseMove(e);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    
+    window.addEventListener('mousemove', throttledHandler, { passive: true });
+    return () => window.removeEventListener('mousemove', throttledHandler);
   }, [handleMouseMove]);
+
+  // Memoize star elements
+  const starElements = useMemo(() => (
+    stars.map((star) => (
+      <div
+        key={star.id}
+        className="absolute rounded-full bg-foreground/60 animate-twinkle"
+        style={{
+          left: `${star.x}%`,
+          top: `${star.y}%`,
+          width: star.size,
+          height: star.size,
+          '--twinkle-duration': '4s',
+          '--twinkle-delay': `${star.delay}s`,
+          willChange: 'opacity',
+        } as React.CSSProperties}
+      />
+    ))
+  ), [stars]);
+
+  // Memoize glow stars
+  const glowStars = useMemo(() => (
+    stars.slice(0, 8).map((star) => (
+      <div
+        key={`glow-${star.id}`}
+        className="absolute rounded-full animate-twinkle"
+        style={{
+          left: `${star.x}%`,
+          top: `${star.y}%`,
+          width: star.size * 4,
+          height: star.size * 4,
+          background: `radial-gradient(circle, hsl(var(--primary) / 0.6) 0%, transparent 70%)`,
+          '--twinkle-duration': '5s',
+          '--twinkle-delay': `${star.delay}s`,
+          willChange: 'opacity',
+        } as React.CSSProperties}
+      />
+    ))
+  ), [stars]);
 
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-      {/* Deep space gradient - Purple themed */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-[hsl(270,35%,6%)] to-[hsl(280,40%,4%)]" />
+      {/* Simple gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-[hsl(270,30%,5%)] to-background" />
 
-      {/* Nebula clouds - Layer 1 (furthest) - Purple themed */}
-      <motion.div 
-        className="absolute inset-0 opacity-20"
-        style={{ y: parallaxY1 }}
-      >
-        <motion.div
-          className="absolute top-[10%] left-[5%] w-[600px] h-[600px] rounded-full animate-nebula"
+      {/* Single nebula layer with CSS animation (no JS) */}
+      <div className="absolute inset-0 opacity-20">
+        <div
+          className="absolute top-[15%] left-[10%] w-[400px] h-[400px] rounded-full animate-nebula"
           style={{
-            background: 'radial-gradient(ellipse, hsl(280 80% 50% / 0.4) 0%, transparent 70%)',
+            background: 'radial-gradient(ellipse, hsl(270 70% 50% / 0.3) 0%, transparent 70%)',
             filter: 'blur(60px)',
-            x: smoothMouseX,
-            y: smoothMouseY,
+            willChange: 'transform',
           }}
         />
-        <motion.div
-          className="absolute top-[60%] right-[10%] w-[500px] h-[500px] rounded-full animate-nebula"
+        <div
+          className="absolute top-[50%] right-[5%] w-[350px] h-[350px] rounded-full animate-nebula"
           style={{
-            background: 'radial-gradient(ellipse, hsl(300 70% 45% / 0.3) 0%, transparent 70%)',
-            filter: 'blur(80px)',
-            animationDelay: '7s',
-            x: smoothMouseX,
-            y: smoothMouseY,
-          }}
-        />
-      </motion.div>
-
-      {/* Nebula clouds - Layer 2 - Purple themed */}
-      <motion.div 
-        className="absolute inset-0 opacity-15"
-        style={{ y: parallaxY2 }}
-      >
-        <motion.div
-          className="absolute top-[30%] right-[20%] w-[450px] h-[450px] rounded-full animate-nebula"
-          style={{
-            background: 'radial-gradient(ellipse, hsl(260 75% 55% / 0.35) 0%, transparent 70%)',
-            filter: 'blur(50px)',
-            animationDelay: '3s',
-            x: smoothMouseX,
-            y: smoothMouseY,
-          }}
-        />
-        <motion.div
-          className="absolute bottom-[20%] left-[15%] w-[400px] h-[400px] rounded-full animate-nebula"
-          style={{
-            background: 'radial-gradient(ellipse, hsl(270 60% 40% / 0.3) 0%, transparent 70%)',
+            background: 'radial-gradient(ellipse, hsl(280 60% 45% / 0.25) 0%, transparent 70%)',
             filter: 'blur(70px)',
-            animationDelay: '10s',
-            x: smoothMouseX,
-            y: smoothMouseY,
+            animationDelay: '8s',
+            willChange: 'transform',
           }}
         />
-      </motion.div>
+      </div>
 
-      {/* Stars - Layer 3 (closest) */}
-      <motion.div 
-        className="absolute inset-0"
-        style={{ y: parallaxY3 }}
-      >
-        {stars.map((star) => (
-          <motion.div
-            key={star.id}
-            className="absolute rounded-full bg-[hsl(280,20%,90%)] animate-twinkle"
-            style={{
-              left: `${star.x}%`,
-              top: `${star.y}%`,
-              width: star.size,
-              height: star.size,
-              '--twinkle-duration': `${star.twinkleDuration}s`,
-              '--twinkle-delay': `${star.twinkleDelay}s`,
-              x: smoothMouseX,
-              y: smoothMouseY,
-            } as React.CSSProperties}
-          />
-        ))}
-      </motion.div>
+      {/* Stars layer - CSS only, no motion tracking */}
+      <div className="absolute inset-0">
+        {starElements}
+      </div>
 
-      {/* Bright stars with glow */}
-      <motion.div 
-        className="absolute inset-0"
-        style={{ y: parallaxY3 }}
-      >
-        {stars.slice(0, 15).map((star) => (
-          <motion.div
-            key={`glow-${star.id}`}
-            className="absolute rounded-full animate-twinkle"
-            style={{
-              left: `${star.x}%`,
-              top: `${star.y}%`,
-              width: star.size * 3,
-              height: star.size * 3,
-              background: `radial-gradient(circle, hsl(var(--primary) / 0.8) 0%, transparent 70%)`,
-              '--twinkle-duration': `${star.twinkleDuration}s`,
-              '--twinkle-delay': `${star.twinkleDelay}s`,
-              x: smoothMouseX,
-              y: smoothMouseY,
-            } as React.CSSProperties}
-          />
-        ))}
-      </motion.div>
+      {/* Glow stars - minimal count */}
+      <div className="absolute inset-0">
+        {glowStars}
+      </div>
 
-      {/* Central glow accent */}
-      <motion.div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full opacity-5"
+      {/* Subtle center glow - CSS animation */}
+      <div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-[0.03] animate-pulse"
         style={{
           background: 'radial-gradient(circle, hsl(var(--primary)) 0%, transparent 60%)',
         }}
-        animate={{ scale: [1, 1.1, 1] }}
-        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
       />
     </div>
   );

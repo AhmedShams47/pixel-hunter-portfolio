@@ -2,14 +2,21 @@ import { motion } from 'framer-motion';
 import { Mail, MapPin, ArrowRight, Globe } from 'lucide-react';
 
 const ContactSection = () => {
+  const socials = [
+    { name: 'Instagram', href: 'https://instagram.com/k_0_p_a' },
+    { name: 'Facebook', href: 'https://facebook.com/ahmed.shams' },
+    { name: 'Behance', href: 'https://behance.net/ShamsVisuals' },
+    { name: 'Linktree', href: 'https://linktr.ee/shamsvisuals' },
+  ];
+
   return (
     <section id="contact" className="relative py-32 px-6">
       <div className="max-w-4xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, ease: "easeInOut" }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
           className="text-center mb-12"
         >
           <span className="text-primary text-sm font-display tracking-[0.3em] mb-4 block">
@@ -25,10 +32,10 @@ const ContactSection = () => {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.96 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.15, ease: "easeInOut" }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
           className="glass-card p-8 md:p-12 rounded-3xl"
         >
           <div className="grid md:grid-cols-2 gap-8">
@@ -44,7 +51,7 @@ const ContactSection = () => {
                   </div>
                   <a 
                     href="mailto:shamsvisuals@gmail.com"
-                    className="text-foreground font-medium hover:text-primary transition-colors duration-500"
+                    className="text-foreground font-medium hover:text-primary transition-colors duration-300"
                   >
                     shamsvisuals@gmail.com
                   </a>
@@ -63,7 +70,7 @@ const ContactSection = () => {
                     href="https://shamsvisual.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-foreground font-medium hover:text-primary transition-colors duration-500"
+                    className="text-foreground font-medium hover:text-primary transition-colors duration-300"
                   >
                     shamsvisual.com
                   </a>
@@ -99,7 +106,7 @@ const ContactSection = () => {
                     href="https://wa.me/8801707887676"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-foreground font-medium hover:text-primary transition-colors duration-500"
+                    className="text-foreground font-medium hover:text-primary transition-colors duration-300"
                   >
                     +880 1707 887 676
                   </a>
@@ -117,38 +124,29 @@ const ContactSection = () => {
 
             {/* CTA */}
             <div className="flex flex-col justify-center">
-              <motion.a
+              <a
                 href="mailto:shamsvisuals@gmail.com"
-                whileHover={{ scale: 1.02, boxShadow: '0 0 50px hsl(var(--gold) / 0.4)' }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full py-5 metallic-gold text-primary-foreground font-display font-bold rounded-2xl flex items-center justify-center gap-3 group transition-all duration-500 ease-in-out"
+                className="w-full py-5 metallic-gold text-primary-foreground font-display font-bold rounded-2xl flex items-center justify-center gap-3 group transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_40px_hsl(var(--gold)/0.4)]"
               >
                 Start a Conversation
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-500 ease-in-out" />
-              </motion.a>
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+              </a>
 
               <p className="text-center text-xs text-muted-foreground mt-4 tracking-wide">
                 Or connect via social channels below
               </p>
 
               <div className="flex flex-wrap justify-center gap-3 mt-4">
-                {[
-                  { name: 'Instagram', href: 'https://instagram.com/k_0_p_a' },
-                  { name: 'Facebook', href: 'https://facebook.com/ahmed.shams' },
-                  { name: 'Behance', href: 'https://behance.net/ShamsVisuals' },
-                  { name: 'Linktree', href: 'https://linktr.ee/shamsvisuals' },
-                ].map((social) => (
-                  <motion.a
+                {socials.map((social) => (
+                  <a
                     key={social.name}
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    whileHover={{ y: -2 }}
-                    transition={{ duration: 0.3, ease: "easeInOut" }}
-                    className="px-4 py-2 text-sm text-muted-foreground hover:text-primary transition-colors duration-500 ease-in-out rounded-xl border border-border/50 hover:border-primary/50"
+                    className="px-4 py-2 text-sm text-muted-foreground hover:text-primary transition-all duration-300 rounded-xl border border-border/50 hover:border-primary/50 hover:-translate-y-0.5"
                   >
                     {social.name}
-                  </motion.a>
+                  </a>
                 ))}
               </div>
             </div>
@@ -157,13 +155,7 @@ const ContactSection = () => {
       </div>
 
       {/* Footer */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.7, delay: 0.25, ease: "easeInOut" }}
-        className="mt-20 text-center"
-      >
+      <div className="mt-20 text-center">
         <div className="text-muted-foreground text-sm tracking-wide">
           <span className="font-display tracking-[0.2em]">SHAMS VISUALS</span>
           <span className="mx-2">•</span>
@@ -172,7 +164,7 @@ const ContactSection = () => {
         <div className="text-xs text-muted-foreground/50 mt-2 font-mono">
           Designed with passion • Built with precision
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 };
