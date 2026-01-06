@@ -9,7 +9,6 @@ interface VentureCardProps {
   vibe: string;
   icon: React.ReactNode;
   gradient: string;
-  link?: string;
   delay?: number;
 }
 
@@ -20,7 +19,6 @@ const VentureCard = ({
   vibe,
   icon,
   gradient,
-  link,
   delay = 0,
 }: VentureCardProps) => {
   const [rotateX, setRotateX] = useState(0);
@@ -108,14 +106,12 @@ const VentureCard = ({
 
           {/* CTA */}
           <motion.a
-            href={link || '#'}
-            target={link ? '_blank' : undefined}
-            rel={link ? 'noopener noreferrer' : undefined}
+            href="#"
             whileHover={{ x: 5 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className="inline-flex items-center gap-2 text-sm font-display text-primary hover:text-foreground transition-colors duration-500 ease-in-out"
           >
-            {link ? 'Visit Website' : 'Explore'}
+            Explore
             <ExternalLink className="w-4 h-4" />
           </motion.a>
         </div>
