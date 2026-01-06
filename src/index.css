@@ -6,54 +6,55 @@
 
 @layer base {
   :root {
-    --background: 20 10% 4%;
-    --foreground: 40 30% 95%;
+    --background: 270 20% 4%;
+    --foreground: 270 20% 95%;
 
-    --card: 25 15% 8%;
-    --card-foreground: 40 30% 95%;
+    --card: 270 25% 8%;
+    --card-foreground: 270 20% 95%;
 
-    --popover: 25 18% 10%;
-    --popover-foreground: 40 30% 95%;
+    --popover: 270 28% 10%;
+    --popover-foreground: 270 20% 95%;
 
-    --primary: 43 80% 55%;
-    --primary-foreground: 20 10% 4%;
+    --primary: 270 80% 65%;
+    --primary-foreground: 270 20% 4%;
 
-    --secondary: 25 12% 12%;
-    --secondary-foreground: 40 30% 95%;
+    --secondary: 270 20% 12%;
+    --secondary-foreground: 270 20% 95%;
 
-    --muted: 25 10% 18%;
-    --muted-foreground: 40 15% 55%;
+    --muted: 270 15% 18%;
+    --muted-foreground: 270 15% 55%;
 
-    --accent: 35 70% 50%;
-    --accent-foreground: 20 10% 4%;
+    --accent: 280 70% 55%;
+    --accent-foreground: 270 20% 4%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 35 20% 18%;
-    --input: 25 15% 15%;
-    --ring: 43 80% 55%;
+    --border: 270 25% 18%;
+    --input: 270 20% 15%;
+    --ring: 270 80% 65%;
 
     --radius: 1.25rem;
 
-    /* Golden Prime theme tokens */
-    --gold: 43 80% 55%;
-    --gold-light: 45 90% 65%;
-    --gold-dark: 40 70% 40%;
-    --gold-shine: 48 100% 70%;
-    --luxury-dark: 20 10% 4%;
-    --luxury-charcoal: 25 12% 10%;
-    --glass-bg: 25 15% 8%;
-    --glass-border: 43 40% 30%;
+    /* Prime Purple theme tokens */
+    --prime: 270 80% 65%;
+    --prime-light: 275 90% 75%;
+    --prime-dark: 265 70% 45%;
+    --prime-shine: 280 100% 80%;
+    --prime-neon: 275 100% 70%;
+    --luxury-dark: 270 20% 4%;
+    --luxury-charcoal: 270 18% 10%;
+    --glass-bg: 270 25% 8%;
+    --glass-border: 270 40% 30%;
 
-    --sidebar-background: 25 12% 6%;
-    --sidebar-foreground: 40 30% 95%;
-    --sidebar-primary: 43 80% 55%;
-    --sidebar-primary-foreground: 20 10% 4%;
-    --sidebar-accent: 25 15% 15%;
-    --sidebar-accent-foreground: 40 30% 95%;
-    --sidebar-border: 35 20% 18%;
-    --sidebar-ring: 43 80% 55%;
+    --sidebar-background: 270 18% 6%;
+    --sidebar-foreground: 270 20% 95%;
+    --sidebar-primary: 270 80% 65%;
+    --sidebar-primary-foreground: 270 20% 4%;
+    --sidebar-accent: 270 20% 15%;
+    --sidebar-accent-foreground: 270 20% 95%;
+    --sidebar-border: 270 25% 18%;
+    --sidebar-ring: 270 80% 65%;
   }
 }
 
@@ -84,7 +85,7 @@
     -webkit-backdrop-filter: blur(24px);
     border: 1px solid hsl(var(--glass-border) / 0.3);
     box-shadow: 
-      0 8px 32px hsl(var(--gold) / 0.08),
+      0 8px 32px hsl(var(--prime) / 0.08),
       inset 0 1px 0 hsl(var(--foreground) / 0.05);
   }
 
@@ -98,48 +99,52 @@
     background: linear-gradient(
       90deg,
       transparent,
-      hsl(var(--gold) / 0.5),
+      hsl(var(--prime) / 0.5),
       transparent
     );
   }
 
-  .gold-text {
+  .gold-text,
+  .prime-text {
     background: linear-gradient(
       135deg,
-      hsl(var(--gold-light)) 0%,
-      hsl(var(--gold)) 30%,
-      hsl(var(--gold-shine)) 50%,
-      hsl(var(--gold)) 70%,
-      hsl(var(--gold-dark)) 100%
+      hsl(var(--prime-light)) 0%,
+      hsl(var(--prime)) 30%,
+      hsl(var(--prime-shine)) 50%,
+      hsl(var(--prime)) 70%,
+      hsl(var(--prime-dark)) 100%
     );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    filter: drop-shadow(0 2px 4px hsl(var(--gold) / 0.3));
+    filter: drop-shadow(0 2px 4px hsl(var(--prime) / 0.3));
   }
 
-  .gold-glow {
+  .gold-glow,
+  .prime-glow {
     text-shadow: 
-      0 0 10px hsl(var(--gold) / 0.5),
-      0 0 30px hsl(var(--gold) / 0.3),
-      0 0 50px hsl(var(--gold) / 0.2);
+      0 0 10px hsl(var(--prime) / 0.5),
+      0 0 30px hsl(var(--prime) / 0.3),
+      0 0 50px hsl(var(--prime-neon) / 0.2);
   }
 
-  .gold-box-glow {
+  .gold-box-glow,
+  .prime-box-glow {
     box-shadow: 
-      0 0 25px hsl(var(--gold) / 0.25),
-      0 0 50px hsl(var(--gold) / 0.15),
-      0 0 100px hsl(var(--gold) / 0.08);
+      0 0 25px hsl(var(--prime) / 0.25),
+      0 0 50px hsl(var(--prime) / 0.15),
+      0 0 100px hsl(var(--prime-neon) / 0.08);
   }
 
-  .metallic-gold {
+  .metallic-gold,
+  .metallic-prime {
     background: linear-gradient(
       145deg,
-      hsl(var(--gold-dark)) 0%,
-      hsl(var(--gold)) 25%,
-      hsl(var(--gold-shine)) 50%,
-      hsl(var(--gold)) 75%,
-      hsl(var(--gold-dark)) 100%
+      hsl(var(--prime-dark)) 0%,
+      hsl(var(--prime)) 25%,
+      hsl(var(--prime-shine)) 50%,
+      hsl(var(--prime)) 75%,
+      hsl(var(--prime-dark)) 100%
     );
     background-size: 200% 200%;
     animation: metallic-shimmer 6s ease-in-out infinite;
@@ -249,12 +254,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--gold) / 0.3);
+  background: hsl(var(--prime) / 0.3);
   border-radius: 8px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--gold) / 0.5);
+  background: hsl(var(--prime) / 0.5);
 }
 
 /* Smooth scrolling */

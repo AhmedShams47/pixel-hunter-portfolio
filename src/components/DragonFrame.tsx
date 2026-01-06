@@ -14,7 +14,7 @@ const DragonFrame = ({ children }: DragonFrameProps) => {
     >
       {/* Outer glow effect */}
       <motion.div
-        className="absolute -inset-4 rounded-full gold-box-glow opacity-60"
+        className="absolute -inset-4 rounded-full prime-box-glow opacity-60"
         animate={{
           scale: [1, 1.05, 1],
           opacity: [0.4, 0.7, 0.4],
@@ -32,22 +32,22 @@ const DragonFrame = ({ children }: DragonFrameProps) => {
         <svg
           viewBox="0 0 400 400"
           className="absolute inset-0 w-full h-full z-10"
-          style={{ filter: 'drop-shadow(0 0 20px hsl(var(--gold) / 0.5))' }}
+          style={{ filter: 'drop-shadow(0 0 20px hsl(var(--prime) / 0.5))' }}
         >
           <defs>
-            {/* Gold gradient for dragon body */}
-            <linearGradient id="dragonGold" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="hsl(45, 90%, 65%)" />
-              <stop offset="30%" stopColor="hsl(40, 85%, 50%)" />
-              <stop offset="50%" stopColor="hsl(45, 95%, 70%)" />
-              <stop offset="70%" stopColor="hsl(38, 80%, 45%)" />
-              <stop offset="100%" stopColor="hsl(45, 90%, 60%)" />
+            {/* Purple gradient for dragon body */}
+            <linearGradient id="dragonPurple" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="hsl(275, 90%, 75%)" />
+              <stop offset="30%" stopColor="hsl(270, 85%, 60%)" />
+              <stop offset="50%" stopColor="hsl(280, 95%, 80%)" />
+              <stop offset="70%" stopColor="hsl(265, 80%, 50%)" />
+              <stop offset="100%" stopColor="hsl(270, 90%, 65%)" />
             </linearGradient>
             
             {/* Shimmer gradient */}
             <linearGradient id="dragonShimmer" x1="0%" y1="0%" x2="100%" y2="0%">
               <stop offset="0%" stopColor="transparent" />
-              <stop offset="50%" stopColor="hsl(45, 100%, 80%)" stopOpacity="0.6" />
+              <stop offset="50%" stopColor="hsl(280, 100%, 85%)" stopOpacity="0.6" />
               <stop offset="100%" stopColor="transparent" />
               <animate attributeName="x1" values="-100%;100%" dur="3s" repeatCount="indefinite" />
               <animate attributeName="x2" values="0%;200%" dur="3s" repeatCount="indefinite" />
@@ -69,7 +69,7 @@ const DragonFrame = ({ children }: DragonFrameProps) => {
                  C80 370, 30 280, 30 200 
                  C30 120, 80 30, 200 30"
               fill="none"
-              stroke="url(#dragonGold)"
+              stroke="url(#dragonPurple)"
               strokeWidth="18"
               strokeLinecap="round"
               initial={{ pathLength: 0 }}
@@ -89,7 +89,7 @@ const DragonFrame = ({ children }: DragonFrameProps) => {
                   cx={x}
                   cy={y}
                   r="4"
-                  fill="hsl(45, 100%, 75%)"
+                  fill="hsl(280, 100%, 85%)"
                   initial={{ opacity: 0, scale: 0 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.5 + i * 0.05, duration: 0.3 }}
@@ -104,30 +104,32 @@ const DragonFrame = ({ children }: DragonFrameProps) => {
               transition={{ delay: 1.5, duration: 0.5 }}
             >
               {/* Head base */}
-              <ellipse cx="200" cy="25" rx="35" ry="25" fill="url(#dragonGold)" />
+              <ellipse cx="200" cy="25" rx="35" ry="25" fill="url(#dragonPurple)" />
               
               {/* Horns */}
               <path
                 d="M175 15 L160 -15 L170 10 M225 15 L240 -15 L230 10"
-                stroke="url(#dragonGold)"
+                stroke="url(#dragonPurple)"
                 strokeWidth="6"
                 fill="none"
                 strokeLinecap="round"
               />
               
               {/* Eyes */}
-              <circle cx="185" cy="25" r="5" fill="hsl(0, 80%, 50%)" />
-              <circle cx="215" cy="25" r="5" fill="hsl(0, 80%, 50%)" />
+              <circle cx="185" cy="25" r="5" fill="hsl(275, 100%, 70%)" />
+              <circle cx="215" cy="25" r="5" fill="hsl(275, 100%, 70%)" />
+              <circle cx="186" cy="24" r="2" fill="hsl(0, 0%, 100%)" />
+              <circle cx="216" cy="24" r="2" fill="hsl(0, 0%, 100%)" />
               <circle cx="186" cy="24" r="2" fill="hsl(0, 0%, 100%)" />
               <circle cx="216" cy="24" r="2" fill="hsl(0, 0%, 100%)" />
               
               {/* Snout */}
-              <ellipse cx="200" cy="35" rx="15" ry="8" fill="hsl(40, 80%, 45%)" />
+              <ellipse cx="200" cy="35" rx="15" ry="8" fill="hsl(265, 80%, 50%)" />
               
               {/* Whiskers/Tendrils */}
               <motion.path
                 d="M165 30 Q140 20, 130 35 M235 30 Q260 20, 270 35"
-                stroke="url(#dragonGold)"
+                stroke="url(#dragonPurple)"
                 strokeWidth="3"
                 fill="none"
                 strokeLinecap="round"
@@ -150,7 +152,7 @@ const DragonFrame = ({ children }: DragonFrameProps) => {
             >
               <motion.path
                 d="M200 375 Q200 400, 180 410 Q150 420, 140 400 Q130 380, 150 370"
-                stroke="url(#dragonGold)"
+                stroke="url(#dragonPurple)"
                 strokeWidth="12"
                 fill="none"
                 strokeLinecap="round"
@@ -166,7 +168,7 @@ const DragonFrame = ({ children }: DragonFrameProps) => {
               {/* Tail spikes */}
               <path
                 d="M145 395 L130 385 M155 405 L145 420"
-                stroke="hsl(45, 90%, 60%)"
+                stroke="hsl(270, 90%, 65%)"
                 strokeWidth="4"
                 strokeLinecap="round"
               />
@@ -181,7 +183,7 @@ const DragonFrame = ({ children }: DragonFrameProps) => {
               {/* Left claw */}
               <path
                 d="M35 180 Q15 175, 10 165 M35 200 Q10 200, 5 195 M35 220 Q15 225, 10 235"
-                stroke="url(#dragonGold)"
+                stroke="url(#dragonPurple)"
                 strokeWidth="5"
                 fill="none"
                 strokeLinecap="round"
@@ -189,7 +191,7 @@ const DragonFrame = ({ children }: DragonFrameProps) => {
               {/* Right claw */}
               <path
                 d="M365 180 Q385 175, 390 165 M365 200 Q390 200, 395 195 M365 220 Q385 225, 390 235"
-                stroke="url(#dragonGold)"
+                stroke="url(#dragonPurple)"
                 strokeWidth="5"
                 fill="none"
                 strokeLinecap="round"
@@ -219,11 +221,10 @@ const DragonFrame = ({ children }: DragonFrameProps) => {
             {/* Gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
             
-            {/* Gold shimmer effect */}
             <motion.div
               className="absolute inset-0 opacity-20"
               style={{
-                background: 'linear-gradient(45deg, transparent 30%, hsl(var(--gold) / 0.4) 50%, transparent 70%)',
+                background: 'linear-gradient(45deg, transparent 30%, hsl(var(--prime) / 0.4) 50%, transparent 70%)',
               }}
               animate={{
                 backgroundPosition: ['-200% 0', '200% 0'],

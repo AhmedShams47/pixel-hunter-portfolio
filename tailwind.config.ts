@@ -51,11 +51,12 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        gold: {
-          DEFAULT: "hsl(var(--gold))",
-          light: "hsl(var(--gold-light))",
-          dark: "hsl(var(--gold-dark))",
-          shine: "hsl(var(--gold-shine))",
+        prime: {
+          DEFAULT: "hsl(var(--prime))",
+          light: "hsl(var(--prime-light))",
+          dark: "hsl(var(--prime-dark))",
+          shine: "hsl(var(--prime-shine))",
+          neon: "hsl(var(--prime-neon))",
         },
         luxury: {
           dark: "hsl(var(--luxury-dark))",
@@ -110,10 +111,10 @@ export default {
         },
         "glow-pulse": {
           "0%, 100%": { 
-            boxShadow: "0 0 20px hsl(var(--gold) / 0.3), 0 0 40px hsl(var(--gold) / 0.2)" 
+            boxShadow: "0 0 20px hsl(var(--prime) / 0.3), 0 0 40px hsl(var(--prime) / 0.2)" 
           },
           "50%": { 
-            boxShadow: "0 0 40px hsl(var(--gold) / 0.5), 0 0 80px hsl(var(--gold) / 0.3)" 
+            boxShadow: "0 0 40px hsl(var(--prime) / 0.5), 0 0 80px hsl(var(--prime) / 0.3)" 
           },
         },
       },
