@@ -54,10 +54,10 @@ const ParticleBackground = () => {
 
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-      {/* Deep space gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-[hsl(230,45%,6%)] to-[hsl(260,40%,5%)]" />
+      {/* Deep space gradient - Purple themed */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-[hsl(270,35%,6%)] to-[hsl(280,40%,4%)]" />
 
-      {/* Nebula clouds - Layer 1 (furthest) */}
+      {/* Nebula clouds - Layer 1 (furthest) - Purple themed */}
       <motion.div 
         className="absolute inset-0 opacity-20"
         style={{ y: parallaxY1 }}
@@ -65,7 +65,7 @@ const ParticleBackground = () => {
         <motion.div
           className="absolute top-[10%] left-[5%] w-[600px] h-[600px] rounded-full animate-nebula"
           style={{
-            background: 'radial-gradient(ellipse, hsl(var(--glow-purple) / 0.4) 0%, transparent 70%)',
+            background: 'radial-gradient(ellipse, hsl(280 80% 50% / 0.4) 0%, transparent 70%)',
             filter: 'blur(60px)',
             x: smoothMouseX,
             y: smoothMouseY,
@@ -74,7 +74,7 @@ const ParticleBackground = () => {
         <motion.div
           className="absolute top-[60%] right-[10%] w-[500px] h-[500px] rounded-full animate-nebula"
           style={{
-            background: 'radial-gradient(ellipse, hsl(var(--nebula-pink) / 0.3) 0%, transparent 70%)',
+            background: 'radial-gradient(ellipse, hsl(300 70% 45% / 0.3) 0%, transparent 70%)',
             filter: 'blur(80px)',
             animationDelay: '7s',
             x: smoothMouseX,
@@ -83,7 +83,7 @@ const ParticleBackground = () => {
         />
       </motion.div>
 
-      {/* Nebula clouds - Layer 2 */}
+      {/* Nebula clouds - Layer 2 - Purple themed */}
       <motion.div 
         className="absolute inset-0 opacity-15"
         style={{ y: parallaxY2 }}
@@ -91,7 +91,7 @@ const ParticleBackground = () => {
         <motion.div
           className="absolute top-[30%] right-[20%] w-[450px] h-[450px] rounded-full animate-nebula"
           style={{
-            background: 'radial-gradient(ellipse, hsl(var(--glow-cyan) / 0.35) 0%, transparent 70%)',
+            background: 'radial-gradient(ellipse, hsl(260 75% 55% / 0.35) 0%, transparent 70%)',
             filter: 'blur(50px)',
             animationDelay: '3s',
             x: smoothMouseX,
@@ -101,7 +101,7 @@ const ParticleBackground = () => {
         <motion.div
           className="absolute bottom-[20%] left-[15%] w-[400px] h-[400px] rounded-full animate-nebula"
           style={{
-            background: 'radial-gradient(ellipse, hsl(var(--glow-blue) / 0.3) 0%, transparent 70%)',
+            background: 'radial-gradient(ellipse, hsl(270 60% 40% / 0.3) 0%, transparent 70%)',
             filter: 'blur(70px)',
             animationDelay: '10s',
             x: smoothMouseX,
@@ -118,7 +118,7 @@ const ParticleBackground = () => {
         {stars.map((star) => (
           <motion.div
             key={star.id}
-            className="absolute rounded-full bg-star-white animate-twinkle"
+            className="absolute rounded-full bg-[hsl(280,20%,90%)] animate-twinkle"
             style={{
               left: `${star.x}%`,
               top: `${star.y}%`,

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import profilePhoto from '@/assets/profile-photo.jpg';
 import ConnectModal from './ConnectModal';
@@ -6,25 +6,73 @@ import DragonFrame from './DragonFrame';
 
 const HeroSection = () => {
   const [isConnectOpen, setIsConnectOpen] = useState(false);
+  const video1Ref = useRef<HTMLVideoElement>(null);
+  const video2Ref = useRef<HTMLVideoElement>(null);
+  const [activeVideo, setActiveVideo] = useState<1 | 2>(1);
+
+  useEffect(() => {
+    const video1 = video1Ref.current;
+    const video2 = video2Ref.current;
+    if (!video1 || !video2) return;
+
+    const crossfadeDuration = 1.5; // seconds before end to start crossfade
+
+    const handleTimeUpdate = () => {
+      const activeVid = activeVideo === 1 ? video1 : video2;
+      const inactiveVid = activeVideo === 1 ? video2 : video1;
+      
+      if (activeVid.duration - activeVid.currentTime <= crossfadeDuration) {
+        // Start the inactive video and crossfade
+        inactiveVid.currentTime = 0;
+        inactiveVid.play();
+        setActiveVideo(activeVideo === 1 ? 2 : 1);
+      }
+    };
+
+    video1.addEventListener('timeupdate', handleTimeUpdate);
+    video2.addEventListener('timeupdate', handleTimeUpdate);
+
+    return () => {
+      video1.removeEventListener('timeupdate', handleTimeUpdate);
+      video2.removeEventListener('timeupdate', handleTimeUpdate);
+    };
+  }, [activeVideo]);
 
   return (
     <>
       <section className="relative min-h-screen flex items-center justify-center px-6 pt-24 overflow-hidden">
-        {/* Dragon Eye Background Video */}
+        {/* Dragon Eye Background Video with Crossfade */}
         <div className="absolute inset-0 z-0">
           <video
+            ref={video1Ref}
             autoPlay
-            loop
             muted
             playsInline
-            className="absolute inset-0 w-full h-full object-cover"
-            style={{ filter: 'brightness(0.4)' }}
+            className="absolute inset-0 w-full h-full object-cover transition-opacity duration-[1500ms] ease-in-out"
+            style={{ 
+              filter: 'brightness(0.4)',
+              opacity: activeVideo === 1 ? 1 : 0
+            }}
+          >
+            <source src="/videos/dragon-eye-bg.mp4" type="video/mp4" />
+          </video>
+          <video
+            ref={video2Ref}
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover transition-opacity duration-[1500ms] ease-in-out"
+            style={{ 
+              filter: 'brightness(0.4)',
+              opacity: activeVideo === 2 ? 1 : 0
+            }}
           >
             <source src="/videos/dragon-eye-bg.mp4" type="video/mp4" />
           </video>
           {/* Gradient overlay for better text readability */}
           <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/30 to-background/80" />
           <div className="absolute inset-0 bg-gradient-to-r from-background/50 via-transparent to-background/50" />
+          {/* Purple ambient glow */}
+          <div className="absolute inset-0 bg-gradient-radial from-primary/10 via-transparent to-transparent" />
         </div>
         
         <div className="relative z-10 max-w-7xl mx-auto w-full">
@@ -43,7 +91,7 @@ const HeroSection = () => {
                 className="inline-block glass-card px-5 py-2.5 mb-6"
               >
                 <span className="text-primary text-sm font-display tracking-[0.3em]">
-                  GOLDEN PRIME
+                  PRIME PURPLE
                 </span>
               </motion.div>
 
@@ -53,7 +101,7 @@ const HeroSection = () => {
                 transition={{ delay: 0.5, duration: 0.7, ease: "easeInOut" }}
                 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-none"
               >
-                <span className="gold-text gold-glow">Ahmed</span>
+                <span className="prime-text prime-glow">Ahmed</span>
                 <br />
                 <span className="text-foreground">Shams</span>
               </motion.h1>
@@ -77,9 +125,9 @@ const HeroSection = () => {
               >
                 <motion.button
                   onClick={() => setIsConnectOpen(true)}
-                  whileHover={{ scale: 1.03, boxShadow: '0 0 50px hsl(var(--gold) / 0.4)' }}
+                  whileHover={{ scale: 1.03, boxShadow: '0 0 50px hsl(var(--prime) / 0.4)' }}
                   whileTap={{ scale: 0.97 }}
-                  className="px-10 py-4 metallic-gold text-primary-foreground font-display font-bold rounded-2xl transition-all duration-500 ease-in-out animate-glow-pulse"
+                  className="px-10 py-4 metallic-prime text-primary-foreground font-display font-bold rounded-2xl transition-all duration-500 ease-in-out animate-glow-pulse"
                 >
                   Connect
                 </motion.button>
