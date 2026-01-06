@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import shamsLogo from '@/assets/shams-logo.jpg';
 import ConnectModal from './ConnectModal';
 
@@ -7,7 +7,15 @@ const HeroSection = () => {
   const [isConnectOpen, setIsConnectOpen] = useState(false);
   const video1Ref = useRef<HTMLVideoElement>(null);
   const video2Ref = useRef<HTMLVideoElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
   const [activeVideo, setActiveVideo] = useState<1 | 2>(1);
+
+  // Parallax scroll effect
+  const { scrollY } = useScroll();
+  const backgroundY = useTransform(scrollY, [0, 1000], [0, 400]);
+  const contentY = useTransform(scrollY, [0, 1000], [0, 150]);
+  const backgroundScale = useTransform(scrollY, [0, 500], [1, 1.15]);
+  const backgroundOpacity = useTransform(scrollY, [0, 600], [1, 0.3]);
 
   useEffect(() => {
     const video1 = video1Ref.current;
@@ -39,9 +47,16 @@ const HeroSection = () => {
 
   return (
     <>
-      <section className="relative min-h-screen flex items-center justify-center px-6 pt-24 overflow-hidden">
-        {/* Dragon Eye Background Video with Crossfade */}
-        <div className="absolute inset-0 z-0">
+      <section ref={sectionRef} className="relative min-h-screen flex items-center justify-center px-6 pt-24 overflow-hidden">
+        {/* Dragon Eye Background Video with Crossfade and Parallax */}
+        <motion.div 
+          className="absolute inset-0 z-0"
+          style={{ 
+            y: backgroundY, 
+            scale: backgroundScale,
+            opacity: backgroundOpacity 
+          }}
+        >
           <video
             ref={video1Ref}
             autoPlay
@@ -72,9 +87,12 @@ const HeroSection = () => {
           <div className="absolute inset-0 bg-gradient-to-r from-background/50 via-transparent to-background/50" />
           {/* Purple ambient glow */}
           <div className="absolute inset-0 bg-gradient-radial from-primary/10 via-transparent to-transparent" />
-        </div>
+        </motion.div>
         
-        <div className="relative z-10 max-w-7xl mx-auto w-full">
+        <motion.div 
+          className="relative z-10 max-w-7xl mx-auto w-full"
+          style={{ y: contentY }}
+        >
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left side - Text content */}
             <motion.div
@@ -205,7 +223,7 @@ const HeroSection = () => {
               </motion.div>
             </motion.div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Scroll indicator */}
         <motion.div
