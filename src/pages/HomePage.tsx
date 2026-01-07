@@ -7,7 +7,10 @@ import PageLayout from '@/components/PageLayout';
 import VideoIntro from '@/components/VideoIntro';
 
 const HomePage = () => {
-  const [introComplete, setIntroComplete] = useState(false);
+  const [introComplete, setIntroComplete] = useState(() => {
+    // Check localStorage immediately to avoid flash
+    return localStorage.getItem('shams_intro_seen') === 'true';
+  });
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
