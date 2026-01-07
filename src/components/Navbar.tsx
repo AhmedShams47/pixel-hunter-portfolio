@@ -1,6 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import shamsLogo from '@/assets/shams-visuals-logo.jpg';
 
 const Navbar = () => {
   const location = useLocation();
@@ -23,12 +22,13 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="glass-card px-3 md:px-4 py-2 flex items-center gap-2 rounded-2xl hover:border-primary/50 transition-all duration-300">
-          <img 
-            src={shamsLogo} 
-            alt="Shams Visuals Logo" 
-            className="h-10 w-auto object-contain"
-          />
+        <Link to="/" className="glass-card px-4 md:px-5 py-2.5 flex items-center gap-3 rounded-2xl hover:border-primary/50 transition-all duration-300">
+          <div className="w-9 h-9 rounded-xl metallic-gold flex items-center justify-center">
+            <span className="text-primary-foreground font-display font-bold text-sm">SV</span>
+          </div>
+          <span className="font-display text-sm font-semibold tracking-[0.15em] text-foreground hidden sm:block">
+            SHAMS VISUALS
+          </span>
         </Link>
 
         {/* Navigation links */}
