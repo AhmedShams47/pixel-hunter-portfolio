@@ -9,24 +9,24 @@ const ProjectsPage = () => {
       title: 'Branding & Graphic Design',
       type: 'Branding',
       icon: <Palette className="w-6 h-6" />,
-      description: 'Logos, brand identities, marketing materials, and visual systems that make your business look established from day one. I dig into your goals first, then design assets that actually connect with your audience.',
-      feedback: '"Ahmed delivered exactly what we envisioned—professional, unique, and ahead of schedule. Our rebrand drove a 40% increase in customer inquiries."',
+      description: 'Logo designs, full brand identities, posters, social posts, and visual systems. Every project starts with understanding your brand voice, then building concepts, refining direction, and delivering designs that fit your audience.',
+      feedback: '"The branding work exceeded our expectations. Clean, professional, and perfectly captures our vision."',
       gradient: 'from-primary/20 to-accent/20',
     },
     {
       title: 'Social Media Management',
       type: 'Social Media',
       icon: <Share2 className="w-6 h-6" />,
-      description: 'Content that stops the scroll. I handle strategy, design, and scheduling so your feed stays active, on-brand, and engagement-focused—without you lifting a finger.',
-      feedback: '"Our follower count doubled in three months, and our DMs are finally full of real leads. Worth every penny."',
+      description: 'Content strategy, feed design, post scheduling, and engagement-focused visuals. Building a consistent online presence with visuals your audience actually wants to share.',
+      feedback: '"Our engagement increased significantly after working with Shams Visuals. The content is always on brand and creative."',
       gradient: 'from-orange-500/20 to-amber-500/20',
     },
     {
       title: 'Web Design & Development',
       type: 'Web',
       icon: <Globe className="w-6 h-6" />,
-      description: 'Fast, mobile-friendly websites that look stunning and actually convert visitors into customers. Clean code, sharp design, and smooth animations that make your brand memorable.',
-      feedback: '"Our bounce rate dropped and conversions went up. The site looks incredible and loads lightning fast."',
+      description: 'Modern, responsive websites that look good and feel smooth to use. Clean UI, strong visual design, and when needed, 3D animations that make your brand stand out.',
+      feedback: '"The website is exactly what we needed—fast, beautiful, and easy to navigate. Highly recommended."',
       gradient: 'from-emerald-500/20 to-teal-500/20',
     },
   ];
@@ -54,10 +54,10 @@ const ProjectsPage = () => {
               // MY WORK
             </span>
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-              Results That <span className="gold-text gold-glow">Speak</span>
+              Projects & <span className="gold-text gold-glow">Portfolio</span>
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Real projects. Real clients. Real impact. Here's what happens when strategy meets creativity.
+              Here is a look at some of the brands and creators I've helped so far. Every project is a collaboration, built around their goals and story.
             </p>
           </motion.div>
         </div>
@@ -129,10 +129,10 @@ const ProjectsPage = () => {
             className="text-center mb-10"
           >
             <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4">
-              Work <span className="text-primary">Samples</span>
+              Design <span className="text-primary">Gallery</span>
             </h2>
             <p className="text-muted-foreground max-w-lg mx-auto">
-              A snapshot of the creative assets I produce for clients across industries.
+              A glimpse into the variety of visual work I create for brands.
             </p>
           </motion.div>
 
@@ -169,18 +169,18 @@ const ProjectsPage = () => {
             className="glass-card p-10 md:p-14 rounded-3xl text-center"
           >
             <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4">
-              Want results like these?
+              Like what you see?
             </h2>
             <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
-              Your brand could be next. Message me and let's discuss what you need—no pressure, just a conversation.
+              If you like these projects and want something crafted for your brand, tap the button or DM me and let's start your own project.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 to="/packages"
                 className="px-8 py-4 metallic-gold text-primary-foreground font-display font-bold rounded-2xl transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_30px_hsl(var(--gold)/0.4)]"
-                >
-                  Get Started
-                </Link>
+              >
+                Start Your Project
+              </Link>
               <a
                 href="https://instagram.com/k_0_p_a"
                 target="_blank"

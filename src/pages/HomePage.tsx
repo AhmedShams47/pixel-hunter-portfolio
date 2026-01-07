@@ -64,13 +64,13 @@ const HomePage = () => {
                 </div>
 
                 <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                  <span className="text-foreground">Your brand deserves</span>
+                  <span className="text-foreground">Designs that speak</span>
                   <br />
-                  <span className="prime-text prime-glow">to be unforgettable.</span>
+                  <span className="prime-text prime-glow">before you do.</span>
                 </h1>
 
                 <p className="text-lg text-muted-foreground mb-8 leading-relaxed max-w-lg">
-                  I'm Ahmed Shams. I design brands that command attention, build websites that convert, and create content that grows your audience.
+                  I am Ahmed Shams, the creative mind behind Shams Visuals. I blend branding, graphic design, social media management, and web development to turn ideas into visual stories.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
@@ -78,13 +78,13 @@ const HomePage = () => {
                     to="/projects"
                     className="px-8 py-4 metallic-prime text-primary-foreground font-display font-bold rounded-2xl transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_30px_hsl(var(--prime)/0.4)] text-center"
                   >
-                    See My Work
+                    View Projects
                   </Link>
                   <Link
                     to="/packages"
                     className="glass-card px-8 py-4 font-display font-bold text-foreground border border-primary/30 hover:border-primary/60 transition-all duration-300 hover:scale-[1.02] text-center"
                   >
-                    Work With Me
+                    Contact Me
                   </Link>
                 </div>
               </motion.div>
@@ -129,10 +129,10 @@ const HomePage = () => {
               className="text-center mb-12"
             >
               <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-                How I Help <span className="text-primary">You Win</span>
+                What I <span className="text-primary">Do</span>
               </h2>
               <p className="text-muted-foreground max-w-xl mx-auto">
-                Everything you need to look professional and grow your audience—all in one place.
+                A complete creative package for brands that want to stand out.
               </p>
             </motion.div>
 
@@ -169,23 +169,23 @@ const HomePage = () => {
               className="glass-card p-10 md:p-14 rounded-3xl text-center"
             >
               <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-                Ready to stand out from the <span className="gold-text gold-glow">competition</span>?
+                Ready to build your <span className="gold-text gold-glow">brand</span>?
               </h2>
               <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
-                Stop blending in. I'll craft visuals that make your brand impossible to ignore.
+                Let's create something memorable together. From concept to launch, I'll help you tell your story visually.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
                   to="/projects"
                   className="px-8 py-4 metallic-gold text-primary-foreground font-display font-bold rounded-2xl transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_30px_hsl(var(--gold)/0.4)]"
                 >
-                  Explore Projects
+                  See My Work
                 </Link>
                 <Link
                   to="/packages"
                   className="glass-card px-8 py-4 font-display font-bold text-primary border border-primary/30 hover:border-primary/60 transition-all duration-300 hover:scale-[1.02]"
                 >
-                  Let's Talk
+                  Get Started
                 </Link>
               </div>
             </motion.div>
