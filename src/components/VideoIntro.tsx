@@ -1,38 +1,19 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const INTRO_SEEN_KEY = 'shams_intro_seen';
-
 interface VideoIntroProps {
   onComplete: () => void;
 }
 
 const VideoIntro = ({ onComplete }: VideoIntroProps) => {
-  const [shouldShow, setShouldShow] = useState(false);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    // Check if intro was already seen
-    const hasSeenIntro = localStorage.getItem(INTRO_SEEN_KEY);
-    
-    if (hasSeenIntro) {
-      // Skip intro entirely
-      onComplete();
-      return;
-    }
-
-    // Show intro for first-time visitors
-    setShouldShow(true);
-    setIsPlaying(true);
-  }, [onComplete]);
-
-  useEffect(() => {
     const video = videoRef.current;
-    if (!video || !shouldShow) return;
+    if (!video) return;
 
     const handleEnded = () => {
-      localStorage.setItem(INTRO_SEEN_KEY, 'true');
       setIsPlaying(false);
       onComplete();
     };
@@ -42,9 +23,7 @@ const VideoIntro = ({ onComplete }: VideoIntroProps) => {
     return () => {
       video.removeEventListener('ended', handleEnded);
     };
-  }, [onComplete, shouldShow]);
-
-  if (!shouldShow) return null;
+  }, [onComplete]);
 
   return (
     <AnimatePresence>
@@ -60,7 +39,6 @@ const VideoIntro = ({ onComplete }: VideoIntroProps) => {
             autoPlay
             muted
             playsInline
-            preload="metadata"
             className="w-full h-full object-cover"
           >
             <source src="/videos/dragon-intro.mp4" type="video/mp4" />
