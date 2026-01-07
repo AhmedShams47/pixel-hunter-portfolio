@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import shamsLogo from '@/assets/shams-visuals-logo.jpg';
 
 const Footer = () => {
   return (
@@ -6,13 +7,12 @@ const Footer = () => {
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg metallic-gold flex items-center justify-center">
-              <span className="text-primary-foreground font-display font-bold text-xs">SV</span>
-            </div>
-            <span className="font-display text-sm font-semibold tracking-[0.15em] text-foreground">
-              SHAMS VISUALS
-            </span>
+          <Link to="/" className="flex items-center">
+            <img 
+              src={shamsLogo} 
+              alt="Shams Visuals Logo" 
+              className="h-12 w-auto object-contain"
+            />
           </Link>
 
           {/* Quick Links */}
