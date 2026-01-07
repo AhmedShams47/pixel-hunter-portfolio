@@ -31,8 +31,8 @@ const AboutPage = () => {
             <span className="text-primary text-sm font-display tracking-[0.3em] mb-4 block">
               // ABOUT ME
             </span>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-[1.1]">
-              Meet <span className="prime-text">Ahmed Shams</span>
+            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
+              Meet <span className="gold-text gold-glow">Ahmed Shams</span>
             </h1>
           </motion.div>
         </div>
@@ -51,7 +51,7 @@ const AboutPage = () => {
             <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-6">
               Who I <span className="text-primary">Am</span>
             </h2>
-            <p className="text-lg md:text-xl text-foreground/85 leading-relaxed font-sans">
+            <p className="text-lg text-muted-foreground leading-relaxed">
               I'm Ahmed Shams, the creator of Shams Visuals. I help brands, businesses and creators look professional and memorable through design, motion, and web experiences. Over the years, I've worked with clients who needed everything from a simple logo refresh to a complete brand overhaul—and I've loved every project.
             </p>
           </motion.div>
@@ -71,7 +71,7 @@ const AboutPage = () => {
             <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-6">
               Discipline & <span className="text-primary">Process</span>
             </h2>
-            <p className="text-lg md:text-xl text-foreground/85 leading-relaxed mb-8 font-sans">
+            <p className="text-lg text-muted-foreground leading-relaxed mb-8">
               Every project starts with listening and planning. I work with clear communication, fixed milestones, and organized delivery, so you always know what is happening. I don't just "make designs"; I build systems that stay consistent across your brand.
             </p>
             
@@ -86,7 +86,7 @@ const AboutPage = () => {
                   className="flex flex-col items-center gap-3 p-4 rounded-2xl bg-secondary/30 border border-border/50 text-center"
                 >
                   <div className="text-primary">{item.icon}</div>
-                  <span className="text-sm text-foreground/80 font-sans font-medium tracking-wide">{item.label}</span>
+                  <span className="text-xs text-muted-foreground font-display tracking-wider uppercase">{item.label}</span>
                 </motion.div>
               ))}
             </div>
@@ -112,7 +112,7 @@ const AboutPage = () => {
                 3D & <span className="text-primary">Animations</span>
               </h2>
             </div>
-            <p className="text-lg md:text-xl text-foreground/85 leading-relaxed font-sans">
+            <p className="text-lg text-muted-foreground leading-relaxed">
               I love using smooth 3D animations and motion graphics to bring brands to life—logo reveals, social media intros, and subtle website animations that feel premium instead of noisy. Movement should guide the eye and add value, not distract.
             </p>
           </motion.div>
@@ -132,7 +132,7 @@ const AboutPage = () => {
             <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4">
               Let's build something <span className="text-primary">beautiful</span> together
             </h2>
-            <p className="text-lg md:text-xl text-foreground/85 leading-relaxed mb-8 max-w-2xl mx-auto font-sans">
+            <p className="text-lg text-muted-foreground leading-relaxed mb-8 max-w-2xl mx-auto">
               Tell me about your brand, your idea, or the project you have in mind. The fastest way to reach me is to send me a message on social media or email—no long forms, just a simple chat.
             </p>
             
@@ -143,18 +143,18 @@ const AboutPage = () => {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`flex flex-col items-center gap-2 p-5 glass-card rounded-xl text-foreground/80 ${social.color} transition-all duration-300 hover:border-primary/50 hover:-translate-y-0.5`}
+                  className={`flex flex-col items-center gap-2 p-5 glass-card rounded-xl text-muted-foreground ${social.color} transition-all duration-300 hover:border-primary/50 hover:-translate-y-0.5`}
                 >
                   <div className="flex items-center gap-2">
                     {social.icon}
-                    <span className="font-sans font-semibold">{social.label}</span>
+                    <span className="font-display font-semibold">{social.label}</span>
                   </div>
-                  <span className="text-sm text-foreground/60 font-sans">{social.helper}</span>
+                  <span className="text-xs text-muted-foreground/70">{social.helper}</span>
                 </a>
               ))}
             </div>
 
-            <p className="text-base text-foreground/70 mb-8 font-sans">
+            <p className="text-sm text-muted-foreground mb-8">
               Whichever button you choose, your message comes directly to me, Ahmed—not a bot, not a team. I read everything and reply as soon as possible.
             </p>
 

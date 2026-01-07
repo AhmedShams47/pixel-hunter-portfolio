@@ -40,8 +40,6 @@ const HomePage = () => {
               muted
               loop
               playsInline
-              preload="metadata"
-              poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3Crect fill='%23110818' width='1' height='1'/%3E%3C/svg%3E"
               className="absolute inset-0 w-full h-full object-cover"
               style={{ filter: 'brightness(0.3)' }}
             >
@@ -65,13 +63,13 @@ const HomePage = () => {
                   </span>
                 </div>
 
-                <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-[1.1]">
+                <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
                   <span className="text-foreground">Designs that speak</span>
                   <br />
-                  <span className="prime-text">before you do.</span>
+                  <span className="prime-text prime-glow">before you do.</span>
                 </h1>
 
-                <p className="text-lg md:text-xl text-foreground/85 mb-8 leading-relaxed max-w-lg font-sans">
+                <p className="text-lg text-muted-foreground mb-8 leading-relaxed max-w-lg">
                   I am Ahmed Shams, the creative mind behind Shams Visuals. I blend branding, graphic design, social media management, and web development to turn ideas into visual stories.
                 </p>
 
@@ -133,7 +131,7 @@ const HomePage = () => {
               <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
                 What I <span className="text-primary">Do</span>
               </h2>
-              <p className="text-foreground/80 max-w-xl mx-auto text-lg">
+              <p className="text-muted-foreground max-w-xl mx-auto">
                 A complete creative package for brands that want to stand out.
               </p>
             </motion.div>
@@ -148,10 +146,10 @@ const HomePage = () => {
                   transition={{ duration: 0.4, delay: index * 0.1, ease: "easeOut" }}
                   className="glass-card p-6 text-center group hover:border-primary/50 transition-all duration-300 rounded-2xl"
                 >
-                  <div className="mb-4 inline-flex p-3 rounded-xl bg-primary/15 border border-primary/25 text-primary group-hover:shadow-[0_0_20px_hsl(var(--prime)/0.2)] transition-shadow duration-300">
+                  <div className="mb-4 inline-flex p-3 rounded-xl bg-primary/15 border border-primary/25 text-primary group-hover:shadow-[0_0_20px_hsl(var(--gold)/0.2)] transition-shadow duration-300">
                     {skill.icon}
                   </div>
-                  <h3 className="font-display text-sm font-semibold text-foreground/90 group-hover:text-primary transition-colors duration-300">
+                  <h3 className="font-display text-sm font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
                     {skill.label}
                   </h3>
                 </motion.div>
@@ -171,9 +169,9 @@ const HomePage = () => {
               className="glass-card p-10 md:p-14 rounded-3xl text-center"
             >
               <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-                Ready to build your <span className="prime-text">brand</span>?
+                Ready to build your <span className="gold-text gold-glow">brand</span>?
               </h2>
-              <p className="text-foreground/80 mb-8 max-w-lg mx-auto text-lg">
+              <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
                 Let's create something memorable together. From concept to launch, I'll help you tell your story visually.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">

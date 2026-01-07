@@ -65,10 +65,10 @@ const PackagesPage = () => {
             <span className="text-primary text-sm font-display tracking-[0.3em] mb-4 block">
               // PACKAGES
             </span>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-[1.1]">
-              Flexible <span className="prime-text">Packages</span>
+            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
+              Flexible <span className="gold-text gold-glow">Packages</span>
             </h1>
-            <p className="text-lg md:text-xl text-foreground/80 max-w-2xl mx-auto font-sans">
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Different brands need different levels of support, so I offer flexible packages for Graphic Design, Social Media Management, and Web Development. Choose the level that fits you, then message me directly for details.
             </p>
           </motion.div>
@@ -120,10 +120,10 @@ const PackagesPage = () => {
                         </span>
                       )}
                     </div>
-                    <p className="text-foreground/80 leading-relaxed mb-4 font-sans">
+                    <p className="text-muted-foreground leading-relaxed mb-4">
                       {pkg.desc}
                     </p>
-                    <p className="text-sm text-primary/90 font-sans font-medium">
+                    <p className="text-xs text-primary/80 font-display">
                       Want this package? Tap a button below and tell me the package name.
                     </p>
                   </motion.div>
@@ -144,7 +144,7 @@ const PackagesPage = () => {
             transition={{ duration: 0.4, ease: "easeOut" }}
             className="glass-card p-6 rounded-2xl text-center border-primary/30"
           >
-            <p className="text-foreground/80 font-sans">
+            <p className="text-muted-foreground">
               I create custom offers based on your goals, not fixed price tags. Message me, tell me what you need (for example: <span className="text-primary font-semibold">'Pro – Social Media Management'</span>), and I'll reply with options that fit you.
             </p>
           </motion.div>
@@ -168,7 +168,7 @@ const PackagesPage = () => {
             <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4">
               Let's build something <span className="text-primary">beautiful</span> together
             </h2>
-            <p className="text-lg md:text-xl text-foreground/80 mb-8 max-w-xl mx-auto font-sans">
+            <p className="text-lg text-muted-foreground mb-8 max-w-xl mx-auto">
               No complicated forms—just message me. Reach out via Instagram, WhatsApp, Facebook, or email, tell me what you're looking for, and I'll help you choose or customize the perfect package.
             </p>
 
@@ -179,7 +179,7 @@ const PackagesPage = () => {
                   href={method.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`flex flex-col items-center gap-2 p-5 rounded-xl font-sans transition-all duration-300 hover:scale-[1.02] ${
+                  className={`flex flex-col items-center gap-2 p-5 rounded-xl font-display transition-all duration-300 hover:scale-[1.02] ${
                     method.primary
                       ? 'metallic-prime text-primary-foreground hover:shadow-[0_0_30px_hsl(var(--prime)/0.4)]'
                       : 'glass-card text-primary border border-primary/30 hover:border-primary/60'
@@ -189,14 +189,14 @@ const PackagesPage = () => {
                     {method.icon}
                     <span>{method.label}</span>
                   </div>
-                  <span className={`text-sm ${method.primary ? 'text-primary-foreground/80' : 'text-foreground/60'}`}>
+                  <span className={`text-xs ${method.primary ? 'text-primary-foreground/80' : 'text-muted-foreground'}`}>
                     {method.helper}
                   </span>
                 </a>
               ))}
             </div>
 
-            <p className="text-base text-foreground/70 font-sans">
+            <p className="text-sm text-muted-foreground">
               Whichever button you choose, your message comes directly to me, Ahmed—not a bot, not a team. I read everything and reply as soon as possible.
             </p>
           </motion.div>
@@ -211,7 +211,7 @@ const PackagesPage = () => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-foreground/70 font-sans"
+            className="text-muted-foreground"
           >
             Not sure which package is right for you? Just send me a quick <span className="text-primary">'Hi'</span> on Instagram, Facebook, WhatsApp or email, and I'll help you choose in a few messages.
           </motion.p>
