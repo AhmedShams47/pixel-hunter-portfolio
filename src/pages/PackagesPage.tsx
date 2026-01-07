@@ -8,27 +8,27 @@ const PackagesPage = () => {
       name: 'Graphic Design',
       icon: <Palette className="w-6 h-6" />,
       packages: [
-        { tier: 'Basic', desc: 'Great for starting or refreshing your look with a small set of focused deliverables.' },
-        { tier: 'Pro', desc: 'For growing brands that want consistent visuals, stronger strategy, and ongoing creative support.' },
-        { tier: 'Unlimited', desc: 'For brands that want me as their long-term creative partner with continuous updates and priority support.' },
+        { tier: 'Basic', desc: 'Perfect for new brands. Get a polished logo and essential assets to launch with confidence.' },
+        { tier: 'Pro', desc: 'Complete brand identity with guidelines, templates, and ongoing creative support as you grow.' },
+        { tier: 'Unlimited', desc: 'I become your dedicated designer. Unlimited requests, priority turnaround, always on call.' },
       ],
     },
     {
       name: 'Social Media Management',
       icon: <Share2 className="w-6 h-6" />,
       packages: [
-        { tier: 'Basic', desc: 'Start with a clean, simple presence—limited posts per month with a cohesive visual style.' },
-        { tier: 'Pro', desc: 'Content strategy, consistent posting, story designs, and feed planning focused on engagement.' },
-        { tier: 'Unlimited', desc: 'Full creative support with scheduling, optimization, and regular adjustments based on performance.' },
+        { tier: 'Basic', desc: 'Consistent posting with branded visuals. Ideal for maintaining presence without the hassle.' },
+        { tier: 'Pro', desc: 'Full content strategy, engagement tactics, and analytics-driven optimization for real growth.' },
+        { tier: 'Unlimited', desc: 'Complete social media takeover. I handle everything so you can focus on your business.' },
       ],
     },
     {
       name: 'Web Development',
       icon: <Globe className="w-6 h-6" />,
       packages: [
-        { tier: 'Basic', desc: 'A clean, responsive single-page or simple website that introduces who you are.' },
-        { tier: 'Pro', desc: 'Multi-page website with custom sections, better structure, and strong visual design.' },
-        { tier: 'Unlimited', desc: 'Long-term web partner with continuous improvements, redesigns, and technical support.' },
+        { tier: 'Basic', desc: 'Clean, fast landing page or portfolio site. Everything you need to establish credibility online.' },
+        { tier: 'Pro', desc: 'Multi-page website with custom features, animations, and conversion-focused design.' },
+        { tier: 'Unlimited', desc: 'Ongoing partnership with continuous updates, new features, and technical support whenever you need it.' },
       ],
     },
   ];
@@ -66,10 +66,10 @@ const PackagesPage = () => {
               // PACKAGES
             </span>
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-              Flexible <span className="gold-text gold-glow">Packages</span>
+              Simple Pricing, <span className="gold-text gold-glow">Big Results</span>
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Different brands need different levels of support, so I offer flexible packages for Graphic Design, Social Media Management, and Web Development. Choose the level that fits you, then message me directly for details.
+              No hidden fees. No confusing tiers. Pick the service you need, choose your level of support, and message me for a custom quote that fits your budget.
             </p>
           </motion.div>
         </div>
@@ -124,7 +124,7 @@ const PackagesPage = () => {
                       {pkg.desc}
                     </p>
                     <p className="text-xs text-primary/80 font-display">
-                      Want this package? Tap a button below and tell me the package name.
+                      Interested? Message me with the package name and I'll send you the details.
                     </p>
                   </motion.div>
                 ))}
@@ -145,7 +145,7 @@ const PackagesPage = () => {
             className="glass-card p-6 rounded-2xl text-center border-primary/30"
           >
             <p className="text-muted-foreground">
-              I create custom offers based on your goals, not fixed price tags. Message me, tell me what you need (for example: <span className="text-primary font-semibold">'Pro – Social Media Management'</span>), and I'll reply with options that fit you.
+              I don't believe in one-size-fits-all pricing. Tell me your goals (e.g., <span className="text-primary font-semibold">"Pro – Social Media"</span>) and I'll create a custom offer that matches your needs and budget.
             </p>
           </motion.div>
         </div>
@@ -166,10 +166,10 @@ const PackagesPage = () => {
             </div>
             
             <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4">
-              Let's build something <span className="text-primary">beautiful</span> together
+              Ready to get <span className="text-primary">started</span>?
             </h2>
             <p className="text-lg text-muted-foreground mb-8 max-w-xl mx-auto">
-              No complicated forms—just message me. Reach out via Instagram, WhatsApp, Facebook, or email, tell me what you're looking for, and I'll help you choose or customize the perfect package.
+              Pick your preferred platform and shoot me a message. No forms, no waiting—just a direct conversation with me.
             </p>
 
             <div className="grid sm:grid-cols-2 gap-4 max-w-xl mx-auto mb-8">
@@ -197,7 +197,7 @@ const PackagesPage = () => {
             </div>
 
             <p className="text-sm text-muted-foreground">
-              Whichever button you choose, your message comes directly to me, Ahmed—not a bot, not a team. I read everything and reply as soon as possible.
+              You're messaging me directly—not a team, not a bot. I personally read and respond to every inquiry.
             </p>
           </motion.div>
         </div>
@@ -213,7 +213,7 @@ const PackagesPage = () => {
             transition={{ duration: 0.5 }}
             className="text-muted-foreground"
           >
-            Not sure which package is right for you? Just send me a quick <span className="text-primary">'Hi'</span> on Instagram, Facebook, WhatsApp or email, and I'll help you choose in a few messages.
+            Not sure which package fits? Just say <span className="text-primary">"Hi, I need help choosing"</span> and I'll guide you in minutes.
           </motion.p>
         </div>
       </section>

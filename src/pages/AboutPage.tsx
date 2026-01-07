@@ -32,7 +32,7 @@ const AboutPage = () => {
               // ABOUT ME
             </span>
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-              Meet <span className="gold-text gold-glow">Ahmed Shams</span>
+              The Person Behind <span className="gold-text gold-glow">the Pixels</span>
             </h1>
           </motion.div>
         </div>
@@ -49,10 +49,10 @@ const AboutPage = () => {
             className="glass-card p-8 md:p-12 rounded-3xl"
           >
             <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-6">
-              Who I <span className="text-primary">Am</span>
+              Why Clients <span className="text-primary">Trust Me</span>
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              I'm Ahmed Shams, the creator of Shams Visuals. I help brands, businesses and creators look professional and memorable through design, motion, and web experiences. Over the years, I've worked with clients who needed everything from a simple logo refresh to a complete brand overhaul—and I've loved every project.
+              I'm Ahmed Shams—a designer, developer, and creative strategist who turns scattered ideas into polished brands. I've helped startups launch, creators scale, and businesses rebrand. My work isn't just about looking good; it's about getting you results.
             </p>
           </motion.div>
         </div>
@@ -69,10 +69,10 @@ const AboutPage = () => {
             className="glass-card p-8 md:p-12 rounded-3xl"
           >
             <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-6">
-              Discipline & <span className="text-primary">Process</span>
+              How I <span className="text-primary">Work</span>
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-              Every project starts with listening and planning. I work with clear communication, fixed milestones, and organized delivery, so you always know what is happening. I don't just "make designs"; I build systems that stay consistent across your brand.
+              No guessing games. I set clear deadlines, communicate at every step, and deliver on time. You'll always know what's happening and what comes next. I treat your project like my own—because my reputation depends on your success.
             </p>
             
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -109,11 +109,11 @@ const AboutPage = () => {
                 <Sparkles className="w-6 h-6" />
               </div>
               <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground">
-                3D & <span className="text-primary">Animations</span>
+                Motion That <span className="text-primary">Converts</span>
               </h2>
             </div>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              I love using smooth 3D animations and motion graphics to bring brands to life—logo reveals, social media intros, and subtle website animations that feel premium instead of noisy. Movement should guide the eye and add value, not distract.
+              Static designs are great. Animated ones are unforgettable. I use 3D visuals and smooth motion graphics to make your brand feel alive—logo animations, social intros, website effects that wow visitors without slowing things down.
             </p>
           </motion.div>
         </div>
@@ -130,10 +130,10 @@ const AboutPage = () => {
             className="glass-card p-8 md:p-12 rounded-3xl text-center"
           >
             <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4">
-              Let's build something <span className="text-primary">beautiful</span> together
+              Ready to elevate your <span className="text-primary">brand</span>?
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed mb-8 max-w-2xl mx-auto">
-              Tell me about your brand, your idea, or the project you have in mind. The fastest way to reach me is to send me a message on social media or email—no long forms, just a simple chat.
+              Skip the contact forms. Just pick your favorite platform and send me a message. I respond personally to every inquiry—usually within hours, not days.
             </p>
             
             <div className="grid sm:grid-cols-2 gap-4 max-w-xl mx-auto mb-8">
@@ -155,7 +155,7 @@ const AboutPage = () => {
             </div>
 
             <p className="text-sm text-muted-foreground mb-8">
-              Whichever button you choose, your message comes directly to me, Ahmed—not a bot, not a team. I read everything and reply as soon as possible.
+              Every message lands directly in my inbox—no assistants, no bots. I read and reply to everything myself.
             </p>
 
             <Link
