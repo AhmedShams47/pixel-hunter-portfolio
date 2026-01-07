@@ -11,7 +11,7 @@ const Footer = () => {
             <img 
               src={shamsLogo} 
               alt="Shams Visuals Logo" 
-              className="h-12 w-auto object-contain"
+              className="h-12 w-auto object-contain transition-transform duration-300 hover:scale-105"
             />
           </Link>
 
