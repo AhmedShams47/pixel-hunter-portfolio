@@ -53,10 +53,10 @@ const ProjectsPage = () => {
             <span className="text-primary text-sm font-display tracking-[0.3em] mb-4 block">
               // MY WORK
             </span>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-              Projects & <span className="gold-text gold-glow">Portfolio</span>
+            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-[1.1]">
+              Projects & <span className="prime-text">Portfolio</span>
             </h1>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl text-foreground/80 max-w-2xl mx-auto font-sans">
               Here is a look at some of the brands and creators I've helped so far. Every project is a collaboration, built around their goals and story.
             </p>
           </motion.div>
@@ -90,7 +90,7 @@ const ProjectsPage = () => {
                   {/* Content */}
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-3">
-                      <span className="px-3 py-1 text-xs font-display tracking-wider bg-primary/20 text-primary rounded-full">
+                      <span className="px-3 py-1 text-xs font-sans font-medium tracking-wide bg-primary/20 text-primary rounded-full">
                         {project.type}
                       </span>
                     </div>
@@ -99,14 +99,14 @@ const ProjectsPage = () => {
                       {project.title}
                     </h3>
                     
-                    <p className="text-muted-foreground leading-relaxed mb-6">
+                    <p className="text-foreground/80 leading-relaxed mb-6 font-sans text-base">
                       {project.description}
                     </p>
 
                     {/* Feedback */}
                     <div className="flex items-start gap-3 p-4 rounded-2xl bg-secondary/30 border border-border/50">
                       <Quote className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                      <p className="text-sm text-muted-foreground italic">
+                      <p className="text-sm text-foreground/70 italic font-sans">
                         {project.feedback}
                       </p>
                     </div>
@@ -131,7 +131,7 @@ const ProjectsPage = () => {
             <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4">
               Design <span className="text-primary">Gallery</span>
             </h2>
-            <p className="text-muted-foreground max-w-lg mx-auto">
+            <p className="text-foreground/75 max-w-lg mx-auto font-sans">
               A glimpse into the variety of visual work I create for brands.
             </p>
           </motion.div>
@@ -149,7 +149,7 @@ const ProjectsPage = () => {
                 <div className="w-12 h-12 mx-auto mb-3 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center">
                   <ExternalLink className="w-5 h-5 text-primary" />
                 </div>
-                <h3 className="font-display text-sm font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
+                <h3 className="font-sans text-sm font-semibold text-foreground/90 group-hover:text-primary transition-colors duration-300">
                   {artwork}
                 </h3>
               </motion.div>
@@ -171,7 +171,7 @@ const ProjectsPage = () => {
             <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4">
               Like what you see?
             </h2>
-            <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
+            <p className="text-foreground/80 mb-8 max-w-lg mx-auto font-sans text-lg">
               If you like these projects and want something crafted for your brand, tap the button or DM me and let's start your own project.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

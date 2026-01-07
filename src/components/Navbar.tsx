@@ -37,10 +37,10 @@ const Navbar = () => {
             <Link
               key={item.name}
               to={item.path}
-              className={`px-3 md:px-4 py-2 text-sm font-medium transition-all duration-300 rounded-xl ${
+              className={`px-3 md:px-4 py-2 text-sm font-sans font-medium transition-all duration-300 rounded-xl ${
                 isActive(item.path)
                   ? 'text-primary bg-primary/15'
-                  : 'text-muted-foreground hover:text-primary hover:bg-primary/10'
+                  : 'text-foreground/70 hover:text-primary hover:bg-primary/10'
               }`}
             >
               {item.name}
