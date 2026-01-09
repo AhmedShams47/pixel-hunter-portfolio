@@ -14,13 +14,109 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      blocked_ips: {
+        Row: {
+          block_count: number
+          blocked_until: string
+          created_at: string
+          id: string
+          ip_address: string
+          reason: string
+          updated_at: string
+        }
+        Insert: {
+          block_count?: number
+          blocked_until: string
+          created_at?: string
+          id?: string
+          ip_address: string
+          reason?: string
+          updated_at?: string
+        }
+        Update: {
+          block_count?: number
+          blocked_until?: string
+          created_at?: string
+          id?: string
+          ip_address?: string
+          reason?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      rate_limits: {
+        Row: {
+          created_at: string
+          endpoint: string
+          id: string
+          ip_address: string
+          request_count: number
+          window_start: string
+        }
+        Insert: {
+          created_at?: string
+          endpoint: string
+          id?: string
+          ip_address: string
+          request_count?: number
+          window_start?: string
+        }
+        Update: {
+          created_at?: string
+          endpoint?: string
+          id?: string
+          ip_address?: string
+          request_count?: number
+          window_start?: string
+        }
+        Relationships: []
+      }
+      security_logs: {
+        Row: {
+          action: string
+          created_at: string
+          details: Json | null
+          endpoint: string | null
+          id: string
+          ip_address: string
+        }
+        Insert: {
+          action: string
+          created_at?: string
+          details?: Json | null
+          endpoint?: string | null
+          id?: string
+          ip_address: string
+        }
+        Update: {
+          action?: string
+          created_at?: string
+          details?: Json | null
+          endpoint?: string | null
+          id?: string
+          ip_address?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      check_rate_limit: {
+        Args: {
+          p_endpoint: string
+          p_ip_address: string
+          p_max_requests?: number
+          p_window_seconds?: number
+        }
+        Returns: {
+          allowed: boolean
+          blocked_until: string
+          current_count: number
+        }[]
+      }
+      cleanup_rate_limits: { Args: never; Returns: undefined }
     }
     Enums: {
       [_ in never]: never
