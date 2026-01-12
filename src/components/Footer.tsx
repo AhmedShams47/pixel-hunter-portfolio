@@ -22,7 +22,7 @@ const Footer = () => {
           </Link>
 
           {/* Quick Links */}
-          <nav aria-label="Footer navigation" className="flex items-center gap-6 text-sm">
+          <nav aria-label="Footer navigation" className="flex flex-wrap items-center justify-center gap-4 md:gap-6 text-sm">
             <Link to="/" className="text-muted-foreground hover:text-primary transition-colors duration-300">
               Home
             </Link>
@@ -34,6 +34,9 @@ const Footer = () => {
             </Link>
             <Link to="/packages" className="text-muted-foreground hover:text-primary transition-colors duration-300">
               Packages
+            </Link>
+            <Link to="/blog" className="text-muted-foreground hover:text-primary transition-colors duration-300">
+              Blog
             </Link>
           </nav>
 
