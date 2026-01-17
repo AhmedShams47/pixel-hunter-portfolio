@@ -23,10 +23,15 @@ function getClientIP(req: Request): string {
          'unknown'
 }
 
+// Generate a cryptographically secure session salt if ANALYTICS_SALT is not set
+const SESSION_SALT = crypto.randomUUID()
+
 // Hash IP for privacy - we don't store raw IPs
 async function hashIP(ip: string): Promise<string> {
   const encoder = new TextEncoder()
-  const data = encoder.encode(ip + Deno.env.get('ANALYTICS_SALT') || 'default-salt')
+  // Use configured salt or fall back to session-unique salt (still secure, just not consistent across restarts)
+  const salt = Deno.env.get('ANALYTICS_SALT') || SESSION_SALT
+  const data = encoder.encode(ip + salt)
   const hashBuffer = await crypto.subtle.digest('SHA-256', data)
   const hashArray = Array.from(new Uint8Array(hashBuffer))
   return hashArray.slice(0, 8).map(b => b.toString(16).padStart(2, '0')).join('')
@@ -167,8 +172,14 @@ Deno.serve(async (req) => {
       }
     )
 
-  } catch (error) {
-    console.error('Analytics API error:', error)
+  } catch (error: unknown) {
+    // Sanitized error logging - only safe properties
+    const err = error as Error
+    console.error('Analytics API error:', {
+      message: err?.message || 'Unknown error',
+      name: err?.name,
+      timestamp: new Date().toISOString()
+    })
     
     return new Response(
       JSON.stringify({ error: 'Internal error' }),
