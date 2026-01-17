@@ -69,8 +69,14 @@ Deno.serve(async (req) => {
       }
     )
 
-  } catch (error) {
-    console.error('Health check error:', error)
+  } catch (error: unknown) {
+    // Sanitized error logging - only safe properties
+    const err = error as Error
+    console.error('Health check error:', {
+      message: err?.message || 'Unknown error',
+      name: err?.name,
+      timestamp: new Date().toISOString()
+    })
     
     return new Response(
       JSON.stringify({ 
