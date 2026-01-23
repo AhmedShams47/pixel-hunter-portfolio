@@ -249,6 +249,10 @@ html {
   scroll-behavior: smooth;
 }
 
+#lovable-badge {
+  display: none;
+}
+
 /* Crown 3D canvas styles */
 .crown-canvas {
   cursor: grab;
