@@ -1,8 +1,7 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Palette, Share2, Globe, Quote, ExternalLink, ArrowRight, CheckCircle } from 'lucide-react';
+import { Palette, Share2, Globe, Quote, ExternalLink } from 'lucide-react';
 import PageLayout from '@/components/PageLayout';
-import SEOHead from '@/components/SEOHead';
 
 const ProjectsPage = () => {
   const projects = [
@@ -10,38 +9,23 @@ const ProjectsPage = () => {
       title: 'Branding & Graphic Design',
       type: 'Branding',
       icon: <Palette className="w-6 h-6" />,
-      description: 'Complete brand identities including logos, color systems, typography, business cards, and marketing materials. I create visual systems that make your business instantly recognizable and professional.',
-      benefits: [
-        'Stand out from competitors with unique visuals',
-        'Build customer trust with professional branding',
-        'Get print-ready files for all uses'
-      ],
+      description: 'Logo designs, full brand identities, posters, social posts, and visual systems. Every project starts with understanding your brand voice, then building concepts, refining direction, and delivering designs that fit your audience.',
       feedback: '"The branding work exceeded our expectations. Clean, professional, and perfectly captures our vision."',
       gradient: 'from-primary/20 to-accent/20',
     },
     {
-      title: 'Social Media Post Design',
+      title: 'Social Media Management',
       type: 'Social Media',
       icon: <Share2 className="w-6 h-6" />,
-      description: 'Scroll-stopping social media graphics, stories, and content strategies designed to grow your audience. From Instagram and Facebook to LinkedIn—visuals that get likes, shares, and followers.',
-      benefits: [
-        'Increase engagement with eye-catching posts',
-        'Maintain brand consistency across platforms',
-        'Save time with ready-to-post designs'
-      ],
+      description: 'Content strategy, feed design, post scheduling, and engagement-focused visuals. Building a consistent online presence with visuals your audience actually wants to share.',
       feedback: '"Our engagement increased significantly after working with Shams Visuals. The content is always on brand and creative."',
       gradient: 'from-orange-500/20 to-amber-500/20',
     },
     {
-      title: 'Website Design & Development',
-      type: 'Web Design',
+      title: 'Web Design & Development',
+      type: 'Web',
       icon: <Globe className="w-6 h-6" />,
-      description: 'Modern, fast, mobile-responsive websites that convert visitors into customers. Clean UI, smooth animations, and SEO-friendly structure to help you rank on Google and grow your online presence.',
-      benefits: [
-        'Get found on Google with SEO-optimized sites',
-        'Convert visitors with professional design',
-        'Work perfectly on mobile and desktop'
-      ],
+      description: 'Modern, responsive websites that look good and feel smooth to use. Clean UI, strong visual design, and when needed, 3D animations that make your brand stand out.',
       feedback: '"The website is exactly what we needed—fast, beautiful, and easy to navigate. Highly recommended."',
       gradient: 'from-emerald-500/20 to-teal-500/20',
     },
@@ -58,13 +42,6 @@ const ProjectsPage = () => {
 
   return (
     <PageLayout>
-      <SEOHead
-        title="Portfolio | Social Media & Website Design in Bangladesh"
-        description="Explore branding, social media post designs, and website design projects by Ahmed Shams. Professional graphic design services in Dhaka for businesses across Bangladesh."
-        keywords="portfolio graphic designer Dhaka, social media post design Dhaka, website design service Bangladesh, logo design Bangladesh, branding projects"
-        canonicalPath="/projects"
-      />
-
       {/* Hero */}
       <section className="pt-32 pb-16 px-6">
         <div className="max-w-4xl mx-auto text-center">
@@ -74,23 +51,23 @@ const ProjectsPage = () => {
             transition={{ duration: 0.5, ease: "easeOut" }}
           >
             <span className="text-primary text-sm font-display tracking-[0.3em] mb-4 block">
-              MY WORK
+              // MY WORK
             </span>
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-              Design <span className="gold-text gold-glow">Portfolio</span>
+              Projects & <span className="gold-text gold-glow">Portfolio</span>
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-              Real projects for real businesses in Bangladesh. From complete brand identities to social media content to full website builds—here's how I help businesses grow with design.
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Here is a look at some of the brands and creators I've helped so far. Every project is a collaboration, built around their goals and story.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Services Grid */}
+      {/* Projects Grid */}
       <section className="py-16 px-6">
         <div className="max-w-5xl mx-auto space-y-8">
           {projects.map((project, index) => (
-            <motion.article
+            <motion.div
               key={project.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -105,7 +82,7 @@ const ProjectsPage = () => {
                 <div className="flex flex-col md:flex-row md:items-start gap-6">
                   {/* Icon */}
                   <div className="flex-shrink-0">
-                    <div className="p-4 rounded-2xl bg-primary/15 border border-primary/25 text-primary group-hover:shadow-[0_0_20px_hsl(var(--primary)/0.2)] transition-shadow duration-300">
+                    <div className="p-4 rounded-2xl bg-primary/15 border border-primary/25 text-primary group-hover:shadow-[0_0_20px_hsl(var(--gold)/0.2)] transition-shadow duration-300">
                       {project.icon}
                     </div>
                   </div>
@@ -118,23 +95,13 @@ const ProjectsPage = () => {
                       </span>
                     </div>
                     
-                    <h2 className="font-display text-2xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors duration-300">
+                    <h3 className="font-display text-2xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors duration-300">
                       {project.title}
-                    </h2>
+                    </h3>
                     
                     <p className="text-muted-foreground leading-relaxed mb-6">
                       {project.description}
                     </p>
-
-                    {/* Benefits List */}
-                    <ul className="space-y-2 mb-6">
-                      {project.benefits.map((benefit, i) => (
-                        <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
-                          <CheckCircle className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
-                          <span>{benefit}</span>
-                        </li>
-                      ))}
-                    </ul>
 
                     {/* Feedback */}
                     <div className="flex items-start gap-3 p-4 rounded-2xl bg-secondary/30 border border-border/50">
@@ -146,12 +113,12 @@ const ProjectsPage = () => {
                   </div>
                 </div>
               </div>
-            </motion.article>
+            </motion.div>
           ))}
         </div>
       </section>
 
-      {/* Design Gallery */}
+      {/* Artworks */}
       <section className="py-16 px-6">
         <div className="max-w-5xl mx-auto">
           <motion.div
@@ -162,10 +129,10 @@ const ProjectsPage = () => {
             className="text-center mb-10"
           >
             <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4">
-              Design <span className="text-primary">Categories</span>
+              Design <span className="text-primary">Gallery</span>
             </h2>
             <p className="text-muted-foreground max-w-lg mx-auto">
-              A sample of the different types of visual work I create for businesses.
+              A glimpse into the variety of visual work I create for brands.
             </p>
           </motion.div>
 
@@ -202,26 +169,25 @@ const ProjectsPage = () => {
             className="glass-card p-10 md:p-14 rounded-3xl text-center"
           >
             <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4">
-              Ready to Start Your Project?
+              Like what you see?
             </h2>
-            <p className="text-lg text-muted-foreground mb-8 max-w-lg mx-auto">
-              If you like what you see and want stunning visuals for your own business, let's talk. Check my packages or send me a message to get started.
+            <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
+              If you like these projects and want something crafted for your brand, tap the button or DM me and let's start your own project.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 to="/packages"
-                className="px-8 py-4 metallic-gold text-primary-foreground font-display font-bold rounded-2xl transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_30px_hsl(var(--gold)/0.4)] inline-flex items-center justify-center gap-2"
+                className="px-8 py-4 metallic-gold text-primary-foreground font-display font-bold rounded-2xl transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_30px_hsl(var(--gold)/0.4)]"
               >
-                View Packages
-                <ArrowRight className="w-4 h-4" />
+                Start Your Project
               </Link>
               <a
-                href="https://wa.me/8801707887676?text=Hi%20Ahmed!%20I%20saw%20your%20portfolio%20and%20I%27m%20interested%20in%20working%20with%20you."
+                href="https://instagram.com/k_0_p_a"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="glass-card px-8 py-4 font-display font-bold text-primary border border-primary/30 hover:border-primary/60 transition-all duration-300 hover:scale-[1.02]"
               >
-                Message on WhatsApp
+                DM on Instagram
               </a>
             </div>
           </motion.div>

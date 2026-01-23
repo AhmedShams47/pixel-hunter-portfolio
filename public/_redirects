@@ -1,5 +1,0 @@
-# Redirect HTTP to HTTPS (Cloudflare handles this, but good to have)
-http://* https://:splat 301!
-
-# SPA fallback - all routes to index.html
-/*    /index.html   200
