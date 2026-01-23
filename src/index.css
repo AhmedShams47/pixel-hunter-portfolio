@@ -249,8 +249,15 @@ html {
   scroll-behavior: smooth;
 }
 
-#lovable-badge {
-  display: none;
+#lovable-badge,
+[data-lovable-badge],
+.lovable-badge,
+a[href*="lovable.dev"],
+div[class*="lovable"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
 }
 
 /* Crown 3D canvas styles */
