@@ -1,0 +1,96 @@
+/*
+ * SECURITY HEADERS CONFIGURATION
+ * 
+ * Apply these headers in your hosting dashboard (Cloudflare Pages, Vercel, etc.)
+ * 
+ * For Cloudflare Pages:
+ * 1. Go to your Pages project → Settings → Headers
+ * 2. Add the headers below as custom headers
+ * 
+ * For Vercel:
+ * Add to vercel.json under "headers" configuration
+ * 
+ * For Netlify:
+ * Add to _headers file in public folder
+ */
+
+# ==========================================
+# RECOMMENDED SECURITY HEADERS
+# ==========================================
+
+# Content Security Policy (CSP)
+# Allows: own origin, Google Fonts, inline styles (needed for Tailwind), and videos
+Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; media-src 'self'; connect-src 'self' https://*.supabase.co; frame-ancestors 'none'; base-uri 'self'; form-action 'self'
+
+# Prevent clickjacking
+X-Frame-Options: DENY
+
+# Prevent MIME type sniffing
+X-Content-Type-Options: nosniff
+
+# Referrer Policy - sends origin only for same-origin, nothing for cross-origin
+Referrer-Policy: strict-origin-when-cross-origin
+
+# Permissions Policy - disable unused browser features
+Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
+
+# Strict Transport Security - force HTTPS
+Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+
+
+# ==========================================
+# CLOUDFLARE PAGES _headers FILE FORMAT
+# ==========================================
+# Copy this to public/_headers for Cloudflare Pages:
+
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; media-src 'self'; connect-src 'self' https://*.supabase.co; frame-ancestors 'none'; base-uri 'self'; form-action 'self'
+
+
+# ==========================================
+# VERCEL vercel.json FORMAT
+# ==========================================
+# Add this to your vercel.json:
+/*
+{
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=(), interest-cohort=()" },
+        { "key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; media-src 'self'; connect-src 'self' https://*.supabase.co; frame-ancestors 'none'; base-uri 'self'; form-action 'self'" }
+      ]
+    }
+  ]
+}
+*/
+
+
+# ==========================================
+# CACHING HEADERS (also add these)
+# ==========================================
+
+# Static assets - aggressive caching (1 year)
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Videos - long cache
+/videos/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# HTML - short cache with revalidation
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+# JS/CSS bundles - fingerprinted, long cache
+/*.js
+  Cache-Control: public, max-age=31536000, immutable
+/*.css
+  Cache-Control: public, max-age=31536000, immutable
