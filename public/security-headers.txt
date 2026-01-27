@@ -19,9 +19,8 @@
 # ==========================================
 
 # Content Security Policy (CSP)
-# Allows: own origin, Google Fonts, inline styles (needed for Tailwind), and videos
-Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; media-src 'self'; connect-src 'self' https://*.supabase.co; frame-ancestors 'none'; base-uri 'self'; form-action 'self'
-
+# Allows: own origin, Google Fonts, inline styles (needed for Tailwind), videos, and Google Maps iframe
+Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; media-src 'self'; frame-src https://www.google.com; connect-src 'self' https://*.supabase.co; frame-ancestors 'none'; base-uri 'self'; form-action 'self'
 # Prevent clickjacking
 X-Frame-Options: DENY
 
@@ -48,7 +47,7 @@ Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; media-src 'self'; connect-src 'self' https://*.supabase.co; frame-ancestors 'none'; base-uri 'self'; form-action 'self'
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; media-src 'self'; frame-src https://www.google.com; connect-src 'self' https://*.supabase.co; frame-ancestors 'none'; base-uri 'self'; form-action 'self'
 
 
 # ==========================================
@@ -65,12 +64,44 @@ Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
         { "key": "X-Content-Type-Options", "value": "nosniff" },
         { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
         { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=(), interest-cohort=()" },
-        { "key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; media-src 'self'; connect-src 'self' https://*.supabase.co; frame-ancestors 'none'; base-uri 'self'; form-action 'self'" }
+        { "key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; media-src 'self'; frame-src https://www.google.com; connect-src 'self' https://*.supabase.co; frame-ancestors 'none'; base-uri 'self'; form-action 'self'" }
       ]
     }
   ]
 }
 */
+
+
+# ==========================================
+# CLOUDFLARE DASHBOARD RECOMMENDATIONS
+# ==========================================
+# Apply these settings in Cloudflare Dashboard:
+#
+# 1. SSL/TLS Settings:
+#    - Always Use HTTPS: ON
+#    - Automatic HTTPS Rewrites: ON
+#    - Minimum TLS Version: 1.2
+#
+# 2. Security Settings:
+#    - DDoS Protection: Managed rules at HIGH sensitivity
+#    - Bot Fight Mode: ON
+#    - Challenge Passage: 30 minutes
+#
+# 3. WAF (Web Application Firewall):
+#    - Enable Cloudflare Managed Ruleset
+#    - Enable OWASP Core Rule Set (Paranoia Level 1)
+#    - Block requests with threat score > 30
+#
+# 4. Rate Limiting (for future POST endpoints):
+#    Rule Name: Rate Limit Contact Form
+#    Expression: (http.request.method eq "POST")
+#    Action: Block
+#    Requests: 10 per 1 minute per IP
+#
+# 5. Page Rules:
+#    - Cache Level: Cache Everything for static assets
+#    - Browser Cache TTL: 1 year for /assets/* and /videos/*
+#    - Edge Cache TTL: 1 month
 
 
 # ==========================================
