@@ -23,7 +23,6 @@ import shamsLogo from '@/assets/shams-logo.jpg';
 import PageLayout from '@/components/PageLayout';
 import OptimizedVideoIntro from '@/components/OptimizedVideoIntro';
 import OptimizedVideo from '@/components/OptimizedVideo';
-import LazyGoogleMap from '@/components/LazyGoogleMap';
 
 const HomePage = () => {
   const [introComplete, setIntroComplete] = useState(false);
@@ -206,7 +205,7 @@ const HomePage = () => {
                 ))}
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
                   to="/projects"
                   className="px-8 py-4 metallic-gold text-primary-foreground font-display font-bold rounded-2xl transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_30px_hsl(var(--gold)/0.4)]"
@@ -219,19 +218,6 @@ const HomePage = () => {
                 >
                   View Packages
                 </Link>
-              </div>
-
-              {/* Google Maps - Lazy loaded */}
-              <div className="mt-8 pt-8 border-t border-border/30">
-                <p className="text-muted-foreground text-sm mb-4 font-display tracking-wider">
-                  📍 Based in Dhaka, Bangladesh
-                </p>
-                <LazyGoogleMap 
-                  lat={23.750811011472795} 
-                  lng={90.40125845562783}
-                  fallbackText="Dhaka, Bangladesh"
-                  className="border border-border/30"
-                />
               </div>
             </motion.div>
           </div>
