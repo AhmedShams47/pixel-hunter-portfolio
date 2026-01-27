@@ -4,26 +4,81 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-    <!-- SEO & Meta -->
-    <title>Ahmed Shams | Shams Visuals - Designs That Speak Before You Do</title>
-    <meta name="description" content="Shams Visuals by Ahmed Shams. Expert branding, graphic design, social media management, and web development. Let's build something beautiful together.">
+    <!-- SEO & Meta 
+         =========================================
+         FILES CONTROLLING SEO:
+         - index.html (this file): Primary meta tags, JSON-LD, OG tags
+         - public/manifest.json: PWA/app icon configuration
+         - public/favicon.jpg: Main favicon image
+         - public/apple-touch-icon.jpg: iOS home screen icon
+         
+         GOOGLE SEARCH CONSOLE CHECKLIST:
+         1. Submit sitemap.xml once generated
+         2. Check "URL Inspection" for your homepage
+         3. Verify "Enhancements" > "Sitelinks searchbox" shows your brand
+         4. Check "Rich results" for Person/WebSite schema
+         5. Use "Removals" if old Lovable URLs appear
+         ========================================= -->
+    <title>Ahmed Shams | Multi-Disciplinary Technomancer</title>
+    <meta name="description" content="Designs that speak before you do. I am Ahmed Shams, a multi-disciplinary technomancer crafting bold branding, striking graphics, and seamless web experiences.">
     <meta name="author" content="Ahmed Shams" />
-    <meta name="keywords" content="graphic design, branding, social media management, web development, logo design, Ahmed Shams, Shams Visuals" />
+    <meta name="keywords" content="Ahmed Shams, Shams Visuals, graphic design, branding, social media management, web development, logo design, technomancer, Bangladesh" />
     
-    <!-- Open Graph -->
+    <!-- Open Graph (Facebook, LinkedIn, etc.) -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Ahmed Shams | Shams Visuals">
-    <meta property="og:description" content="Designs that speak before you do. Expert branding, graphic design, social media management, and web development.">
+    <meta property="og:site_name" content="Shams Visuals" />
+    <meta property="og:title" content="Ahmed Shams | Multi-Disciplinary Technomancer" />
+    <meta property="og:description" content="Designs that speak before you do. I am Ahmed Shams, a multi-disciplinary technomancer crafting bold branding, striking graphics, and seamless web experiences." />
     <meta property="og:url" content="https://shamsvisuals.com" />
+    <meta property="og:image" content="https://shamsvisuals.com/favicon.jpg" />
+    <meta property="og:image:alt" content="Shams Visuals - Ahmed Shams branding logo" />
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Ahmed Shams | Shams Visuals">
-    <meta name="twitter:description" content="Designs that speak before you do. Expert branding, graphic design, social media management, and web development.">
+    <meta name="twitter:site" content="@shamsvisuals" />
+    <meta name="twitter:creator" content="@shamsvisuals" />
+    <meta name="twitter:title" content="Ahmed Shams | Multi-Disciplinary Technomancer" />
+    <meta name="twitter:description" content="Designs that speak before you do. I am Ahmed Shams, a multi-disciplinary technomancer crafting bold branding, striking graphics, and seamless web experiences." />
+    <meta name="twitter:image" content="https://shamsvisuals.com/favicon.jpg" />
     
     <!-- Canonical & Favicon -->
     <link rel="canonical" href="https://shamsvisuals.com" />
-    <link rel="icon" type="image/x-icon" href="https://storage.googleapis.com/gpt-engineer-file-uploads/ujOFwo7vaZZDPnbXJBxfFnJnUsj1/uploads/1767664173972-Visual.jpg">
+    <link rel="icon" type="image/jpeg" href="/favicon.jpg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.jpg" />
+    <link rel="manifest" href="/manifest.json" />
+    
+    <!-- JSON-LD Structured Data (WebSite + Person schema) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://shamsvisuals.com/#website",
+          "url": "https://shamsvisuals.com",
+          "name": "Shams Visuals",
+          "description": "Designs that speak before you do. Multi-disciplinary design by Ahmed Shams.",
+          "publisher": { "@id": "https://shamsvisuals.com/#person" },
+          "inLanguage": "en-US"
+        },
+        {
+          "@type": "Person",
+          "@id": "https://shamsvisuals.com/#person",
+          "name": "Ahmed Shams",
+          "alternateName": "Shams Visuals",
+          "url": "https://shamsvisuals.com",
+          "image": "https://shamsvisuals.com/favicon.jpg",
+          "description": "Multi-Disciplinary Technomancer specializing in branding, graphic design, social media management, and web development.",
+          "sameAs": [
+            "https://www.instagram.com/k_0_p_a/",
+            "https://www.facebook.com/AhmedShams164"
+          ],
+          "jobTitle": "Multi-Disciplinary Technomancer",
+          "knowsAbout": ["Graphic Design", "Branding", "Web Development", "Social Media Management", "3D Motion Graphics"]
+        }
+      ]
+    }
+    </script>
     
     <!-- Performance: Preconnect to external origins -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
