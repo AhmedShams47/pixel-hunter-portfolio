@@ -18,32 +18,61 @@ const Navbar = () => {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className="fixed top-0 left-0 right-0 z-50 px-4 md:px-6 py-4"
+      className="fixed top-0 left-0 right-0 z-50 px-4 md:px-6 py-5"
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="glass-card px-4 md:px-5 py-2.5 flex items-center gap-3 rounded-2xl hover:border-primary/50 transition-all duration-300">
-          <div className="w-9 h-9 rounded-xl metallic-gold flex items-center justify-center">
+        <Link
+          to="/"
+          className="relative px-5 py-3 flex items-center gap-3 rounded-2xl transition-all duration-300 group"
+          style={{
+            background: 'linear-gradient(135deg, hsl(270 25% 8% / 0.9) 0%, hsl(270 25% 8% / 0.7) 100%)',
+            backdropFilter: 'blur(20px)',
+            WebkitBackdropFilter: 'blur(20px)',
+            border: '1px solid hsl(270 40% 30% / 0.25)',
+            boxShadow: '0 4px 20px hsl(270 80% 65% / 0.06), inset 0 1px 0 hsl(270 20% 95% / 0.04)',
+          }}
+        >
+          <div className="w-9 h-9 rounded-xl metallic-prime flex items-center justify-center shadow-[0_0_12px_hsl(var(--prime)/0.25)]">
             <span className="text-primary-foreground font-display font-bold text-sm">SV</span>
           </div>
-          <span className="font-display text-sm font-semibold tracking-[0.15em] text-foreground hidden sm:block">
+          <span className="font-display text-sm font-semibold tracking-[0.15em] text-foreground hidden sm:block group-hover:text-primary transition-colors duration-300">
             SHAMS VISUALS
           </span>
         </Link>
 
         {/* Navigation links */}
-        <div className="glass-card px-2 md:px-3 py-2 flex items-center gap-0.5 md:gap-1 rounded-2xl">
+        <div
+          className="relative px-2 md:px-3 py-2.5 flex items-center gap-0.5 md:gap-1 rounded-2xl"
+          style={{
+            background: 'linear-gradient(135deg, hsl(270 25% 8% / 0.9) 0%, hsl(270 25% 8% / 0.7) 100%)',
+            backdropFilter: 'blur(20px)',
+            WebkitBackdropFilter: 'blur(20px)',
+            border: '1px solid hsl(270 40% 30% / 0.25)',
+            boxShadow: '0 4px 20px hsl(270 80% 65% / 0.06), inset 0 1px 0 hsl(270 20% 95% / 0.04)',
+          }}
+        >
           {navItems.map((item) => (
             <Link
               key={item.name}
               to={item.path}
-              className={`px-3 md:px-4 py-2 text-sm font-medium transition-all duration-300 rounded-xl ${
+              className={`relative px-4 md:px-5 py-2.5 text-sm font-display font-medium transition-all duration-300 rounded-xl ${
                 isActive(item.path)
-                  ? 'text-primary bg-primary/15'
-                  : 'text-muted-foreground hover:text-primary hover:bg-primary/10'
+                  ? 'text-primary'
+                  : 'text-muted-foreground hover:text-foreground'
               }`}
             >
-              {item.name}
+              {isActive(item.path) && (
+                <motion.div
+                  layoutId="navbar-active"
+                  className="absolute inset-0 rounded-xl bg-primary/12 border border-primary/20"
+                  style={{
+                    boxShadow: '0 0 15px hsl(270 80% 65% / 0.1)',
+                  }}
+                  transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                />
+              )}
+              <span className="relative z-10">{item.name}</span>
             </Link>
           ))}
         </div>
@@ -53,7 +82,14 @@ const Navbar = () => {
           href="https://www.instagram.com/k_0_p_a/"
           target="_blank"
           rel="noopener noreferrer"
-          className="glass-card px-5 md:px-7 py-2.5 text-sm font-display font-semibold text-primary border border-primary/30 hover:border-primary/60 hover:shadow-[0_0_20px_hsl(var(--gold)/0.2)] transition-all duration-300 rounded-2xl hidden sm:block"
+          className="relative px-6 md:px-8 py-3 text-sm font-display font-semibold text-primary rounded-2xl transition-all duration-300 hover:scale-[1.03] hidden sm:block"
+          style={{
+            background: 'linear-gradient(135deg, hsl(270 25% 8% / 0.9) 0%, hsl(270 25% 8% / 0.7) 100%)',
+            backdropFilter: 'blur(20px)',
+            WebkitBackdropFilter: 'blur(20px)',
+            border: '1px solid hsl(270 80% 65% / 0.3)',
+            boxShadow: '0 4px 20px hsl(270 80% 65% / 0.1), inset 0 1px 0 hsl(270 20% 95% / 0.04)',
+          }}
         >
           Let's Connect
         </a>

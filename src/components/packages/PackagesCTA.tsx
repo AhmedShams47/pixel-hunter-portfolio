@@ -1,0 +1,60 @@
+import { motion } from 'framer-motion';
+import { Phone } from 'lucide-react';
+import { Link } from 'react-router-dom';
+
+const PackagesCTA = () => {
+  return (
+    <section className="py-20 px-6 pb-24">
+      <div className="max-w-3xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-50px' }}
+          transition={{ duration: 0.5 }}
+          className="glass-card p-10 md:p-16 rounded-3xl text-center relative overflow-hidden"
+        >
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 pointer-events-none" />
+
+          <div className="relative z-10">
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+              Ready to Start Your{' '}
+              <span className="text-primary">Project</span>?
+            </h2>
+            <p className="text-lg text-muted-foreground mb-10 max-w-lg mx-auto">
+              Your next website is one message away. Let's build something that
+              grows your business.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                to="/projects"
+                className="px-10 py-4 metallic-prime text-primary-foreground font-display font-bold rounded-2xl transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_30px_hsl(var(--prime)/0.4)]"
+              >
+                Start This Project
+              </Link>
+              <a
+                href="https://wa.me/8801707887676?text=Hi%20Ahmed!%20I%20want%20to%20book%20a%20free%20consultation."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="glass-card px-10 py-4 font-display font-bold text-primary border border-primary/30 hover:border-primary/60 transition-all duration-300 hover:scale-[1.02]"
+              >
+                Book Free Consultation
+              </a>
+              <a
+                href="https://wa.me/8801707887676?text=Hi%20Ahmed!%20I%27m%20on%20your%20website%20and%20I%27d%20like%20to%20discuss%20a%20project."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 px-8 py-4 glass-card font-display font-bold text-foreground border border-border/50 hover:border-primary/40 transition-all duration-300 hover:scale-[1.02]"
+              >
+                <Phone className="w-4 h-4 text-primary" />
+                Chat on WhatsApp
+              </a>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+export default PackagesCTA;
