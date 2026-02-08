@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import shamsLogoNav from '@/assets/shams-logo-nav.jpg';
 
 const Navbar = () => {
   const location = useLocation();
@@ -33,9 +34,11 @@ const Navbar = () => {
             boxShadow: '0 4px 20px hsl(270 80% 65% / 0.06), inset 0 1px 0 hsl(270 20% 95% / 0.04)',
           }}
         >
-          <div className="w-9 h-9 rounded-xl metallic-prime flex items-center justify-center shadow-[0_0_12px_hsl(var(--prime)/0.25)]">
-            <span className="text-primary-foreground font-display font-bold text-sm">SV</span>
-          </div>
+          <img
+            src={shamsLogoNav}
+            alt="Shams Visuals"
+            className="w-9 h-9 rounded-xl object-cover shadow-[0_0_12px_hsl(var(--prime)/0.25)]"
+          />
           <span className="font-display text-sm font-semibold tracking-[0.15em] text-foreground hidden sm:block group-hover:text-primary transition-colors duration-300">
             SHAMS VISUALS
           </span>
