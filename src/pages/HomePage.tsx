@@ -24,8 +24,17 @@ import PageLayout from '@/components/PageLayout';
 import OptimizedVideoIntro from '@/components/OptimizedVideoIntro';
 import OptimizedVideo from '@/components/OptimizedVideo';
 
+const INTRO_STORAGE_KEY = 'shams_intro_played';
+
 const HomePage = () => {
-  const [introComplete, setIntroComplete] = useState(false);
+  const [introComplete, setIntroComplete] = useState(() => {
+    return localStorage.getItem(INTRO_STORAGE_KEY) === 'true';
+  });
+
+  const handleIntroComplete = () => {
+    localStorage.setItem(INTRO_STORAGE_KEY, 'true');
+    setIntroComplete(true);
+  };
 
   const skills = [
     { icon: <Palette className="w-5 h-5" />, label: 'Branding & Graphic Design' },
@@ -45,7 +54,7 @@ const HomePage = () => {
     <>
       {/* Intro video - only on desktop with good connection */}
       {!introComplete && (
-        <OptimizedVideoIntro onComplete={() => setIntroComplete(true)} />
+        <OptimizedVideoIntro onComplete={handleIntroComplete} />
       )}
 
       <PageLayout>
