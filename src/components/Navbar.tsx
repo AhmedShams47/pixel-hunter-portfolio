@@ -17,8 +17,8 @@ const Navbar = () => {
     <motion.nav
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
-      className="fixed top-0 left-0 right-0 z-50 px-4 md:px-6 py-5"
+      transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+      className="fixed top-0 left-0 right-0 z-50 px-4 md:px-6 py-4"
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo */}
@@ -56,7 +56,7 @@ const Navbar = () => {
             <Link
               key={item.name}
               to={item.path}
-              className={`relative px-4 md:px-5 py-2.5 text-sm font-display font-medium transition-all duration-300 rounded-xl ${
+              className={`relative px-4 md:px-5 py-2.5 text-sm font-display font-medium transition-all duration-300 rounded-xl group/link ${
                 isActive(item.path)
                   ? 'text-primary'
                   : 'text-muted-foreground hover:text-foreground'
@@ -67,10 +67,13 @@ const Navbar = () => {
                   layoutId="navbar-active"
                   className="absolute inset-0 rounded-xl bg-primary/12 border border-primary/20"
                   style={{
-                    boxShadow: '0 0 15px hsl(270 80% 65% / 0.1)',
+                    boxShadow: '0 0 18px hsl(270 80% 65% / 0.12)',
                   }}
-                  transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                  transition={{ type: 'spring', stiffness: 380, damping: 28 }}
                 />
+              )}
+              {!isActive(item.path) && (
+                <span className="absolute inset-0 rounded-xl bg-foreground/0 group-hover/link:bg-foreground/5 transition-colors duration-300" />
               )}
               <span className="relative z-10">{item.name}</span>
             </Link>

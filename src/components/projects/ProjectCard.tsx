@@ -15,7 +15,7 @@ const ProjectCard = ({ project, index, onViewCaseStudy }: ProjectCardProps) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-50px' }}
       transition={{ duration: 0.5, delay: index * 0.08, ease: 'easeOut' }}
-      className="group glass-card rounded-2xl overflow-hidden hover:border-primary/50 transition-all duration-500 hover:shadow-[0_0_40px_hsl(var(--prime)/0.1)]"
+      className="group glass-card rounded-2xl overflow-hidden hover:border-primary/50 transition-all duration-500 hover:shadow-[0_0_40px_hsl(var(--prime)/0.12)] hover:-translate-y-1"
     >
       {/* Image */}
       <div className="relative aspect-[16/10] overflow-hidden">
@@ -57,10 +57,10 @@ const ProjectCard = ({ project, index, onViewCaseStudy }: ProjectCardProps) => {
 
         <button
           onClick={() => onViewCaseStudy(project)}
-          className="flex items-center gap-2 text-sm font-display font-semibold text-primary hover:gap-3 transition-all duration-300"
+          className="flex items-center gap-2 text-sm font-display font-semibold text-primary hover:gap-3 transition-all duration-300 group/btn"
         >
           <span>View Case Study</span>
-          <ArrowUpRight className="w-4 h-4" />
+          <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
         </button>
       </div>
     </motion.div>
