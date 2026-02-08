@@ -1,13 +1,3 @@
-/**
- * GLOBAL STYLES - Performance Optimized
- * 
- * OPTIMIZATIONS:
- * - font-display: swap for fast text rendering
- * - GPU hints for smooth scrolling
- * - prefers-reduced-motion support
- * - Minimal animations (CSS-only)
- */
-
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
@@ -84,10 +74,10 @@
     font-family: 'Cinzel', serif;
   }
 
-  /* GPU acceleration hint for smooth scrolling */
+  /* GPU acceleration and performance hints */
   .glass-card {
     transform: translateZ(0);
-    will-change: auto;
+    backface-visibility: hidden;
   }
 }
 

@@ -1,66 +1,78 @@
-/**
- * ParticleBackground - Ultra-Lightweight Version
- * 
- * PERFORMANCE OPTIMIZATIONS:
- * - Pure CSS gradients, no JS animations
- * - No runtime star generation
- * - Uses CSS custom properties for theming
- * - Respects prefers-reduced-motion
- * 
- * EXPECTED IMPACT:
- * - Zero JS runtime cost
- * - No layout shifts
- * - Smooth 60fps scrolling
- */
+import { useEffect, useState, useMemo } from 'react';
+
+interface Star {
+  id: number;
+  x: number;
+  y: number;
+  size: number;
+  opacity: number;
+  delay: number;
+}
 
 const ParticleBackground = () => {
+  const [stars, setStars] = useState<Star[]>([]);
+
+  // Generate minimal stars for smooth performance
+  useEffect(() => {
+    const newStars: Star[] = [];
+    const starCount = window.innerWidth < 768 ? 20 : 35;
+    
+    for (let i = 0; i < starCount; i++) {
+      newStars.push({
+        id: i,
+        x: Math.random() * 100,
+        y: Math.random() * 100,
+        size: Math.random() * 2 + 0.5,
+        opacity: Math.random() * 0.4 + 0.2,
+        delay: Math.random() * 5,
+      });
+    }
+    setStars(newStars);
+  }, []);
+
+  // Memoize star elements - simple CSS-only twinkle
+  const starElements = useMemo(() => (
+    stars.map((star) => (
+      <div
+        key={star.id}
+        className="absolute rounded-full bg-foreground/50"
+        style={{
+          left: `${star.x}%`,
+          top: `${star.y}%`,
+          width: star.size,
+          height: star.size,
+          opacity: star.opacity,
+        }}
+      />
+    ))
+  ), [stars]);
+
   return (
-    <div 
-      className="fixed inset-0 overflow-hidden pointer-events-none z-0"
-      aria-hidden="true"
-    >
-      {/* Static gradient background - no animations */}
+    <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+      {/* Simple static gradient background - no animations */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-[hsl(270,25%,6%)] to-background" />
 
-      {/* Subtle nebula effects - pure CSS, no animation */}
-      <div className="absolute inset-0 opacity-10">
+      {/* Static subtle nebula - no animation */}
+      <div className="absolute inset-0 opacity-15">
         <div
           className="absolute top-[15%] left-[10%] w-[300px] h-[300px] rounded-full"
           style={{
-            background: 'radial-gradient(ellipse, hsl(270 70% 50% / 0.3) 0%, transparent 70%)',
+            background: 'radial-gradient(ellipse, hsl(270 70% 50% / 0.25) 0%, transparent 70%)',
             filter: 'blur(80px)',
           }}
         />
         <div
           className="absolute top-[50%] right-[5%] w-[250px] h-[250px] rounded-full"
           style={{
-            background: 'radial-gradient(ellipse, hsl(280 60% 45% / 0.25) 0%, transparent 70%)',
+            background: 'radial-gradient(ellipse, hsl(280 60% 45% / 0.2) 0%, transparent 70%)',
             filter: 'blur(80px)',
-          }}
-        />
-        <div
-          className="absolute bottom-[20%] left-[30%] w-[200px] h-[200px] rounded-full"
-          style={{
-            background: 'radial-gradient(ellipse, hsl(265 50% 40% / 0.2) 0%, transparent 70%)',
-            filter: 'blur(60px)',
           }}
         />
       </div>
 
-      {/* Minimal stars - CSS only, fixed positions */}
-      <div className="absolute inset-0 opacity-30">
-        {/* Static star dots using pseudo-elements would be even lighter, 
-            but inline for clarity. These are fixed, no animation. */}
-        <div className="absolute top-[10%] left-[20%] w-1 h-1 rounded-full bg-foreground/40" />
-        <div className="absolute top-[25%] left-[80%] w-0.5 h-0.5 rounded-full bg-foreground/30" />
-        <div className="absolute top-[40%] left-[15%] w-1 h-1 rounded-full bg-foreground/50" />
-        <div className="absolute top-[60%] left-[70%] w-0.5 h-0.5 rounded-full bg-foreground/40" />
-        <div className="absolute top-[75%] left-[45%] w-1 h-1 rounded-full bg-foreground/30" />
-        <div className="absolute top-[85%] left-[25%] w-0.5 h-0.5 rounded-full bg-foreground/50" />
-        <div className="absolute top-[15%] left-[55%] w-1 h-1 rounded-full bg-foreground/40" />
-        <div className="absolute top-[35%] left-[90%] w-0.5 h-0.5 rounded-full bg-foreground/30" />
-        <div className="absolute top-[50%] left-[35%] w-1 h-1 rounded-full bg-foreground/50" />
-        <div className="absolute top-[70%] left-[85%] w-0.5 h-0.5 rounded-full bg-foreground/40" />
+      {/* Stars layer - static, no animations */}
+      <div className="absolute inset-0">
+        {starElements}
       </div>
 
       {/* Subtle center glow - static */}
