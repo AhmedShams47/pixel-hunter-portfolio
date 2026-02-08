@@ -28,7 +28,7 @@ const PackagesCTA = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 to="/projects"
-                className="px-10 py-4 metallic-prime text-primary-foreground font-display font-bold rounded-2xl transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_30px_hsl(var(--prime)/0.4)]"
+                className="px-10 py-4 metallic-prime text-primary-foreground font-display font-bold rounded-2xl transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_30px_hsl(var(--prime)/0.4)]"
               >
                 Start This Project
               </Link>
@@ -36,7 +36,7 @@ const PackagesCTA = () => {
                 href="https://wa.me/8801707887676?text=Hi%20Ahmed!%20I%20want%20to%20book%20a%20free%20consultation."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="glass-card px-10 py-4 font-display font-bold text-primary border border-primary/30 hover:border-primary/60 transition-all duration-300 hover:scale-[1.02]"
+                className="glass-card px-10 py-4 font-display font-bold text-primary border border-primary/30 hover:border-primary/60 transition-all duration-300 hover:-translate-y-0.5"
               >
                 Book Free Consultation
               </a>
@@ -44,7 +44,7 @@ const PackagesCTA = () => {
                 href="https://wa.me/8801707887676?text=Hi%20Ahmed!%20I%27m%20on%20your%20website%20and%20I%27d%20like%20to%20discuss%20a%20project."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 px-8 py-4 glass-card font-display font-bold text-foreground border border-border/50 hover:border-primary/40 transition-all duration-300 hover:scale-[1.02]"
+                className="flex items-center justify-center gap-2 px-8 py-4 glass-card font-display font-bold text-foreground border border-border/50 hover:border-primary/40 transition-all duration-300 hover:-translate-y-0.5"
               >
                 <Phone className="w-4 h-4 text-primary" />
                 Chat on WhatsApp

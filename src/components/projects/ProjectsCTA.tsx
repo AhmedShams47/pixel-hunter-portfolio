@@ -26,7 +26,7 @@ const ProjectsCTA = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 to="/packages"
-                className="px-10 py-4 metallic-prime text-primary-foreground font-display font-bold rounded-2xl transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_30px_hsl(var(--prime)/0.4)]"
+                className="px-10 py-4 metallic-prime text-primary-foreground font-display font-bold rounded-2xl transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_30px_hsl(var(--prime)/0.4)]"
               >
                 Start Your Project
               </Link>
@@ -34,7 +34,7 @@ const ProjectsCTA = () => {
                 href="https://wa.me/8801707887676?text=Hi%20Ahmed!%20I%20want%20to%20book%20a%20free%20consultation%20for%20my%20project."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="glass-card px-10 py-4 font-display font-bold text-primary border border-primary/30 hover:border-primary/60 transition-all duration-300 hover:scale-[1.02]"
+                className="glass-card px-10 py-4 font-display font-bold text-primary border border-primary/30 hover:border-primary/60 transition-all duration-300 hover:-translate-y-0.5"
               >
                 Book Free Consultation
               </a>

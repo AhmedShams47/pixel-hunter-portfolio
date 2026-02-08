@@ -124,7 +124,7 @@ const CaseStudyModal = ({ project, onClose }: CaseStudyModalProps) => {
                   href={project.demoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 px-8 py-4 metallic-prime text-primary-foreground font-display font-bold rounded-2xl transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_30px_hsl(var(--prime)/0.4)]"
+                  className="flex items-center justify-center gap-2 px-8 py-4 metallic-prime text-primary-foreground font-display font-bold rounded-2xl transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_30px_hsl(var(--prime)/0.4)]"
                 >
                   <span>View Live Demo</span>
                   <ExternalLink className="w-4 h-4" />
@@ -133,7 +133,7 @@ const CaseStudyModal = ({ project, onClose }: CaseStudyModalProps) => {
                   href="https://wa.me/8801707887676?text=Hi%20Ahmed!%20I%27m%20interested%20in%20a%20project%20similar%20to%20your%20work.%20Can%20we%20discuss?"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 px-8 py-4 glass-card font-display font-bold text-primary border border-primary/30 hover:border-primary/60 transition-all duration-300 hover:scale-[1.02]"
+                  className="flex items-center justify-center gap-2 px-8 py-4 glass-card font-display font-bold text-primary border border-primary/30 hover:border-primary/60 transition-all duration-300 hover:-translate-y-0.5"
                 >
                   Want Something Similar?
                 </a>

@@ -134,7 +134,7 @@ const PricingCards = () => {
                 href={`https://wa.me/8801707887676?text=Hi%20Ahmed!%20I'm%20interested%20in%20the%20${plan.name}%20package.%20Can%20you%20share%20more%20details?`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`w-full text-center py-4 rounded-2xl font-display font-bold transition-all duration-300 hover:scale-[1.02] ${
+                className={`w-full text-center py-4 rounded-2xl font-display font-bold transition-all duration-300 hover:-translate-y-0.5 ${
                   plan.popular
                     ? 'metallic-prime text-primary-foreground hover:shadow-[0_0_30px_hsl(var(--prime)/0.4)]'
                     : 'glass-card text-primary border border-primary/30 hover:border-primary/60'
