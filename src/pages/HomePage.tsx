@@ -5,6 +5,7 @@ import { Palette, Share2, Globe, Sparkles } from 'lucide-react';
 import shamsLogo from '@/assets/shams-logo.jpg';
 import PageLayout from '@/components/PageLayout';
 import VideoIntro from '@/components/VideoIntro';
+import RamadanBanner from '@/components/RamadanBanner';
 
 const HomePage = () => {
   const [introComplete, setIntroComplete] = useState(false);
@@ -30,6 +31,7 @@ const HomePage = () => {
       )}
 
       <PageLayout>
+        <RamadanBanner />
         {/* Hero Section */}
         <section className="relative min-h-screen flex items-center justify-center px-6 pt-24 overflow-hidden">
           {/* Background Video — UNTOUCHED */}
@@ -64,13 +66,13 @@ const HomePage = () => {
                 </div>
 
                 <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                  <span className="text-foreground">Designs that speak</span>
+                  <span className="text-foreground">Your Vision,</span>
                   <br />
-                  <span className="prime-text prime-glow">before you do.</span>
+                  <span className="prime-text prime-glow">My Craft.</span>
                 </h1>
 
                 <p className="text-lg text-muted-foreground mb-8 leading-relaxed max-w-lg">
-                  I am Ahmed Shams, the creative mind behind Shams Visuals. I blend branding, graphic design, social media management, and web development to turn ideas into visual stories.
+                  আসসালামু আলাইকুম! I'm Ahmed Shams — I help Bangladeshi brands &amp; businesses look world-class through premium design, web development, and social media. Let's talk like friends, build like professionals.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
@@ -144,7 +146,7 @@ const HomePage = () => {
                 What I <span className="text-primary">Do</span>
               </h2>
               <p className="text-muted-foreground max-w-xl mx-auto">
-                A complete creative package for brands that want to stand out.
+                আপনার ব্র্যান্ডকে world-class করার জন্য যা যা দরকার — সব এক জায়গায়।
               </p>
             </motion.div>
 
@@ -181,10 +183,10 @@ const HomePage = () => {
               className="glass-card p-10 md:p-14 rounded-3xl text-center"
             >
               <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-                Ready to build your <span className="prime-text prime-glow">brand</span>?
+                আপনার ব্র্যান্ড <span className="prime-text prime-glow">Premium</span> করতে চান?
               </h2>
               <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
-                Let's create something memorable together. From concept to launch, I'll help you tell your story visually.
+                কনসেপ্ট থেকে লঞ্চ — সবকিছু আমি handle করি। DM করুন, বন্ধুর মতো কথা বলুন, professional result পান।
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
