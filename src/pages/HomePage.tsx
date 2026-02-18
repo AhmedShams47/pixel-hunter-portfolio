@@ -32,7 +32,7 @@ const HomePage = () => {
       <PageLayout>
         {/* Hero Section */}
         <section className="relative min-h-screen flex items-center justify-center px-6 pt-24 overflow-hidden">
-          {/* Background Video */}
+          {/* Background Video — UNTOUCHED */}
           <div className="absolute inset-0 z-0">
             <video
               ref={videoRef}
@@ -45,7 +45,7 @@ const HomePage = () => {
             >
               <source src="/videos/dragon-eye-bg.mp4" type="video/mp4" />
             </video>
-            <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-transparent to-background" />
+            <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-transparent to-background" />
           </div>
           
           <div className="relative z-10 max-w-6xl mx-auto w-full">
@@ -76,7 +76,11 @@ const HomePage = () => {
                 <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                   <Link
                     to="/projects"
-                    className="px-8 py-4 metallic-prime text-primary-foreground font-display font-bold rounded-2xl transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_30px_hsl(var(--prime)/0.4)] text-center"
+                    className="px-8 py-4 font-display font-bold rounded-2xl transition-all duration-300 hover:scale-[1.02] text-primary-foreground text-center"
+                    style={{
+                      background: 'linear-gradient(135deg, hsl(280 85% 65%) 0%, hsl(310 75% 60%) 100%)',
+                      boxShadow: '0 4px 24px hsl(280 85% 65% / 0.3)',
+                    }}
                   >
                     View Projects
                   </Link>
@@ -97,19 +101,27 @@ const HomePage = () => {
                 className="flex items-center justify-center"
               >
                 <div className="relative group">
-                  <div className="absolute inset-[-12px] rounded-full border border-primary/40 opacity-60" />
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-accent/20 to-primary/30 rounded-full blur-2xl opacity-50 group-hover:opacity-70 transition-opacity duration-500" />
+                  <div className="absolute inset-[-12px] rounded-full border border-primary/30 opacity-60" />
+                  <div
+                    className="absolute inset-0 rounded-full blur-2xl opacity-40 group-hover:opacity-60 transition-opacity duration-500"
+                    style={{
+                      background: 'linear-gradient(135deg, hsl(280 85% 65% / 0.3), hsl(310 75% 60% / 0.2))',
+                    }}
+                  />
                   <img
                     src={shamsLogo}
                     alt="Shams Visuals Logo"
-                    className="relative w-56 h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 object-cover rounded-full shadow-2xl shadow-primary/30 border-2 border-primary/40 z-10"
+                    className="relative w-56 h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 object-cover rounded-full shadow-2xl border-2 border-primary/30 z-10"
+                    style={{
+                      boxShadow: '0 0 40px hsl(280 85% 65% / 0.25), 0 0 80px hsl(310 75% 60% / 0.1)',
+                    }}
                   />
                 </div>
               </motion.div>
             </div>
           </div>
 
-          {/* Scroll Indicator - simplified */}
+          {/* Scroll Indicator */}
           <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
             <div className="flex flex-col items-center gap-2 opacity-60">
               <span className="text-xs text-muted-foreground font-display tracking-[0.2em]">SCROLL</span>
@@ -146,7 +158,7 @@ const HomePage = () => {
                   transition={{ duration: 0.4, delay: index * 0.1, ease: "easeOut" }}
                   className="glass-card p-6 text-center group hover:border-primary/50 transition-all duration-300 rounded-2xl"
                 >
-                  <div className="mb-4 inline-flex p-3 rounded-xl bg-primary/15 border border-primary/25 text-primary group-hover:shadow-[0_0_20px_hsl(var(--gold)/0.2)] transition-shadow duration-300">
+                  <div className="mb-4 inline-flex p-3 rounded-xl bg-primary/15 border border-primary/25 text-primary group-hover:shadow-[0_0_20px_hsl(280_85%_65%/0.25)] transition-shadow duration-300">
                     {skill.icon}
                   </div>
                   <h3 className="font-display text-sm font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
@@ -169,7 +181,7 @@ const HomePage = () => {
               className="glass-card p-10 md:p-14 rounded-3xl text-center"
             >
               <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-                Ready to build your <span className="gold-text gold-glow">brand</span>?
+                Ready to build your <span className="prime-text prime-glow">brand</span>?
               </h2>
               <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
                 Let's create something memorable together. From concept to launch, I'll help you tell your story visually.
@@ -177,7 +189,11 @@ const HomePage = () => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
                   to="/projects"
-                  className="px-8 py-4 metallic-gold text-primary-foreground font-display font-bold rounded-2xl transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_30px_hsl(var(--gold)/0.4)]"
+                  className="px-8 py-4 font-display font-bold rounded-2xl transition-all duration-300 hover:scale-[1.02] text-primary-foreground"
+                  style={{
+                    background: 'linear-gradient(135deg, hsl(280 85% 65%) 0%, hsl(310 75% 60%) 100%)',
+                    boxShadow: '0 4px 24px hsl(280 85% 65% / 0.3)',
+                  }}
                 >
                   See My Work
                 </Link>

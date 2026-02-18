@@ -12,7 +12,6 @@ interface Star {
 const ParticleBackground = () => {
   const [stars, setStars] = useState<Star[]>([]);
 
-  // Generate minimal stars for smooth performance
   useEffect(() => {
     const newStars: Star[] = [];
     const starCount = window.innerWidth < 768 ? 20 : 35;
@@ -23,25 +22,27 @@ const ParticleBackground = () => {
         x: Math.random() * 100,
         y: Math.random() * 100,
         size: Math.random() * 2 + 0.5,
-        opacity: Math.random() * 0.4 + 0.2,
+        opacity: Math.random() * 0.4 + 0.15,
         delay: Math.random() * 5,
       });
     }
     setStars(newStars);
   }, []);
 
-  // Memoize star elements - simple CSS-only twinkle
   const starElements = useMemo(() => (
     stars.map((star) => (
       <div
         key={star.id}
-        className="absolute rounded-full bg-foreground/50"
+        className="absolute rounded-full"
         style={{
           left: `${star.x}%`,
           top: `${star.y}%`,
           width: star.size,
           height: star.size,
           opacity: star.opacity,
+          background: star.id % 3 === 0
+            ? 'hsl(310 85% 80%)'
+            : 'hsl(270 15% 85%)',
         }}
       />
     ))
@@ -49,35 +50,47 @@ const ParticleBackground = () => {
 
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-      {/* Simple static gradient background - no animations */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-[hsl(270,25%,6%)] to-background" />
+      {/* Deep space gradient */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: 'linear-gradient(180deg, hsl(270 18% 3%) 0%, hsl(275 22% 5%) 40%, hsl(270 18% 3%) 100%)',
+        }}
+      />
 
-      {/* Static subtle nebula - no animation */}
-      <div className="absolute inset-0 opacity-15">
+      {/* Nebula orbs */}
+      <div className="absolute inset-0 opacity-20">
         <div
-          className="absolute top-[15%] left-[10%] w-[300px] h-[300px] rounded-full"
+          className="absolute top-[12%] left-[8%] w-[350px] h-[350px] rounded-full"
           style={{
-            background: 'radial-gradient(ellipse, hsl(270 70% 50% / 0.25) 0%, transparent 70%)',
-            filter: 'blur(80px)',
+            background: 'radial-gradient(ellipse, hsl(280 80% 55% / 0.3) 0%, transparent 70%)',
+            filter: 'blur(90px)',
           }}
         />
         <div
-          className="absolute top-[50%] right-[5%] w-[250px] h-[250px] rounded-full"
+          className="absolute top-[55%] right-[5%] w-[280px] h-[280px] rounded-full"
           style={{
-            background: 'radial-gradient(ellipse, hsl(280 60% 45% / 0.2) 0%, transparent 70%)',
+            background: 'radial-gradient(ellipse, hsl(310 70% 50% / 0.25) 0%, transparent 70%)',
+            filter: 'blur(90px)',
+          }}
+        />
+        <div
+          className="absolute bottom-[10%] left-[40%] w-[200px] h-[200px] rounded-full"
+          style={{
+            background: 'radial-gradient(ellipse, hsl(290 60% 45% / 0.2) 0%, transparent 70%)',
             filter: 'blur(80px)',
           }}
         />
       </div>
 
-      {/* Stars layer - static, no animations */}
+      {/* Stars */}
       <div className="absolute inset-0">
         {starElements}
       </div>
 
-      {/* Subtle center glow - static */}
+      {/* Subtle center glow */}
       <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full opacity-[0.02]"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-[0.02]"
         style={{
           background: 'radial-gradient(circle, hsl(var(--primary)) 0%, transparent 60%)',
         }}

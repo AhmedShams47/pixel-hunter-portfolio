@@ -57,6 +57,7 @@ export default {
           dark: "hsl(var(--prime-dark))",
           shine: "hsl(var(--prime-shine))",
           neon: "hsl(var(--prime-neon))",
+          pink: "hsl(var(--prime-pink))",
         },
         luxury: {
           dark: "hsl(var(--luxury-dark))",

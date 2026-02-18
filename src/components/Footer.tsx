@@ -11,7 +11,10 @@ const Footer = () => {
             <img
               src={shamsLogoNav}
               alt="Shams Visuals"
-              className="w-8 h-8 rounded-lg object-cover"
+              className="w-9 h-9 rounded-xl object-cover border border-primary/20"
+              style={{
+                boxShadow: '0 0 12px hsl(280 85% 65% / 0.2)',
+              }}
             />
             <span className="font-display text-sm font-semibold tracking-[0.15em] text-foreground">
               SHAMS VISUALS

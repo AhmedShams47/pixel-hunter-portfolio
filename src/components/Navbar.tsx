@@ -25,19 +25,19 @@ const Navbar = () => {
         {/* Logo */}
         <Link
           to="/"
-          className="relative px-5 py-3 flex items-center gap-3 rounded-2xl transition-all duration-300 group"
+          className="relative px-4 py-2.5 flex items-center gap-3 rounded-2xl transition-all duration-300 group"
           style={{
-            background: 'linear-gradient(135deg, hsl(270 25% 8% / 0.9) 0%, hsl(270 25% 8% / 0.7) 100%)',
-            backdropFilter: 'blur(20px)',
-            WebkitBackdropFilter: 'blur(20px)',
-            border: '1px solid hsl(270 40% 30% / 0.25)',
-            boxShadow: '0 4px 20px hsl(270 80% 65% / 0.06), inset 0 1px 0 hsl(270 20% 95% / 0.04)',
+            background: 'linear-gradient(135deg, hsl(270 18% 5% / 0.95) 0%, hsl(270 18% 5% / 0.8) 100%)',
+            backdropFilter: 'blur(24px)',
+            WebkitBackdropFilter: 'blur(24px)',
+            border: '1px solid hsl(280 50% 35% / 0.3)',
+            boxShadow: '0 4px 24px hsl(280 85% 65% / 0.08), inset 0 1px 0 hsl(310 100% 80% / 0.05)',
           }}
         >
           <img
             src={shamsLogoNav}
             alt="Shams Visuals"
-            className="w-9 h-9 rounded-xl object-cover shadow-[0_0_12px_hsl(var(--prime)/0.25)]"
+            className="w-10 h-10 rounded-xl object-cover shadow-[0_0_16px_hsl(280_85%_65%/0.3)] border border-primary/20"
           />
           <span className="font-display text-sm font-semibold tracking-[0.15em] text-foreground hidden sm:block group-hover:text-primary transition-colors duration-300">
             SHAMS VISUALS
@@ -48,11 +48,11 @@ const Navbar = () => {
         <div
           className="relative px-2 md:px-3 py-2.5 flex items-center gap-0.5 md:gap-1 rounded-2xl"
           style={{
-            background: 'linear-gradient(135deg, hsl(270 25% 8% / 0.9) 0%, hsl(270 25% 8% / 0.7) 100%)',
-            backdropFilter: 'blur(20px)',
-            WebkitBackdropFilter: 'blur(20px)',
-            border: '1px solid hsl(270 40% 30% / 0.25)',
-            boxShadow: '0 4px 20px hsl(270 80% 65% / 0.06), inset 0 1px 0 hsl(270 20% 95% / 0.04)',
+            background: 'linear-gradient(135deg, hsl(270 18% 5% / 0.95) 0%, hsl(270 18% 5% / 0.8) 100%)',
+            backdropFilter: 'blur(24px)',
+            WebkitBackdropFilter: 'blur(24px)',
+            border: '1px solid hsl(280 50% 35% / 0.3)',
+            boxShadow: '0 4px 24px hsl(280 85% 65% / 0.08), inset 0 1px 0 hsl(310 100% 80% / 0.05)',
           }}
         >
           {navItems.map((item) => (
@@ -61,16 +61,17 @@ const Navbar = () => {
               to={item.path}
               className={`relative px-4 md:px-5 py-2.5 text-sm font-display font-medium transition-all duration-300 rounded-xl group/link ${
                 isActive(item.path)
-                  ? 'text-primary'
+                  ? 'text-primary-foreground'
                   : 'text-muted-foreground hover:text-foreground'
               }`}
             >
               {isActive(item.path) && (
                 <motion.div
                   layoutId="navbar-active"
-                  className="absolute inset-0 rounded-xl bg-primary/12 border border-primary/20"
+                  className="absolute inset-0 rounded-xl"
                   style={{
-                    boxShadow: '0 0 18px hsl(270 80% 65% / 0.12)',
+                    background: 'linear-gradient(135deg, hsl(280 85% 65% / 0.9), hsl(310 75% 60% / 0.7))',
+                    boxShadow: '0 0 20px hsl(280 85% 65% / 0.3), 0 0 40px hsl(310 75% 60% / 0.1)',
                   }}
                   transition={{ type: 'spring', stiffness: 380, damping: 28 }}
                 />
@@ -88,13 +89,10 @@ const Navbar = () => {
           href="https://www.instagram.com/k_0_p_a/"
           target="_blank"
           rel="noopener noreferrer"
-          className="relative px-6 md:px-8 py-3 text-sm font-display font-semibold text-primary rounded-2xl transition-all duration-300 hover:scale-[1.03] hidden sm:block"
+          className="relative px-6 md:px-8 py-3 text-sm font-display font-semibold text-primary-foreground rounded-2xl transition-all duration-300 hover:scale-[1.03] hidden sm:block"
           style={{
-            background: 'linear-gradient(135deg, hsl(270 25% 8% / 0.9) 0%, hsl(270 25% 8% / 0.7) 100%)',
-            backdropFilter: 'blur(20px)',
-            WebkitBackdropFilter: 'blur(20px)',
-            border: '1px solid hsl(270 80% 65% / 0.3)',
-            boxShadow: '0 4px 20px hsl(270 80% 65% / 0.1), inset 0 1px 0 hsl(270 20% 95% / 0.04)',
+            background: 'linear-gradient(135deg, hsl(280 85% 65%) 0%, hsl(310 75% 60%) 100%)',
+            boxShadow: '0 4px 24px hsl(280 85% 65% / 0.25), inset 0 1px 0 hsl(310 100% 80% / 0.2)',
           }}
         >
           Let's Connect
