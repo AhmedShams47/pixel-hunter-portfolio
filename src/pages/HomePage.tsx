@@ -5,11 +5,12 @@ import { Palette, Share2, Globe, Sparkles } from 'lucide-react';
 import shamsLogo from '@/assets/shams-logo.jpg';
 import PageLayout from '@/components/PageLayout';
 import VideoIntro from '@/components/VideoIntro';
-import RamadanBanner from '@/components/RamadanBanner';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const HomePage = () => {
   const [introComplete, setIntroComplete] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const { t } = useLanguage();
 
   useEffect(() => {
     if (videoRef.current) {
@@ -18,10 +19,10 @@ const HomePage = () => {
   }, []);
 
   const skills = [
-    { icon: <Palette className="w-5 h-5" />, label: 'Branding & Graphic Design' },
-    { icon: <Share2 className="w-5 h-5" />, label: 'Social Media Management' },
-    { icon: <Globe className="w-5 h-5" />, label: 'Web Design & Development' },
-    { icon: <Sparkles className="w-5 h-5" />, label: '3D & Motion Graphics' },
+    { icon: <Palette className="w-5 h-5" />, labelKey: 'skills.branding' },
+    { icon: <Share2 className="w-5 h-5" />, labelKey: 'skills.social' },
+    { icon: <Globe className="w-5 h-5" />, labelKey: 'skills.web' },
+    { icon: <Sparkles className="w-5 h-5" />, labelKey: 'skills.motion' },
   ];
 
   return (
@@ -31,7 +32,6 @@ const HomePage = () => {
       )}
 
       <PageLayout>
-        <RamadanBanner />
         {/* Hero Section */}
         <section className="relative min-h-screen flex items-center justify-center px-6 pt-24 overflow-hidden">
           {/* Background Video — UNTOUCHED */}
@@ -61,18 +61,18 @@ const HomePage = () => {
               >
                 <div className="inline-block glass-card px-4 py-2 mb-6">
                   <span className="text-primary text-sm font-display tracking-[0.25em]">
-                    SHAMS VISUALS
+                    {t('hero.badge')}
                   </span>
                 </div>
 
                 <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                  <span className="text-foreground">Your Vision,</span>
+                  <span className="text-foreground">{t('hero.title1')}</span>
                   <br />
-                  <span className="prime-text prime-glow">My Craft.</span>
+                  <span className="prime-text prime-glow">{t('hero.title2')}</span>
                 </h1>
 
                 <p className="text-lg text-muted-foreground mb-8 leading-relaxed max-w-lg">
-                  আসসালামু আলাইকুম! I'm Ahmed Shams — I help Bangladeshi brands &amp; businesses look world-class through premium design, web development, and social media. Let's talk like friends, build like professionals.
+                  {t('hero.desc')}
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
@@ -80,17 +80,17 @@ const HomePage = () => {
                     to="/projects"
                     className="px-8 py-4 font-display font-bold rounded-2xl transition-all duration-300 hover:scale-[1.02] text-primary-foreground text-center"
                     style={{
-                      background: 'linear-gradient(135deg, hsl(280 85% 65%) 0%, hsl(310 75% 60%) 100%)',
-                      boxShadow: '0 4px 24px hsl(280 85% 65% / 0.3)',
+                      background: 'linear-gradient(135deg, hsl(var(--prime)) 0%, hsl(var(--accent)) 100%)',
+                      boxShadow: '0 4px 24px hsl(var(--prime) / 0.3)',
                     }}
                   >
-                    View Projects
+                    {t('hero.viewProjects')}
                   </Link>
                   <Link
                     to="/packages"
                     className="glass-card px-8 py-4 font-display font-bold text-foreground border border-primary/30 hover:border-primary/60 transition-all duration-300 hover:scale-[1.02] text-center"
                   >
-                    Contact Me
+                    {t('hero.contactMe')}
                   </Link>
                 </div>
               </motion.div>
@@ -107,7 +107,7 @@ const HomePage = () => {
                   <div
                     className="absolute inset-0 rounded-full blur-2xl opacity-40 group-hover:opacity-60 transition-opacity duration-500"
                     style={{
-                      background: 'linear-gradient(135deg, hsl(280 85% 65% / 0.3), hsl(310 75% 60% / 0.2))',
+                      background: 'linear-gradient(135deg, hsl(var(--prime) / 0.3), hsl(var(--accent) / 0.2))',
                     }}
                   />
                   <img
@@ -115,7 +115,7 @@ const HomePage = () => {
                     alt="Shams Visuals Logo"
                     className="relative w-56 h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 object-cover rounded-full shadow-2xl border-2 border-primary/30 z-10"
                     style={{
-                      boxShadow: '0 0 40px hsl(280 85% 65% / 0.25), 0 0 80px hsl(310 75% 60% / 0.1)',
+                      boxShadow: '0 0 40px hsl(var(--prime) / 0.25), 0 0 80px hsl(var(--accent) / 0.1)',
                     }}
                   />
                 </div>
@@ -126,7 +126,7 @@ const HomePage = () => {
           {/* Scroll Indicator */}
           <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
             <div className="flex flex-col items-center gap-2 opacity-60">
-              <span className="text-xs text-muted-foreground font-display tracking-[0.2em]">SCROLL</span>
+              <span className="text-xs text-muted-foreground font-display tracking-[0.2em]">{t('hero.scroll')}</span>
               <div className="w-px h-8 bg-gradient-to-b from-primary to-transparent" />
             </div>
           </div>
@@ -143,17 +143,17 @@ const HomePage = () => {
               className="text-center mb-12"
             >
               <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-                What I <span className="text-primary">Do</span>
+                {t('skills.title')} <span className="text-primary">{t('skills.titleHighlight')}</span>
               </h2>
               <p className="text-muted-foreground max-w-xl mx-auto">
-                আপনার ব্র্যান্ডকে world-class করার জন্য যা যা দরকার — সব এক জায়গায়।
+                {t('skills.desc')}
               </p>
             </motion.div>
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {skills.map((skill, index) => (
                 <motion.div
-                  key={skill.label}
+                  key={skill.labelKey}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -164,7 +164,7 @@ const HomePage = () => {
                     {skill.icon}
                   </div>
                   <h3 className="font-display text-sm font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
-                    {skill.label}
+                    {t(skill.labelKey)}
                   </h3>
                 </motion.div>
               ))}
@@ -183,27 +183,27 @@ const HomePage = () => {
               className="glass-card p-10 md:p-14 rounded-3xl text-center"
             >
               <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-                আপনার ব্র্যান্ড <span className="prime-text prime-glow">Premium</span> করতে চান?
+                {t('cta.title1')} <span className="prime-text prime-glow">{t('cta.titleHighlight')}</span>{t('cta.title2')}
               </h2>
               <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
-                কনসেপ্ট থেকে লঞ্চ — সবকিছু আমি handle করি। DM করুন, বন্ধুর মতো কথা বলুন, professional result পান।
+                {t('cta.desc')}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
                   to="/projects"
                   className="px-8 py-4 font-display font-bold rounded-2xl transition-all duration-300 hover:scale-[1.02] text-primary-foreground"
                   style={{
-                    background: 'linear-gradient(135deg, hsl(280 85% 65%) 0%, hsl(310 75% 60%) 100%)',
-                    boxShadow: '0 4px 24px hsl(280 85% 65% / 0.3)',
+                    background: 'linear-gradient(135deg, hsl(var(--prime)) 0%, hsl(var(--accent)) 100%)',
+                    boxShadow: '0 4px 24px hsl(var(--prime) / 0.3)',
                   }}
                 >
-                  See My Work
+                  {t('cta.seeWork')}
                 </Link>
                 <Link
                   to="/packages"
                   className="glass-card px-8 py-4 font-display font-bold text-primary border border-primary/30 hover:border-primary/60 transition-all duration-300 hover:scale-[1.02]"
                 >
-                  Get Started
+                  {t('cta.getStarted')}
                 </Link>
               </div>
             </motion.div>
