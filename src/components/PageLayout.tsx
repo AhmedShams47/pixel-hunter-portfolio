@@ -3,31 +3,17 @@ import ParticleBackground from '@/components/ParticleBackground';
 import Navbar from '@/components/Navbar';
 import FloatingSocialBar from '@/components/FloatingSocialBar';
 import Footer from '@/components/Footer';
+import RamadanBanner from '@/components/RamadanBanner';
 
 interface PageLayoutProps {
   children: React.ReactNode;
   showParticles?: boolean;
 }
 
-// Lighter page transitions for smooth performance
 const pageVariants = {
-  initial: {
-    opacity: 0,
-  },
-  animate: {
-    opacity: 1,
-    transition: {
-      duration: 0.3,
-      ease: "easeOut",
-    },
-  },
-  exit: {
-    opacity: 0,
-    transition: {
-      duration: 0.2,
-      ease: "easeOut",
-    },
-  },
+  initial: { opacity: 0 },
+  animate: { opacity: 1, transition: { duration: 0.3, ease: "easeOut" } },
+  exit: { opacity: 0, transition: { duration: 0.2, ease: "easeOut" } },
 };
 
 const PageLayout = ({ children, showParticles = true }: PageLayoutProps) => {
@@ -37,13 +23,14 @@ const PageLayout = ({ children, showParticles = true }: PageLayoutProps) => {
       initial="initial"
       animate="animate"
       exit="exit"
-      className="relative min-h-screen bg-background overflow-x-hidden"
+      className="relative min-h-screen bg-background overflow-x-hidden transition-colors duration-400"
     >
       {showParticles && <ParticleBackground />}
       <FloatingSocialBar />
       <div className="relative z-10">
         <Navbar />
         {children}
+        <RamadanBanner />
         <Footer />
       </div>
     </motion.main>

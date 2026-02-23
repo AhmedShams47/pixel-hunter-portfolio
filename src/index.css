@@ -5,7 +5,8 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
+  :root,
+  .dark {
     --background: 270 18% 3%;
     --foreground: 270 15% 93%;
 
@@ -57,6 +58,56 @@
     --sidebar-border: 270 20% 15%;
     --sidebar-ring: 280 85% 65%;
   }
+
+  .light {
+    --background: 270 15% 96%;
+    --foreground: 270 18% 10%;
+
+    --card: 270 15% 100%;
+    --card-foreground: 270 18% 10%;
+
+    --popover: 270 15% 100%;
+    --popover-foreground: 270 18% 10%;
+
+    --primary: 280 85% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 270 12% 92%;
+    --secondary-foreground: 270 18% 15%;
+
+    --muted: 270 10% 88%;
+    --muted-foreground: 270 10% 40%;
+
+    --accent: 310 70% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 270 15% 85%;
+    --input: 270 12% 90%;
+    --ring: 280 85% 55%;
+
+    --prime: 280 85% 55%;
+    --prime-light: 290 80% 65%;
+    --prime-dark: 270 65% 40%;
+    --prime-shine: 310 90% 70%;
+    --prime-neon: 290 90% 62%;
+    --prime-pink: 320 80% 55%;
+    --luxury-dark: 270 15% 96%;
+    --luxury-charcoal: 270 12% 92%;
+    --glass-bg: 270 15% 100%;
+    --glass-border: 275 25% 80%;
+
+    --sidebar-background: 270 12% 98%;
+    --sidebar-foreground: 270 18% 10%;
+    --sidebar-primary: 280 85% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 270 12% 94%;
+    --sidebar-accent-foreground: 270 18% 15%;
+    --sidebar-border: 270 15% 85%;
+    --sidebar-ring: 280 85% 55%;
+  }
 }
 
 @layer base {
@@ -69,6 +120,7 @@
     font-family: 'Cormorant Garamond', serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.4s ease, color 0.3s ease;
   }
 
   h1, h2, h3, h4, h5, h6 {

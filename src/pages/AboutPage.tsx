@@ -2,20 +2,23 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { MessageSquare, Calendar, Sparkles, Zap, Instagram, Facebook, Mail, Phone } from 'lucide-react';
 import PageLayout from '@/components/PageLayout';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const AboutPage = () => {
+  const { t } = useLanguage();
+
   const processItems = [
-    { icon: <MessageSquare className="w-5 h-5" />, label: 'Clear Communication' },
-    { icon: <Calendar className="w-5 h-5" />, label: 'Fixed Milestones' },
-    { icon: <Sparkles className="w-5 h-5" />, label: 'Organized Delivery' },
-    { icon: <Zap className="w-5 h-5" />, label: 'Consistent Results' },
+    { icon: <MessageSquare className="w-5 h-5" />, labelKey: 'about.clearComm' },
+    { icon: <Calendar className="w-5 h-5" />, labelKey: 'about.milestones' },
+    { icon: <Sparkles className="w-5 h-5" />, labelKey: 'about.delivery' },
+    { icon: <Zap className="w-5 h-5" />, labelKey: 'about.results' },
   ];
 
   const socials = [
-    { icon: <Instagram className="w-5 h-5" />, label: 'Instagram', href: 'https://www.instagram.com/k_0_p_a/', helper: 'Best for quick ideas and sharing references', color: 'hover:text-pink-400' },
-    { icon: <Facebook className="w-5 h-5" />, label: 'Facebook', href: 'https://www.facebook.com/AhmedShams164', helper: 'Perfect if you found me through Facebook', color: 'hover:text-blue-400' },
-    { icon: <Phone className="w-5 h-5" />, label: 'WhatsApp', href: 'https://wa.me/8801707887676', helper: 'Great for serious inquiries and fast replies', color: 'hover:text-green-500' },
-    { icon: <Mail className="w-5 h-5" />, label: 'Email', href: 'mailto:shamsvisuals@gmail.com', helper: 'Send a detailed brief here', color: 'hover:text-primary' },
+    { icon: <Instagram className="w-5 h-5" />, label: 'Instagram', href: 'https://www.instagram.com/k_0_p_a/', helperKey: 'about.instagram', color: 'hover:text-pink-400' },
+    { icon: <Facebook className="w-5 h-5" />, label: 'Facebook', href: 'https://www.facebook.com/AhmedShams164', helperKey: 'about.facebook', color: 'hover:text-blue-400' },
+    { icon: <Phone className="w-5 h-5" />, label: 'WhatsApp', href: 'https://wa.me/8801707887676', helperKey: 'about.whatsapp', color: 'hover:text-green-500' },
+    { icon: <Mail className="w-5 h-5" />, label: 'Email', href: 'mailto:shamsvisuals@gmail.com', helperKey: 'about.email', color: 'hover:text-primary' },
   ];
 
   return (
@@ -29,10 +32,10 @@ const AboutPage = () => {
             transition={{ duration: 0.5, ease: "easeOut" }}
           >
             <span className="text-primary text-sm font-display tracking-[0.3em] mb-4 block">
-              // ABOUT ME
+              {t('about.badge')}
             </span>
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-              Meet <span className="gold-text gold-glow">Ahmed Shams</span>
+              {t('about.title')} <span className="gold-text gold-glow">{t('about.titleHighlight')}</span>
             </h1>
           </motion.div>
         </div>
@@ -49,10 +52,10 @@ const AboutPage = () => {
             className="glass-card p-8 md:p-12 rounded-3xl"
           >
             <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-6">
-              Who I <span className="text-primary">Am</span>
+              {t('about.whoTitle')} <span className="text-primary">{t('about.whoHighlight')}</span>
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              I'm Ahmed Shams, the creator of Shams Visuals. I help brands, businesses and creators look professional and memorable through design, motion, and web experiences. Over the years, I've worked with clients who needed everything from a simple logo refresh to a complete brand overhaul—and I've loved every project.
+              {t('about.whoDesc')}
             </p>
           </motion.div>
         </div>
@@ -69,16 +72,16 @@ const AboutPage = () => {
             className="glass-card p-8 md:p-12 rounded-3xl"
           >
             <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-6">
-              Discipline & <span className="text-primary">Process</span>
+              {t('about.disciplineTitle')} <span className="text-primary">{t('about.disciplineHighlight')}</span>
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-              Every project starts with listening and planning. I work with clear communication, fixed milestones, and organized delivery, so you always know what is happening. I don't just "make designs"; I build systems that stay consistent across your brand.
+              {t('about.disciplineDesc')}
             </p>
             
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {processItems.map((item, index) => (
                 <motion.div
-                  key={item.label}
+                  key={item.labelKey}
                   initial={{ opacity: 0, y: 15 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -86,7 +89,7 @@ const AboutPage = () => {
                   className="flex flex-col items-center gap-3 p-4 rounded-2xl bg-secondary/30 border border-border/50 text-center"
                 >
                   <div className="text-primary">{item.icon}</div>
-                  <span className="text-xs text-muted-foreground font-display tracking-wider uppercase">{item.label}</span>
+                  <span className="text-xs text-muted-foreground font-display tracking-wider uppercase">{t(item.labelKey)}</span>
                 </motion.div>
               ))}
             </div>
@@ -109,11 +112,11 @@ const AboutPage = () => {
                 <Sparkles className="w-6 h-6" />
               </div>
               <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground">
-                3D & <span className="text-primary">Animations</span>
+                {t('about.3dTitle')} <span className="text-primary">{t('about.3dHighlight')}</span>
               </h2>
             </div>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              I love using smooth 3D animations and motion graphics to bring brands to life—logo reveals, social media intros, and subtle website animations that feel premium instead of noisy. Movement should guide the eye and add value, not distract.
+              {t('about.3dDesc')}
             </p>
           </motion.div>
         </div>
@@ -130,10 +133,10 @@ const AboutPage = () => {
             className="glass-card p-8 md:p-12 rounded-3xl text-center"
           >
             <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4">
-              Let's build something <span className="text-primary">beautiful</span> together
+              {t('about.connectTitle')} <span className="text-primary">{t('about.connectHighlight')}</span> {t('about.connectSuffix')}
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed mb-8 max-w-2xl mx-auto">
-              Tell me about your brand, your idea, or the project you have in mind. The fastest way to reach me is to send me a message on social media or email—no long forms, just a simple chat.
+              {t('about.connectDesc')}
             </p>
             
             <div className="grid sm:grid-cols-2 gap-4 max-w-xl mx-auto mb-8">
@@ -149,20 +152,20 @@ const AboutPage = () => {
                     {social.icon}
                     <span className="font-display font-semibold">{social.label}</span>
                   </div>
-                  <span className="text-xs text-muted-foreground/70">{social.helper}</span>
+                  <span className="text-xs text-muted-foreground/70">{t(social.helperKey)}</span>
                 </a>
               ))}
             </div>
 
             <p className="text-sm text-muted-foreground mb-8">
-              Whichever button you choose, your message comes directly to me, Ahmed—not a bot, not a team. I read everything and reply as soon as possible.
+              {t('about.directMsg')}
             </p>
 
             <Link
               to="/packages"
-              className="inline-block px-8 py-4 metallic-gold text-primary-foreground font-display font-bold rounded-2xl transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_30px_hsl(var(--gold)/0.4)]"
+              className="inline-block px-8 py-4 metallic-gold text-primary-foreground font-display font-bold rounded-2xl transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_30px_hsl(var(--prime)/0.4)]"
             >
-              View Packages
+              {t('about.viewPackages')}
             </Link>
           </motion.div>
         </div>
