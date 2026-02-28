@@ -71,7 +71,7 @@ const HomePage = () => {
                   <span className="prime-text prime-glow">{t('hero.title2')}</span>
                 </h1>
 
-                <p className="text-lg text-muted-foreground mb-8 leading-relaxed max-w-lg">
+                <p className="mb-8 leading-relaxed max-w-lg text-primary-foreground bg-[#ebe8ed]/0 text-lg">
                   {t('hero.desc')}
                 </p>
 
