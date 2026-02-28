@@ -10,7 +10,7 @@ const plans = [
     icon: Sparkles,
     popular: false,
     features: [
-      '3–5 pages',
+      '3 to 5 pages',
       'Responsive design',
       'Contact / WhatsApp',
       'Basic SEO',
@@ -45,7 +45,7 @@ const plans = [
     features: [
       'Custom strategy',
       'Premium animations',
-      'Booking or e-commerce',
+      'Booking or ecommerce',
       'Marketing funnel',
       'Analytics integration',
       'Dedicated support',
@@ -55,9 +55,9 @@ const plans = [
 
 const PricingCards = () => {
   return (
-    <section className="py-16 px-6">
+    <section className="py-12 sm:py-16 px-4 sm:px-6">
       <div className="max-w-6xl mx-auto">
-        <div className="grid md:grid-cols-3 gap-6 items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
           {plans.map((plan, index) => (
             <motion.div
               key={plan.name}
@@ -69,7 +69,7 @@ const PricingCards = () => {
                 delay: index * 0.1,
                 ease: 'easeOut',
               }}
-              className={`relative glass-card rounded-3xl p-8 flex flex-col transition-all duration-500 group hover:border-primary/60 ${
+              className={`relative glass-card rounded-3xl p-6 sm:p-8 flex flex-col transition-all duration-500 group hover:border-primary/60 ${
                 plan.popular
                   ? 'border-primary/50 ring-1 ring-primary/20 md:scale-105 md:-my-4 shadow-[0_0_40px_hsl(var(--prime)/0.15)]'
                   : ''
@@ -89,7 +89,7 @@ const PricingCards = () => {
                 <div className="p-2.5 rounded-xl bg-primary/10 border border-primary/20 text-primary">
                   <plan.icon className="w-5 h-5" />
                 </div>
-                <h3 className="font-display text-2xl font-bold text-foreground">
+                <h3 className="font-display text-xl sm:text-2xl font-bold text-foreground">
                   {plan.name}
                 </h3>
               </div>
@@ -107,7 +107,7 @@ const PricingCards = () => {
                   </span>
                 )}
                 <div className="flex items-baseline gap-1">
-                  <span className="font-display text-4xl font-bold text-foreground">
+                  <span className="font-display text-3xl sm:text-4xl font-bold text-foreground">
                     ৳{plan.price}
                   </span>
                   <span className="text-muted-foreground text-sm">

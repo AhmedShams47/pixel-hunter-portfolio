@@ -11,7 +11,7 @@ const steps = [
 
 const ProcessSection = () => {
   return (
-    <section className="py-20 px-6">
+    <section className="py-16 sm:py-20 px-4 sm:px-6">
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -21,7 +21,7 @@ const ProcessSection = () => {
           className="text-center mb-14"
         >
           <span className="text-primary text-sm font-display tracking-[0.3em] mb-4 block">
-            // PROCESS
+            PROCESS
           </span>
           <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4">
             How Your Project Moves From{' '}
@@ -29,7 +29,7 @@ const ProcessSection = () => {
           </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-5 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
           {steps.map((step, index) => (
             <motion.div
               key={step.title}
@@ -37,18 +37,18 @@ const ProcessSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
-              className="glass-card p-6 rounded-2xl text-center group hover:border-primary/50 transition-all duration-300 relative"
+              className="glass-card p-5 sm:p-6 rounded-2xl text-center group hover:border-primary/50 transition-all duration-300 relative"
             >
               <span className="text-xs font-display tracking-widest text-primary/50 mb-3 block">
                 {step.step}
               </span>
-              <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:shadow-[0_0_20px_hsl(var(--prime)/0.2)] transition-shadow duration-300">
-                <step.icon className="w-5 h-5 text-primary" />
+              <div className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-4 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:shadow-[0_0_20px_hsl(var(--prime)/0.2)] transition-shadow duration-300">
+                <step.icon className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
               </div>
-              <h3 className="font-display text-sm font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
+              <h3 className="font-display text-xs sm:text-sm font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
                 {step.title}
               </h3>
-              <p className="text-xs text-muted-foreground leading-relaxed">
+              <p className="text-[11px] sm:text-xs text-muted-foreground leading-relaxed">
                 {step.desc}
               </p>
             </motion.div>

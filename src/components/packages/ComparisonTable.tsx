@@ -12,7 +12,7 @@ const features = [
   { name: 'Priority Support', starter: false, growth: true, premium: true },
   { name: 'Custom Strategy', starter: false, growth: false, premium: true },
   { name: 'Premium Animations', starter: false, growth: false, premium: true },
-  { name: 'E-commerce / Booking', starter: false, growth: false, premium: true },
+  { name: 'Ecommerce / Booking', starter: false, growth: false, premium: true },
   { name: 'Marketing Funnel', starter: false, growth: false, premium: true },
   { name: 'Analytics Integration', starter: false, growth: false, premium: true },
   { name: 'Dedicated Support', starter: false, growth: false, premium: true },
@@ -20,7 +20,7 @@ const features = [
 
 const ComparisonTable = () => {
   return (
-    <section className="py-16 px-6">
+    <section className="py-12 sm:py-16 px-4 sm:px-6">
       <div className="max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -45,19 +45,19 @@ const ComparisonTable = () => {
           className="glass-card rounded-2xl overflow-hidden"
         >
           <div className="overflow-x-auto">
-            <table className="w-full">
+            <table className="w-full min-w-[480px]">
               <thead>
                 <tr className="border-b border-border/50">
-                  <th className="text-left p-4 md:p-5 font-display text-sm tracking-wider text-muted-foreground">
+                  <th className="text-left p-3 sm:p-4 md:p-5 font-display text-xs sm:text-sm tracking-wider text-muted-foreground">
                     Feature
                   </th>
-                  <th className="p-4 md:p-5 font-display text-sm tracking-wider text-muted-foreground text-center">
+                  <th className="p-3 sm:p-4 md:p-5 font-display text-xs sm:text-sm tracking-wider text-muted-foreground text-center">
                     Starter
                   </th>
-                  <th className="p-4 md:p-5 font-display text-sm tracking-wider text-primary text-center">
+                  <th className="p-3 sm:p-4 md:p-5 font-display text-xs sm:text-sm tracking-wider text-primary text-center">
                     Growth
                   </th>
-                  <th className="p-4 md:p-5 font-display text-sm tracking-wider text-muted-foreground text-center">
+                  <th className="p-3 sm:p-4 md:p-5 font-display text-xs sm:text-sm tracking-wider text-muted-foreground text-center">
                     Premium
                   </th>
                 </tr>
@@ -70,28 +70,28 @@ const ComparisonTable = () => {
                       index % 2 === 0 ? 'bg-secondary/10' : ''
                     }`}
                   >
-                    <td className="p-4 md:p-5 text-sm text-foreground">
+                    <td className="p-3 sm:p-4 md:p-5 text-xs sm:text-sm text-foreground">
                       {feature.name}
                     </td>
-                    <td className="p-4 md:p-5 text-center">
+                    <td className="p-3 sm:p-4 md:p-5 text-center">
                       {feature.starter ? (
-                        <CheckCircle2 className="w-5 h-5 text-primary mx-auto" />
+                        <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-primary mx-auto" />
                       ) : (
-                        <X className="w-4 h-4 text-muted-foreground/30 mx-auto" />
+                        <X className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-muted-foreground/30 mx-auto" />
                       )}
                     </td>
-                    <td className="p-4 md:p-5 text-center">
+                    <td className="p-3 sm:p-4 md:p-5 text-center">
                       {feature.growth ? (
-                        <CheckCircle2 className="w-5 h-5 text-primary mx-auto" />
+                        <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-primary mx-auto" />
                       ) : (
-                        <X className="w-4 h-4 text-muted-foreground/30 mx-auto" />
+                        <X className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-muted-foreground/30 mx-auto" />
                       )}
                     </td>
-                    <td className="p-4 md:p-5 text-center">
+                    <td className="p-3 sm:p-4 md:p-5 text-center">
                       {feature.premium ? (
-                        <CheckCircle2 className="w-5 h-5 text-primary mx-auto" />
+                        <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-primary mx-auto" />
                       ) : (
-                        <X className="w-4 h-4 text-muted-foreground/30 mx-auto" />
+                        <X className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-muted-foreground/30 mx-auto" />
                       )}
                     </td>
                   </tr>
