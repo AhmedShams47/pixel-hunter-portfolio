@@ -19,8 +19,8 @@ const translations: Translations = {
   'hero.title1': { en: 'Your Vision,', bn: 'আপনার স্বপ্ন,' },
   'hero.title2': { en: 'My Craft.', bn: 'আমার শিল্প।' },
   'hero.desc': {
-    en: "Assalamu Alaikum! I'm Ahmed Shams — I help Bangladeshi brands & businesses look world-class through premium design, web development, and social media. Let's talk like friends, build like professionals.",
-    bn: "আসসালামু আলাইকুম! আমি আহমেদ শামস — বাংলাদেশি ব্র্যান্ড ও ব্যবসাকে প্রিমিয়াম ডিজাইন, ওয়েব ডেভেলপমেন্ট এবং সোশ্যাল মিডিয়ার মাধ্যমে world-class করি। বন্ধুর মতো কথা বলুন, professional result পান।",
+    en: "Assalamu Alaikum! I am Ahmed Shams. I help Bangladeshi brands and businesses look world class through premium design, web development, and social media. Talk to me like a friend, and get professional results that speak for themselves.",
+    bn: "আসসালামু আলাইকুম! আমি আহমেদ শামস। বাংলাদেশি ব্র্যান্ড ও ব্যবসাকে প্রিমিয়াম ডিজাইন, ওয়েব ডেভেলপমেন্ট এবং সোশ্যাল মিডিয়ার মাধ্যমে world class করি। বন্ধুর মতো কথা বলুন, professional result পান।",
   },
   'hero.viewProjects': { en: 'View Projects', bn: 'প্রজেক্ট দেখুন' },
   'hero.contactMe': { en: 'Contact Me', bn: 'যোগাযোগ করুন' },
@@ -30,8 +30,8 @@ const translations: Translations = {
   'skills.title': { en: 'What I', bn: 'আমি কী' },
   'skills.titleHighlight': { en: 'Do', bn: 'করি' },
   'skills.desc': {
-    en: 'Everything you need to make your brand world-class — all in one place.',
-    bn: 'আপনার ব্র্যান্ডকে world-class করার জন্য যা যা দরকার — সব এক জায়গায়।',
+    en: 'Everything you need to make your brand world class, all in one place.',
+    bn: 'আপনার ব্র্যান্ডকে world class করার জন্য যা যা দরকার, সব এক জায়গায়।',
   },
   'skills.branding': { en: 'Branding & Graphic Design', bn: 'ব্র্যান্ডিং ও গ্রাফিক ডিজাইন' },
   'skills.social': { en: 'Social Media Management', bn: 'সোশ্যাল মিডিয়া ম্যানেজমেন্ট' },
@@ -43,8 +43,8 @@ const translations: Translations = {
   'cta.titleHighlight': { en: 'Premium', bn: 'Premium' },
   'cta.title2': { en: '?', bn: 'করতে চান?' },
   'cta.desc': {
-    en: 'From concept to launch — I handle everything. DM me, talk like a friend, get professional results.',
-    bn: 'কনসেপ্ট থেকে লঞ্চ — সবকিছু আমি handle করি। DM করুন, বন্ধুর মতো কথা বলুন, professional result পান।',
+    en: 'From concept to launch, I handle everything. DM me, talk like a friend, get professional results.',
+    bn: 'কনসেপ্ট থেকে লঞ্চ, সবকিছু আমি handle করি। DM করুন, বন্ধুর মতো কথা বলুন, professional result পান।',
   },
   'cta.seeWork': { en: 'See My Work', bn: 'আমার কাজ দেখুন' },
   'cta.getStarted': { en: 'Get Started', bn: 'শুরু করুন' },
@@ -53,7 +53,7 @@ const translations: Translations = {
   'ramadan.badge': { en: 'Ramadan Mubarak', bn: 'রমজান মোবারক' },
   'ramadan.title': { en: '20% OFF', bn: '২০% ছাড়' },
   'ramadan.subtitle': { en: 'All Services This Ramadan', bn: 'এই রমজানে সকল সেবায়' },
-  'ramadan.helperText': { en: 'Special blessing for this holy month — DM me on WhatsApp to claim', bn: 'এই পবিত্র মাসে বিশেষ অফার — WhatsApp এ DM করুন' },
+  'ramadan.helperText': { en: 'Special blessing for this holy month. DM me on WhatsApp to claim.', bn: 'এই পবিত্র মাসে বিশেষ অফার। WhatsApp এ DM করুন।' },
   'ramadan.claim': { en: 'Claim Offer', bn: 'অফার নিন' },
 
   // Footer
@@ -61,13 +61,13 @@ const translations: Translations = {
   'footer.tagline': { en: 'Designed with passion', bn: 'ভালোবাসায় তৈরি' },
 
   // About
-  'about.badge': { en: '// ABOUT ME', bn: '// আমার সম্পর্কে' },
+  'about.badge': { en: 'ABOUT ME', bn: 'আমার সম্পর্কে' },
   'about.title': { en: 'Meet', bn: 'পরিচয়' },
   'about.titleHighlight': { en: 'Ahmed Shams', bn: 'আহমেদ শামস' },
   'about.whoTitle': { en: 'Who I', bn: 'আমি' },
   'about.whoHighlight': { en: 'Am', bn: 'কে' },
   'about.whoDesc': {
-    en: "I'm Ahmed Shams, the creator of Shams Visuals. I help brands, businesses and creators look professional and memorable through design, motion, and web experiences. Over the years, I've worked with clients who needed everything from a simple logo refresh to a complete brand overhaul—and I've loved every project.",
+    en: "I am Ahmed Shams, the creator of Shams Visuals. I help brands, businesses and creators look professional and memorable through design, motion, and web experiences. Over the years, I have worked with clients who needed everything from a simple logo refresh to a complete brand overhaul, and I have loved every project.",
     bn: "আমি আহমেদ শামস, Shams Visuals এর স্রষ্টা। আমি ব্র্যান্ড, ব্যবসা এবং ক্রিয়েটরদের ডিজাইন, মোশন এবং ওয়েব এক্সপেরিয়েন্সের মাধ্যমে professional ও memorable করে তুলি।",
   },
   'about.disciplineTitle': { en: 'Discipline &', bn: 'শৃঙ্খলা ও' },
@@ -83,29 +83,25 @@ const translations: Translations = {
   'about.3dTitle': { en: '3D &', bn: '3D ও' },
   'about.3dHighlight': { en: 'Animations', bn: 'অ্যানিমেশন' },
   'about.3dDesc': {
-    en: 'I love using smooth 3D animations and motion graphics to bring brands to life—logo reveals, social media intros, and subtle website animations that feel premium instead of noisy.',
-    bn: 'আমি smooth 3D অ্যানিমেশন এবং মোশন গ্রাফিক্স ব্যবহার করে ব্র্যান্ডকে জীবন্ত করতে ভালোবাসি — লোগো reveal, সোশ্যাল মিডিয়া intro, এবং premium ওয়েবসাইট অ্যানিমেশন।',
+    en: 'I love using smooth 3D animations and motion graphics to bring brands to life. Logo reveals, social media intros, and subtle website animations that feel premium instead of noisy.',
+    bn: 'আমি smooth 3D অ্যানিমেশন এবং মোশন গ্রাফিক্স ব্যবহার করে ব্র্যান্ডকে জীবন্ত করতে ভালোবাসি। লোগো reveal, সোশ্যাল মিডিয়া intro, এবং premium ওয়েবসাইট অ্যানিমেশন।',
   },
   'about.connectTitle': { en: "Let's build something", bn: 'একসাথে কিছু' },
   'about.connectHighlight': { en: 'beautiful', bn: 'সুন্দর' },
   'about.connectSuffix': { en: 'together', bn: 'তৈরি করি' },
   'about.connectDesc': {
-    en: 'Tell me about your brand, your idea, or the project you have in mind. The fastest way to reach me is to send me a message on social media or email—no long forms, just a simple chat.',
+    en: 'Tell me about your brand, your idea, or the project you have in mind. The fastest way to reach me is to send me a message on social media or email. No long forms, just a simple chat.',
     bn: 'আপনার ব্র্যান্ড, আইডিয়া বা প্রজেক্ট সম্পর্কে বলুন। আমার কাছে পৌঁছানোর সবচেয়ে দ্রুত উপায় সোশ্যাল মিডিয়া বা ইমেইলে মেসেজ করা।',
   },
   'about.directMsg': {
-    en: 'Whichever button you choose, your message comes directly to me, Ahmed—not a bot, not a team.',
-    bn: 'যেকোনো বাটনে ক্লিক করুন, আপনার মেসেজ সরাসরি আমার কাছে আসবে — কোনো বট বা টিম নয়।',
+    en: 'Whichever button you choose, your message comes directly to me, Ahmed. Not a bot, not a team.',
+    bn: 'যেকোনো বাটনে ক্লিক করুন, আপনার মেসেজ সরাসরি আমার কাছে আসবে। কোনো বট বা টিম নয়।',
   },
   'about.viewPackages': { en: 'View Packages', bn: 'প্যাকেজ দেখুন' },
   'about.instagram': { en: 'Best for quick ideas and sharing references', bn: 'দ্রুত আইডিয়া ও রেফারেন্স শেয়ারের জন্য' },
   'about.facebook': { en: 'Perfect if you found me through Facebook', bn: 'Facebook থেকে পেলে এখান দিয়ে' },
   'about.whatsapp': { en: 'Great for serious inquiries and fast replies', bn: 'গুরুত্বপূর্ণ প্রশ্ন ও দ্রুত উত্তরের জন্য' },
   'about.email': { en: 'Send a detailed brief here', bn: 'বিস্তারিত ব্রিফ পাঠান' },
-
-  // Theme
-  'theme.light': { en: 'Light', bn: 'লাইট' },
-  'theme.dark': { en: 'Dark', bn: 'ডার্ক' },
 };
 
 interface LanguageContextType {

@@ -6,7 +6,7 @@ const Footer = () => {
   const { t } = useLanguage();
 
   return (
-    <footer className="py-12 px-6 border-t border-border/30">
+    <footer className="py-10 sm:py-12 px-4 sm:px-6 border-t border-border/30">
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <Link to="/" className="flex items-center gap-3">
@@ -21,7 +21,7 @@ const Footer = () => {
             </span>
           </Link>
 
-          <div className="flex items-center gap-6 text-sm">
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-sm">
             <Link to="/" className="text-muted-foreground hover:text-primary transition-colors duration-300">{t('nav.home')}</Link>
             <Link to="/about" className="text-muted-foreground hover:text-primary transition-colors duration-300">{t('nav.about')}</Link>
             <Link to="/projects" className="text-muted-foreground hover:text-primary transition-colors duration-300">{t('nav.projects')}</Link>

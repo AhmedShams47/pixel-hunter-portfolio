@@ -23,11 +23,11 @@ const PageLayout = ({ children, showParticles = true }: PageLayoutProps) => {
       initial="initial"
       animate="animate"
       exit="exit"
-      className="relative min-h-screen bg-background overflow-x-hidden transition-colors duration-400"
+      className="relative min-h-screen w-full max-w-full bg-background overflow-x-hidden"
     >
       {showParticles && <ParticleBackground />}
       <FloatingSocialBar />
-      <div className="relative z-10">
+      <div className="relative z-10 w-full">
         <Navbar />
         {children}
         <RamadanBanner />

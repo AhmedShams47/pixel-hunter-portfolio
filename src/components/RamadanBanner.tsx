@@ -47,33 +47,33 @@ const RamadanBanner = () => {
           exit={{ opacity: 0, y: 20 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="relative overflow-hidden rounded-2xl mx-4 sm:mx-6 mb-8"
+          className="relative overflow-hidden rounded-2xl mx-3 sm:mx-6 mb-8"
           style={{
-            background: 'linear-gradient(135deg, hsl(var(--prime-dark) / 0.4) 0%, hsl(var(--prime) / 0.15) 40%, hsl(var(--accent) / 0.1) 100%)',
-            border: '1px solid hsl(var(--prime) / 0.25)',
+            background: 'linear-gradient(135deg, hsl(var(--prime-dark) / 0.15) 0%, hsl(var(--prime) / 0.08) 40%, hsl(var(--accent) / 0.05) 100%)',
+            border: '1px solid hsl(var(--prime) / 0.2)',
           }}
         >
           {/* Decorative elements */}
-          <div className="absolute top-2 left-4 text-primary/20">
-            <Moon className="w-8 h-8" />
+          <div className="absolute top-2 left-4 text-primary/15">
+            <Moon className="w-6 sm:w-8 h-6 sm:h-8" />
           </div>
-          <div className="absolute top-3 right-12 text-primary/15">
-            <Star className="w-5 h-5" />
+          <div className="absolute top-3 right-12 text-primary/10">
+            <Star className="w-4 sm:w-5 h-4 sm:h-5" />
           </div>
           <div className="absolute bottom-2 left-1/4 text-primary/10">
-            <Star className="w-4 h-4" />
+            <Star className="w-3 sm:w-4 h-3 sm:h-4" />
           </div>
 
-          <div className="relative z-10 px-6 py-5 sm:py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="relative z-10 px-4 sm:px-6 py-4 sm:py-6 flex flex-col sm:flex-row items-center justify-between gap-4 flex-wrap">
             {/* Left: Message */}
-            <div className="text-center sm:text-left flex-1">
+            <div className="text-center sm:text-left flex-1 min-w-0">
               <div className="flex items-center gap-2 justify-center sm:justify-start mb-1">
-                <Moon className="w-4 h-4 text-primary" />
+                <Moon className="w-4 h-4 text-primary flex-shrink-0" />
                 <span className="text-xs font-display tracking-[0.2em] text-primary uppercase">
                   {t('ramadan.badge')}
                 </span>
               </div>
-              <h3 className="font-display text-lg sm:text-xl font-bold text-foreground">
+              <h3 className="font-display text-base sm:text-xl font-bold text-foreground">
                 <span className="prime-text">{t('ramadan.title')}</span>{' '}
                 <span className="text-foreground/90">{t('ramadan.subtitle')}</span>
               </h3>
@@ -83,20 +83,20 @@ const RamadanBanner = () => {
             </div>
 
             {/* Center: Countdown */}
-            <div className="flex gap-2 sm:gap-3">
+            <div className="flex gap-1.5 sm:gap-3 flex-shrink-0">
               {timeBlocks.map((block) => (
                 <div
                   key={block.label}
-                  className="flex flex-col items-center px-3 py-2 rounded-xl"
+                  className="flex flex-col items-center px-2 sm:px-3 py-1.5 sm:py-2 rounded-xl"
                   style={{
-                    background: 'hsl(var(--prime) / 0.12)',
-                    border: '1px solid hsl(var(--prime) / 0.2)',
+                    background: 'hsl(var(--prime) / 0.08)',
+                    border: '1px solid hsl(var(--prime) / 0.15)',
                   }}
                 >
-                  <span className="font-display text-lg sm:text-xl font-bold prime-text tabular-nums">
+                  <span className="font-display text-sm sm:text-xl font-bold prime-text tabular-nums">
                     {String(block.value).padStart(2, '0')}
                   </span>
-                  <span className="text-[10px] text-muted-foreground font-display tracking-wider uppercase">
+                  <span className="text-[9px] sm:text-[10px] text-muted-foreground font-display tracking-wider uppercase">
                     {block.label}
                   </span>
                 </div>
@@ -104,12 +104,12 @@ const RamadanBanner = () => {
             </div>
 
             {/* Right: CTA + Close */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
               <a
                 href="https://wa.me/8801707887676?text=Assalamu%20Alaikum!%20I%20want%20to%20claim%20the%20Ramadan%2020%25%20OFF%20offer"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-5 py-2.5 font-display font-bold text-sm rounded-xl text-primary-foreground transition-all duration-300 hover:scale-[1.03] whitespace-nowrap"
+                className="px-4 sm:px-5 py-2 sm:py-2.5 font-display font-bold text-xs sm:text-sm rounded-xl text-primary-foreground transition-all duration-300 hover:scale-[1.03] whitespace-nowrap"
                 style={{
                   background: 'linear-gradient(135deg, hsl(var(--prime)) 0%, hsl(var(--accent)) 100%)',
                   boxShadow: '0 4px 20px hsl(var(--prime) / 0.3)',

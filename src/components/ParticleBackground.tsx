@@ -14,7 +14,7 @@ const ParticleBackground = () => {
 
   useEffect(() => {
     const newStars: Star[] = [];
-    const starCount = window.innerWidth < 768 ? 20 : 35;
+    const starCount = window.innerWidth < 768 ? 15 : 25;
     
     for (let i = 0; i < starCount; i++) {
       newStars.push({
@@ -22,7 +22,7 @@ const ParticleBackground = () => {
         x: Math.random() * 100,
         y: Math.random() * 100,
         size: Math.random() * 2 + 0.5,
-        opacity: Math.random() * 0.4 + 0.15,
+        opacity: Math.random() * 0.15 + 0.05,
         delay: Math.random() * 5,
       });
     }
@@ -41,8 +41,8 @@ const ParticleBackground = () => {
           height: star.size,
           opacity: star.opacity,
           background: star.id % 3 === 0
-            ? 'hsl(310 85% 80%)'
-            : 'hsl(270 15% 85%)',
+            ? 'hsl(310 60% 75%)'
+            : 'hsl(270 20% 80%)',
         }}
       />
     ))
@@ -50,16 +50,16 @@ const ParticleBackground = () => {
 
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-      {/* Deep space gradient */}
+      {/* Soft light gradient */}
       <div
         className="absolute inset-0"
         style={{
-          background: 'linear-gradient(180deg, hsl(270 18% 3%) 0%, hsl(275 22% 5%) 40%, hsl(270 18% 3%) 100%)',
+          background: 'linear-gradient(180deg, hsl(270 15% 96%) 0%, hsl(275 12% 94%) 40%, hsl(270 15% 96%) 100%)',
         }}
       />
 
-      {/* Nebula orbs */}
-      <div className="absolute inset-0 opacity-20">
+      {/* Subtle nebula orbs */}
+      <div className="absolute inset-0 opacity-[0.08]">
         <div
           className="absolute top-[12%] left-[8%] w-[350px] h-[350px] rounded-full"
           style={{
@@ -90,7 +90,7 @@ const ParticleBackground = () => {
 
       {/* Subtle center glow */}
       <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-[0.02]"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-[0.015]"
         style={{
           background: 'radial-gradient(circle, hsl(var(--primary)) 0%, transparent 60%)',
         }}
