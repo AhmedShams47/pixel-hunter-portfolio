@@ -145,7 +145,7 @@ const HomePage = () => {
               <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
                 {t('skills.title')} <span className="text-primary">{t('skills.titleHighlight')}</span>
               </h2>
-              <p className="text-muted-foreground max-w-xl mx-auto">
+              <p className="max-w-xl mx-auto text-black text-xl">
                 {t('skills.desc')}
               </p>
             </motion.div>
@@ -185,7 +185,7 @@ const HomePage = () => {
               <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
                 {t('cta.title1')} <span className="prime-text prime-glow">{t('cta.titleHighlight')}</span>{t('cta.title2')}
               </h2>
-              <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
+              <p className="mb-8 max-w-lg mx-auto text-xl text-black">
                 {t('cta.desc')}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
