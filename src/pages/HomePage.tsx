@@ -5,6 +5,7 @@ import { Palette, Share2, Globe, Sparkles } from 'lucide-react';
 import shamsLogo from '@/assets/shams-logo.jpg';
 import PageLayout from '@/components/PageLayout';
 import VideoIntro from '@/components/VideoIntro';
+import CinematicScrollSection from '@/components/CinematicScrollSection';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const HomePage = () => {
@@ -131,6 +132,9 @@ const HomePage = () => {
             </div>
           </div>
         </section>
+
+        {/* Cinematic scroll-controlled dragon experience */}
+        <CinematicScrollSection />
 
         {/* Skills Highlights */}
         <section className="py-24 px-6">
