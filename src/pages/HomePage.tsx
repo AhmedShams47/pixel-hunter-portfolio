@@ -133,6 +133,9 @@ const HomePage = () => {
           </div>
         </section>
 
+        {/* Cinematic scroll-controlled dragon experience */}
+        <CinematicScrollSection />
+
         {/* Skills Highlights */}
         <section className="py-24 px-6">
           <div className="max-w-5xl mx-auto">
