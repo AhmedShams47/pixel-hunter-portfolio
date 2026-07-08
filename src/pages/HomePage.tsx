@@ -1,15 +1,13 @@
-import { useState, useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Palette, Share2, Globe, Sparkles } from 'lucide-react';
 import shamsLogo from '@/assets/shams-logo.jpg';
 import PageLayout from '@/components/PageLayout';
-import VideoIntro from '@/components/VideoIntro';
 import CinematicScrollSection from '@/components/CinematicScrollSection';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const HomePage = () => {
-  const [introComplete, setIntroComplete] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const { t } = useLanguage();
 
@@ -28,10 +26,6 @@ const HomePage = () => {
 
   return (
     <>
-      {!introComplete &&
-      <VideoIntro onComplete={() => setIntroComplete(true)} />
-      }
-
       <PageLayout>
         {/* Hero Section */}
         <section className="relative min-h-screen flex items-center justify-center px-6 pt-24 overflow-hidden">
