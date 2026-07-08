@@ -1,21 +1,14 @@
-import { useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Palette, Share2, Globe, Sparkles } from 'lucide-react';
 import shamsLogo from '@/assets/shams-logo.jpg';
 import PageLayout from '@/components/PageLayout';
 import CinematicScrollSection from '@/components/CinematicScrollSection';
+import HeroDragonVideo from '@/components/HeroDragonVideo';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const HomePage = () => {
-  const videoRef = useRef<HTMLVideoElement>(null);
   const { t } = useLanguage();
-
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.playbackRate = 0.8;
-    }
-  }, []);
 
   const skills = [
   { icon: <Palette className="w-5 h-5" />, labelKey: 'skills.branding' },
@@ -29,21 +22,7 @@ const HomePage = () => {
       <PageLayout>
         {/* Hero Section */}
         <section className="relative min-h-screen flex items-center justify-center px-6 pt-24 overflow-hidden">
-          {/* Background Video — UNTOUCHED */}
-          <div className="absolute inset-0 z-0">
-            <video
-              ref={videoRef}
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="absolute inset-0 w-full h-full object-cover"
-              style={{ filter: 'brightness(0.3)' }}>
-
-              <source src="/videos/dragon-eye-bg.mp4" type="video/mp4" />
-            </video>
-            <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-transparent to-background" />
-          </div>
+          <HeroDragonVideo />
           
           <div className="relative z-10 max-w-6xl mx-auto w-full">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
