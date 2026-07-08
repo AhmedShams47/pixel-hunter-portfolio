@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { ThemeProvider } from "@/contexts/ThemeContext";
+import SmoothScrollProvider from "@/components/SmoothScrollProvider";
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
 import ProjectsPage from "./pages/ProjectsPage";
@@ -38,7 +39,9 @@ const App = () => (
           <Toaster />
           <Sonner />
           <BrowserRouter>
-            <AnimatedRoutes />
+            <SmoothScrollProvider>
+              <AnimatedRoutes />
+            </SmoothScrollProvider>
           </BrowserRouter>
         </TooltipProvider>
       </LanguageProvider>
