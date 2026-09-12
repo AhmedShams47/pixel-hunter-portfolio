@@ -26,6 +26,15 @@ const translations: Translations = {
   'hero.contactMe': { en: 'Contact Me', bn: 'যোগাযোগ করুন' },
   'hero.scroll': { en: 'SCROLL', bn: 'স্ক্রল' },
 
+  // Scroll narrative
+  'scroll.label': { en: 'Cinematic scroll narrative', bn: 'সিনেম্যাটিক স্ক্রল অভিজ্ঞতা' },
+  'scroll.badge': { en: 'THE JOURNEY', bn: 'যাত্রা' },
+  'scroll.title': { en: 'Crafted in Motion', bn: 'গতির মধ্যে তৈরি' },
+  'scroll.desc': {
+    en: 'Scroll through the world behind every Shams Visuals creation.',
+    bn: 'প্রতিটি শামস ভিজ্যুয়ালস সৃষ্টির পেছনের জগতটি দেখতে স্ক্রল করুন।',
+  },
+
   // Skills
   'skills.title': { en: 'What I', bn: 'আমি কী' },
   'skills.titleHighlight': { en: 'Do', bn: 'করি' },
