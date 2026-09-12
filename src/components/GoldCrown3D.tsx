@@ -22,14 +22,16 @@ const Crown = ({ reducedMotion = false, interactive = false }: GoldCrown3DProps)
   );
 
   useFrame((state, delta) => {
+    if (reducedMotion) return;
+
     const crown = crownRef.current;
     if (!crown) return;
 
     const elapsed = state.clock.elapsedTime;
     const pointerX = interactive ? state.pointer.x * 0.22 : 0;
     const pointerY = interactive ? -state.pointer.y * 0.14 : 0;
-    const spin = reducedMotion ? 0 : elapsed * 0.14;
-    const floatY = reducedMotion ? 0 : Math.sin(elapsed * 0.5) * 0.08;
+    const spin = elapsed * 0.14;
+    const floatY = Math.sin(elapsed * 0.5) * 0.08;
 
     crown.rotation.y += (spin + pointerX - crown.rotation.y) * Math.min(delta * 2.5, 1);
     crown.rotation.x += (pointerY + Math.sin(elapsed * 0.4) * 0.025 - crown.rotation.x) * Math.min(delta * 2.5, 1);

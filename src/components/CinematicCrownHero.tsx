@@ -18,7 +18,7 @@ const CinematicCrownHero = () => {
   }, []);
 
   return (
-      <motion.section
+    <motion.section
       aria-label={t('hero.badge')}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -43,27 +43,26 @@ const CinematicCrownHero = () => {
         />
       </div>
 
-      {/* 3D crown - lazy loaded */}
+      {/* 3D crown - lazy loaded with visible fallback for pre-load + error states */}
       <div className="absolute inset-0 z-0">
-        <Suspense fallback={null}>
+        <Suspense
+          fallback={
+            <div className="absolute inset-0 flex items-center justify-center">
+              <motion.div
+                className="w-40 h-40 md:w-64 md:h-64 rounded-full"
+                style={{
+                  background:
+                    'radial-gradient(circle, hsl(280 80% 60% / 0.18) 0%, transparent 65%)',
+                }}
+                animate={{ scale: [1, 1.08, 1], opacity: [0.5, 0.8, 0.5] }}
+                transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
+              />
+            </div>
+          }
+        >
           <GoldCrown3D reducedMotion={prefersReduced} />
         </Suspense>
       </div>
-
-      {/* CSS Crown fallback (visible before Three.js loads) */}
-      {!prefersReduced && (
-        <div className="absolute inset-0 z-[1] flex items-center justify-center pointer-events-none">
-          <motion.div
-            className="w-48 h-48 md:w-72 md:h-72 rounded-full"
-            style={{
-              background:
-                'radial-gradient(circle, hsl(280 80% 60% / 0.15) 0%, transparent 70%)',
-            }}
-            animate={{ scale: [1, 1.05, 1] }}
-            transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-          />
-        </div>
-      )}
 
       {/* Content overlay */}
       <div className="relative z-10 max-w-4xl mx-auto w-full px-6 text-center">
