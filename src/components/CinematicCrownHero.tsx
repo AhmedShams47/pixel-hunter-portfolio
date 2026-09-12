@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react';
+import { Suspense, lazy, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
-import GoldCrown3D from './GoldCrown3D';
+
+const GoldCrown3D = lazy(() => import('./GoldCrown3D'));
 
 const CinematicCrownHero = () => {
   const { t } = useLanguage();
@@ -17,7 +18,8 @@ const CinematicCrownHero = () => {
   }, []);
 
   return (
-    <motion.section
+      <motion.section
+      aria-label={t('hero.badge')}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
@@ -41,10 +43,27 @@ const CinematicCrownHero = () => {
         />
       </div>
 
-      {/* 3D crown */}
+      {/* 3D crown - lazy loaded */}
       <div className="absolute inset-0 z-0">
-        <GoldCrown3D reducedMotion={prefersReduced} />
+        <Suspense fallback={null}>
+          <GoldCrown3D reducedMotion={prefersReduced} />
+        </Suspense>
       </div>
+
+      {/* CSS Crown fallback (visible before Three.js loads) */}
+      {!prefersReduced && (
+        <div className="absolute inset-0 z-[1] flex items-center justify-center pointer-events-none">
+          <motion.div
+            className="w-48 h-48 md:w-72 md:h-72 rounded-full"
+            style={{
+              background:
+                'radial-gradient(circle, hsl(280 80% 60% / 0.15) 0%, transparent 70%)',
+            }}
+            animate={{ scale: [1, 1.05, 1] }}
+            transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+          />
+        </div>
+      )}
 
       {/* Content overlay */}
       <div className="relative z-10 max-w-4xl mx-auto w-full px-6 text-center">

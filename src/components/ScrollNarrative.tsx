@@ -89,6 +89,8 @@ const ScrollNarrative = () => {
                 src={projects[0]?.image}
                 alt={projects[0]?.title}
                 className="w-full h-full object-cover"
+                loading="lazy"
+                decoding="async"
               />
             </motion.div>
             <motion.div
@@ -99,6 +101,8 @@ const ScrollNarrative = () => {
                 src={projects[1]?.image}
                 alt={projects[1]?.title}
                 className="w-full h-full object-cover"
+                loading="lazy"
+                decoding="async"
               />
             </motion.div>
             <motion.div
@@ -109,6 +113,8 @@ const ScrollNarrative = () => {
                 src={projects[2]?.image}
                 alt={projects[2]?.title}
                 className="w-full h-full object-cover"
+                loading="lazy"
+                decoding="async"
               />
             </motion.div>
           </div>
