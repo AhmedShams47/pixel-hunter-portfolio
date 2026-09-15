@@ -247,11 +247,11 @@ html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
 .lenis.lenis-stopped { overflow: hidden; }
 
-/* Crown 3D canvas styles */
-.crown-canvas {
+/* Dragon 3D canvas styles */
+.dragon-canvas {
   cursor: grab;
 }
 
-.crown-canvas:active {
+.dragon-canvas:active {
   cursor: grabbing;
 }

@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Palette, Share2, Globe, Sparkles } from 'lucide-react';
 import PageLayout from '@/components/PageLayout';
-import CinematicCrownHero from '@/components/CinematicCrownHero';
+import CinematicDragonHero from '@/components/CinematicDragonHero';
 import ScrollNarrative from '@/components/ScrollNarrative';
 import { useLanguage } from '@/contexts/LanguageContext';
 
@@ -19,8 +19,8 @@ const HomePage = () => {
   return (
     <>
       <PageLayout>
-        {/* Cinematic 3D Crown Hero */}
-        <CinematicCrownHero />
+        {/* Cinematic 3D Dragon Hero */}
+        <CinematicDragonHero />
 
         {/* Unified Scroll Narrative */}
         <ScrollNarrative />
