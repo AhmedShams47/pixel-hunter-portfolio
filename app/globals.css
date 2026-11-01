@@ -1,0 +1,426 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* ─── Dark Cinematic Palette ─── */
+    --background: 270 12% 4%;
+    --foreground: 270 8% 90%;
+
+    --card: 270 14% 7%;
+    --card-foreground: 270 8% 90%;
+
+    --popover: 270 14% 6%;
+    --popover-foreground: 270 8% 90%;
+
+    --primary: 280 85% 62%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 270 12% 12%;
+    --secondary-foreground: 270 8% 80%;
+
+    --muted: 270 12% 10%;
+    --muted-foreground: 270 8% 64%;
+
+    --accent: 310 72% 58%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 270 22% 14%;
+    --input: 270 14% 11%;
+    --ring: 280 85% 62%;
+
+    --radius: 1.25rem;
+
+    /* ─── Prime Purple-Pink Tokens ─── */
+    --prime: 280 85% 58%;
+    --prime-light: 290 80% 68%;
+    --prime-dark: 270 65% 38%;
+    --prime-shine: 310 90% 72%;
+    --prime-neon: 290 90% 65%;
+    --prime-pink: 320 80% 58%;
+
+    /* ─── Cinematic Depth ─── */
+    --luxury-dark: 270 12% 4%;
+    --luxury-charcoal: 270 12% 8%;
+
+    /* ─── Glass System (dark) ─── */
+    --glass-bg: 270 16% 6%;
+    --glass-border: 275 38% 20%;
+
+    --sidebar-background: 270 14% 5%;
+    --sidebar-foreground: 270 8% 85%;
+    --sidebar-primary: 280 85% 62%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 270 12% 10%;
+    --sidebar-accent-foreground: 270 8% 85%;
+    --sidebar-border: 270 22% 14%;
+    --sidebar-ring: 280 85% 62%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-cinzel), 'Cinzel', Georgia, serif;
+    letter-spacing: -0.01em;
+  }
+}
+
+/* ─── Reduced Motion ─────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ─── GPU Acceleration ───────────────────────────── */
+.glass-card {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+@layer components {
+
+  /* ─── Glass Card (dark cinematic) ────────────────── */
+  .glass-card {
+    @apply relative overflow-hidden transition-all duration-300;
+    border-radius: var(--radius);
+    background: linear-gradient(
+      135deg,
+      hsl(var(--glass-bg) / 0.85) 0%,
+      hsl(var(--glass-bg) / 0.55) 100%
+    );
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--glass-border) / 0.45);
+    box-shadow:
+      0 4px 32px hsl(var(--prime) / 0.06),
+      0 1px 0 hsl(var(--prime-shine) / 0.06) inset,
+      0 0 0 1px hsl(var(--prime) / 0.03) inset;
+  }
+
+  .glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(var(--prime) / 0.3),
+      hsl(var(--prime-shine) / 0.25),
+      transparent
+    );
+    pointer-events: none;
+  }
+
+  /* Hover lift */
+  .glass-card:hover {
+    border-color: hsl(var(--glass-border) / 0.7);
+    box-shadow:
+      0 8px 48px hsl(var(--prime) / 0.10),
+      0 1px 0 hsl(var(--prime-shine) / 0.10) inset;
+  }
+
+  /* ─── Typography Utilities ───────────────────────── */
+  .gold-text,
+  .prime-text {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--prime-dark)) 0%,
+      hsl(var(--prime)) 30%,
+      hsl(var(--prime-shine)) 55%,
+      hsl(var(--prime)) 75%,
+      hsl(var(--prime-dark)) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 1px 6px hsl(var(--prime) / 0.25));
+  }
+
+  .gold-glow,
+  .prime-glow {
+    text-shadow:
+      0 0 12px hsl(var(--prime) / 0.35),
+      0 0 40px hsl(var(--prime) / 0.18),
+      0 0 80px hsl(var(--prime) / 0.08);
+  }
+
+  .gold-box-glow,
+  .prime-box-glow {
+    box-shadow:
+      0 0 24px hsl(var(--prime) / 0.18),
+      0 0 60px hsl(var(--prime) / 0.08);
+  }
+
+  .metallic-gold,
+  .metallic-prime {
+    background: linear-gradient(
+      145deg,
+      hsl(var(--prime-dark)) 0%,
+      hsl(var(--prime)) 35%,
+      hsl(var(--prime-shine)) 50%,
+      hsl(var(--prime)) 65%,
+      hsl(var(--prime-dark)) 100%
+    );
+  }
+
+  /* ─── Cinematic Button System ────────────────────── */
+  .cinematic-btn-primary {
+    @apply inline-flex items-center justify-center px-8 py-3.5 font-display font-bold text-sm tracking-[0.08em] text-white rounded-2xl transition-all duration-300;
+    background: linear-gradient(
+      135deg,
+      hsl(var(--prime)) 0%,
+      hsl(var(--accent)) 100%
+    );
+    box-shadow:
+      0 4px 24px hsl(var(--prime) / 0.35),
+      inset 0 1px 0 hsl(var(--prime-shine) / 0.2);
+  }
+  .cinematic-btn-primary:hover {
+    transform: scale(1.025) translateY(-1px);
+    box-shadow:
+      0 8px 36px hsl(var(--prime) / 0.45),
+      inset 0 1px 0 hsl(var(--prime-shine) / 0.3);
+  }
+
+  .cinematic-btn-glass {
+    @apply inline-flex items-center justify-center px-8 py-3.5 font-display font-bold text-sm tracking-[0.08em] text-foreground rounded-2xl transition-all duration-300;
+    background: hsl(var(--glass-bg) / 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid hsl(var(--glass-border) / 0.6);
+  }
+  .cinematic-btn-glass:hover {
+    transform: scale(1.025) translateY(-1px);
+    border-color: hsl(var(--prime) / 0.6);
+    background: hsl(var(--glass-bg) / 0.9);
+  }
+
+  /* ─── Atmospheric Depth Utilities ────────────────── */
+  .atm-fog-left {
+    background: linear-gradient(
+      to right,
+      hsl(var(--background) / 0.92) 0%,
+      hsl(var(--background) / 0.55) 30%,
+      hsl(var(--background) / 0.1) 60%,
+      transparent 80%
+    );
+  }
+
+  .atm-fog-bottom {
+    background: linear-gradient(
+      to top,
+      hsl(var(--background)) 0%,
+      hsl(var(--background) / 0.85) 20%,
+      hsl(var(--background) / 0.35) 50%,
+      transparent 75%
+    );
+  }
+
+  .atm-fog-top {
+    background: linear-gradient(
+      to bottom,
+      hsl(var(--background) / 0.75) 0%,
+      hsl(var(--background) / 0.25) 35%,
+      transparent 65%
+    );
+  }
+
+  .atm-vignette {
+    background: radial-gradient(
+      ellipse at 62% 44%,
+      transparent 28%,
+      hsl(var(--background) / 0.5) 70%,
+      hsl(var(--background) / 0.8) 100%
+    );
+  }
+
+  .dragon-glow {
+    background: radial-gradient(
+      ellipse at 65% 48%,
+      hsl(var(--prime) / 0.12) 0%,
+      hsl(var(--accent) / 0.06) 40%,
+      transparent 70%
+    );
+  }
+
+  /* ─── Section Divider ────────────────────────────── */
+  .section-divider {
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      hsl(var(--prime) / 0.2),
+      hsl(var(--prime-shine) / 0.15),
+      hsl(var(--prime) / 0.2),
+      transparent
+    );
+  }
+
+  /* ─── Existing Utilities (kept) ──────────────────── */
+  .terminal-cursor {
+    animation: blink 1s step-end infinite;
+  }
+  @keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+  }
+
+  .marquee {
+    animation: marquee 40s linear infinite;
+  }
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .liquid-enter {
+    animation: liquid-in 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+  @keyframes liquid-in {
+    0% { opacity: 0; transform: translateY(40px) scale(0.95); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  @keyframes float-gentle {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  .animate-float-gentle {
+    animation: float-gentle 6s ease-in-out infinite;
+  }
+
+  @keyframes fade-up {
+    0% { opacity: 0; transform: translateY(12px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-up {
+    animation: fade-up 0.45s ease-out forwards;
+  }
+
+  /* ─── Video Overlay ──────────────────────────────── */
+  .video-intro-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: hsl(var(--background));
+  }
+  .video-intro-overlay video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+/* ─── Scrollbar ──────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: hsl(var(--background)); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, hsl(var(--prime) / 0.35), hsl(var(--prime-shine) / 0.2));
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, hsl(var(--prime) / 0.55), hsl(var(--prime-shine) / 0.4));
+}
+
+/* ─── Lenis ──────────────────────────────────────── */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+/* ─── 3D Canvas ──────────────────────────────────── */
+.crown-canvas { cursor: grab; }
+.crown-canvas:active { cursor: grabbing; }
+
+/* ─── Film Grain (GrainOverlay) ─────────────────────────── */
+/*
+ * SVG feTurbulence generates noise; the CSS keyframes shift
+ * the background position every 50ms to animate it.
+ * opacity: 0.038 = barely visible but perceptibly cinematic.
+ */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9996;
+  pointer-events: none;
+  opacity: 0.038;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 220px 220px;
+  animation: grain-shift 0.5s steps(1) infinite;
+  mix-blend-mode: overlay;
+}
+
+@keyframes grain-shift {
+  0%   { background-position:   0px   0px; }
+  10%  { background-position: -5%  -10%; }
+  20%  { background-position: -15%   5%; }
+  30%  { background-position:  7%  -25%; }
+  40%  { background-position: -5%   25%; }
+  50%  { background-position: -15%  10%; }
+  60%  { background-position:  15%   0; }
+  70%  { background-position:   0   15%; }
+  80%  { background-position:  3%   35%; }
+  90%  { background-position: -10%  10%; }
+  100% { background-position:   0    0; }
+}
+
+/* Disable grain animation for reduced-motion users */
+@media (prefers-reduced-motion: reduce) {
+  .grain-overlay { animation: none; }
+}
+
+/* ─── Custom cursor: hide default ────────────────────────── */
+/* Applied only on devices that support custom cursor */
+@media (pointer: fine) {
+  *, *::before, *::after { cursor: none !important; }
+  /* Restore cursor inside iframes and external embeds */
+  iframe { cursor: auto !important; }
+}
+
+/* ─── Scrollbar hide utility ─────────────────────────────── */
+.scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-none::-webkit-scrollbar { display: none; }
+
+/* ─── Entrance animations (pure CSS: visible at first paint, no JS/hydration dependency) ─── */
+@keyframes rise-in { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes page-in { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@keyframes nav-in  { from { opacity: 0; transform: translateY(-80px); } to { opacity: 1; transform: none; } }
+.hero-rise  { animation: rise-in 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94) both; }
+.hero-fade  { animation: fade-in 0.55s ease-out both; }
+.page-enter { animation: page-in 0.45s cubic-bezier(0.4, 0, 0.2, 1) both; }
+.nav-enter  { animation: nav-in 0.6s cubic-bezier(0.4, 0, 0.2, 1) both; }
+@media (prefers-reduced-motion: reduce) {
+  .hero-rise, .hero-fade, .page-enter, .nav-enter { animation: none; }
+}
