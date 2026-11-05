@@ -1,0 +1,18 @@
+{
+  "source": "code-archive",
+  "artifact": "shamsvisuals-next.zip",
+  "capabilities": [
+    {"capability":"application code and routes","source":"Next.js archive plus existing React/Vite website","outcome":"selectively merge source features while preserving established brand, content, and routes","status":"in_progress","next_action":"complete source and current-site audit, then implement verified parity"},
+    {"capability":"database schema","source":"archive contains no schema; existing project uses Lovable Cloud","outcome":"no database migration requested or supported by archive evidence","status":"verified","next_action":"preserve existing Cloud configuration and avoid unrelated database changes"},
+    {"capability":"database records","source":"archive contains no record export","outcome":"no archive records to import","status":"verified","next_action":"none"},
+    {"capability":"authentication identities","source":"archive contains no auth configuration or user export","outcome":"no authentication migration indicated","status":"verified","next_action":"preserve existing auth state"},
+    {"capability":"authorization","source":"archive contains no role or permission model","outcome":"no authorization migration indicated","status":"verified","next_action":"preserve existing access controls"},
+    {"capability":"uploaded file bytes and media","source":"archive assets plus existing branded assets and videos","outcome":"preserve official logos and original dragon media; merge only verified, relevant assets","status":"pending","next_action":"audit source asset sizes and identity, then optimize or copy only assets needed by the merged site"},
+    {"capability":"external providers and integrations","source":"archive and existing site configuration","outcome":"retain only integrations confirmed by source and current project","status":"pending","next_action":"audit contact destinations, social links, analytics, email, and provider call sites"},
+    {"capability":"public endpoints and callbacks","source":"archive has public site metadata, sitemap, and robots; no backend endpoints identified","outcome":"retain public pages and indexing endpoints in the current static site","status":"pending","next_action":"verify routes, robots, sitemap, and social metadata"},
+    {"capability":"webhooks and schedules","source":"archive inspection found no schema or integration artifacts; current static website","outcome":"none identified","status":"verified","next_action":"none"},
+    {"capability":"secrets","source":"archive inspection found no environment variables","outcome":"no secret migration required","status":"verified","next_action":"keep secrets out of client code"},
+    {"capability":"cutover and domain","source":"existing published Shams Visuals project and custom domain","outcome":"no domain, DNS, or production cutover during this work","status":"pending","next_action":"keep the existing live site/domain untouched and validate only in preview"},
+    {"capability":"verification","source":"current project preview plus archive-reported prior tests","outcome":"must independently verify the merged preview","status":"pending","next_action":"run app checks and validate pages, interactions, devices, assets, links, and build signals"}
+  ]
+}
